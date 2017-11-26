@@ -7,5 +7,5 @@ files=($(find . -d 2 -type f -name '\.*' -print))
 for i in "${files[@]}"
 do
   :
-  ln -s $DOTFILES/$i ~/ 
+  ln -sf $DOTFILES/$i ~/ 
 done
