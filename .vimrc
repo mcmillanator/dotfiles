@@ -12,6 +12,7 @@ set shiftwidth=2
 set expandtab
 set number
 set relativenumber
+set paste
 
 set nocompatible              " be iMproved, required
 filetype on
