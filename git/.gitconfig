@@ -1,0 +1,9 @@
+[color]
+	ui = true
+[user]
+	name = Stanley McMillan
+	email = me@stanleymcmillan.com 
+[core]
+	excludesfile = ~/.gitignore_global
+[merge "ours"]
+	driver = true
