@@ -1,5 +1,8 @@
-source ~/.dotfiles_location
-source $DOTFILES/bash/*
+source ~/.dotfiles_config
+for i in $DOTFILES/bash/*
+do
+  source $i
+done
 
 # chruby
 source /usr/local/share/chruby/chruby.sh

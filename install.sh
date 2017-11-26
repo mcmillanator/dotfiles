@@ -1,6 +1,6 @@
 #!/bin/bash
 DOTFILES=`pwd`
-echo "export DOTFILES=$DOTFILES" > ~/.dotfiles_location
+echo "export DOTFILES=$DOTFILES" > ~/.dotfiles_config
 
 files=($(find . -d 2 -type f -name '\.*' -print))
 
