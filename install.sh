@@ -9,3 +9,5 @@ do
   :
   ln -sf $DOTFILES/$i ~/ 
 done
+
+source ~/.bashrc
