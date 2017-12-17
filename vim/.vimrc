@@ -24,3 +24,6 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip
       \ 'file': '\v\.(exe|so|dll)$',
       \ 'link': 'some_bad_symbolic_links',
       \ }
+
+" ctrlp settings
+set runtimepath^=~/.vim/bundle/ctrlp.vim
