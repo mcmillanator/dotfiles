@@ -16,4 +16,6 @@ do
 	link $i $filename
 done
 
+link vim .vim
+
 source ~/.bashrc
