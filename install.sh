@@ -1,12 +1,13 @@
 #!/bin/bash
 DOTFILES=`pwd`
 echo "export DOTFILES=$DOTFILES" > ~/.dotfiles_config
+files=($(find . -d 2 -type f -name '*.symlink' -print))
+files+=(vim)
 
 function link () {
-	ln -sf $DOTFILES/$1 ~/.$2
+	ln -sfn $DOTFILES/$1 ~/.$2
 }
 
-files=($(find . -d 2 -type f -name '*.symlink' -print))
 
 for i in "${files[@]}"
 do
@@ -15,7 +16,5 @@ do
 	filename="${file%.*}"
 	link $i $filename
 done
-
-link vim .vim
 
 source ~/.bashrc
