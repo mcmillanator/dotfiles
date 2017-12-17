@@ -1,8 +1,3 @@
-# git completion                                                                                                                                                                                                                                                                                                    [5/4985]
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
-  . $(brew --prefix)/etc/bash_completion
-fi
-
 # show git branch in bash propmp
 # https://gist.github.com/stuarteberg/4446426
 # Colors for the prompt

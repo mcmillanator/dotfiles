@@ -1,5 +1,6 @@
 source ~/.dotfiles_config
-for i in $DOTFILES/bash/*
+files=$(find $DOTFILES/bash -type f ! -name '*.symlink'
+for i in "${files[@]}" 
 do
   source $i
 done
