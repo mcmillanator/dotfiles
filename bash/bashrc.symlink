@@ -1,8 +1,8 @@
 source ~/.dotfiles_config
-files=$(find $DOTFILES/bash -type f ! -name '*.symlink'
-for i in "${files[@]}" 
+bash_files=$(find $DOTFILES/bash -type f ! -name '*.symlink')
+for f in "${bash_files[@]}" 
 do
-  source $i
+  source $f
 done
 
 # chruby

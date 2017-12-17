@@ -2,12 +2,18 @@
 DOTFILES=`pwd`
 echo "export DOTFILES=$DOTFILES" > ~/.dotfiles_config
 
-files=($(find . -d 2 -type f -name '\.*' -print))
+function link () {
+	ln -sf $DOTFILES/$1 ~/.$2
+}
+
+files=($(find . -d 2 -type f -name '*.symlink' -print))
 
 for i in "${files[@]}"
 do
   :
-  ln -sf $DOTFILES/$i ~/ 
+	file=$(basename $i)
+	filename="${file%.*}"
+	link $i $filename
 done
 
 source ~/.bashrc
