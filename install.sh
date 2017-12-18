@@ -1,4 +1,7 @@
 #!/bin/bash
+git submodule init
+git submodule update
+
 DOTFILES=`pwd`
 echo "export DOTFILES=$DOTFILES" > ~/.dotfiles_config
 files=($(find . -type f -name '*.symlink' -print))
