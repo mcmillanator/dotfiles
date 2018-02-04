@@ -8,3 +8,5 @@
 	editor = vim
 [merge "ours"]
 	driver = true
+[push]
+	default = simple
