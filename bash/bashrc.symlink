@@ -8,7 +8,7 @@ done
 # chruby
 source /usr/local/share/chruby/chruby.sh
 source /usr/local/share/chruby/auto.sh
-chruby 2.4.0
+chruby ruby 
 
 # load ssh-agent
 if [ -z "$SSH_AUTH_SOCK" ] ; then
