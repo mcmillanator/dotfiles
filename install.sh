@@ -4,7 +4,7 @@ git submodule update
 
 DOTFILES=`pwd`
 echo "export DOTFILES=$DOTFILES" > ~/.dotfiles_config
-files=($(find . -type f -name '*.symlink' -print))
+files=($(find . -name '*.symlink' -print))
 files+=(vim)
 
 function link () {

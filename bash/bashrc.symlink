@@ -1,4 +1,5 @@
 source ~/.dotfiles_config
+
 bash_files=($(find $DOTFILES/bash -type f ! -name '*.*'))
 for f in "${bash_files[@]}" 
 do
@@ -16,6 +17,5 @@ if [ -z "$SSH_AUTH_SOCK" ] ; then
     ssh-add
 fi
 
-# set vim as default editor
-export VISUAL=vim
-export EDITOR="$VISUAL"
+# tmuxinator
+source $DOTFILES/bash/tmuxinator.bash
