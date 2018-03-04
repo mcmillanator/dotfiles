@@ -14,6 +14,18 @@ set number
 set relativenumber
 set paste
 
+map <C-N><C-N> :set number!<cr>
+map <C-N><C-R> :set relativenumber!<cr>
+
+" splits
+
+set splitbelow
+set splitright
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
 set nocompatible              " be iMproved, required
 filetype on
 
