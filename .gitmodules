@@ -88,3 +88,6 @@
 [submodule "vim/bundle/vim-addon-mw-utils"]
 	path = vim/bundle/vim-addon-mw-utils
 	url = https://github.com/MarcWeber/vim-addon-mw-utils.git
+[submodule "vim/bundle/unite-spell-suggest"]
+	path = vim/bundle/unite-spell-suggest
+	url = https://github.com/kopischke/unite-spell-suggest.git
