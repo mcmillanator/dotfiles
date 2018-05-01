@@ -5,6 +5,7 @@ filetype plugin indent on
 
 " enable syntax highlighting and solarized color scheme
 set background=dark
+let g:solarized_termtrans = 1
 colorscheme solarized
 
 set tabstop=2
