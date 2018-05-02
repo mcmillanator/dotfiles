@@ -7,9 +7,12 @@ do
 done
 
 # chruby
-source /usr/local/share/chruby/chruby.sh
-source /usr/local/share/chruby/auto.sh
-chruby ruby 
+if [ -a /usr/local/share/chruby/chruby.sh ]
+  then
+    source /usr/local/share/chruby/chruby.sh
+    source /usr/local/share/chruby/auto.sh
+    chruby ruby 
+fi
 
 # load ssh-agent
 if [ -z "$SSH_AUTH_SOCK" ] ; then
