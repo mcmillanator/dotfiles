@@ -27,4 +27,6 @@ do
 	link $i $file
 done
 
+ln -sfn $DOTFILES/config/ranger ~/.config
+
 source ~/.bashrc
