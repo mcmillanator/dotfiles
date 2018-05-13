@@ -1,0 +1,15 @@
+cd 
+cd Pictures/
+ls
+! ls
+shell ls
+shell ls -la .
+find *.jpg
+find *.png
+gh
+
+shell feh -bg-scale .
+feh --bg-scale background.jpg
+delete
+search log
+rename syslog
