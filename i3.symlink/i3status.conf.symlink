@@ -1,0 +1,49 @@
+general {
+        colors = true
+        interval = 5
+        output_format = i3bar 
+}
+
+
+order += "run_watch rails"
+order += "run_watch rails2"
+order += "volume master"
+order += "tztime local"
+
+ethernet enp3s0 {
+        # if you use %speed, i3status requires the cap_net_admin capability
+        format_up = "E: %ip (%speed)"
+        format_down = "E: down"
+}
+
+tztime local {
+        format = "%Y-%m-%d %H:%M:%S"
+}
+
+load {
+        format = "load: %5min"
+}
+
+disk "/" {
+        format = "%free"
+}
+
+volume master {
+        format = "♪: %volume"
+        format_muted = "♪: muted (%volume)"
+        device = "pulse:1"
+}
+
+run_watch rails {
+        # file containing the PID of a vpnc process
+        pidfile = "/apps/testing/tmp/pids/server.pid"
+				align = "left"
+				format_down=""
+}
+
+run_watch rails2 {
+        # file containing the PID of a vpnc process
+        pidfile = "/apps/testing2/tmp/pids/server.pid"
+				align = "left"
+				format_down=""
+}
