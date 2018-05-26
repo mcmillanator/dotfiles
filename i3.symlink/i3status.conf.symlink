@@ -5,45 +5,41 @@ general {
 }
 
 
-order += "run_watch rails"
-order += "run_watch rails2"
+order += "wireless wlx74da388b28fd"
+order += "ethernet eth0"
+order += "battery 0"
 order += "volume master"
 order += "tztime local"
-
-ethernet enp3s0 {
-        # if you use %speed, i3status requires the cap_net_admin capability
-        format_up = "E: %ip (%speed)"
-        format_down = "E: down"
-}
 
 tztime local {
         format = "%Y-%m-%d %I:%M:%S"
 }
 
-load {
-        format = "load: %5min"
-}
-
-disk "/" {
-        format = "%free"
-}
-
 volume master {
         format = "♪: %volume"
         format_muted = "♪: muted (%volume)"
-        device = "pulse:1"
+        device = "pulse:0"
 }
 
-run_watch rails {
-        # file containing the PID of a vpnc process
-        pidfile = "/apps/testing/tmp/pids/server.pid"
-				align = "left"
-				format_down=""
+wireless wlx74da388b28fd {
+			 format_up = "W:%essid%quality %bitrate"
+			 format_down = "W:"
 }
 
-run_watch rails2 {
-        # file containing the PID of a vpnc process
-        pidfile = "/apps/testing2/tmp/pids/server.pid"
-				align = "left"
-				format_down=""
+ethernet enp0s25 {
+			 # if you use %speed, i3status requires the cap_net_admin capability
+			 format_up = "E:%speed"
+			 format_down = "E: down"
+}
+
+battery 0 {
+#			 format = "%status %percentage %remaining %emptytime"
+			 format = "%status %percentage %remaining"
+			 format_down = "No battery"
+			 status_chr = "⚡ CHR"
+			 status_bat = "🔋 BAT"
+			 status_unk = "? UNK"
+			 status_full = "☻ FULL"
+			 path = "/sys/class/power_supply/BAT%d/uevent"
+			 low_threshold = 10
 }
