@@ -145,7 +145,7 @@ bar {
 bindsym $super+l exec ~/.lock.sh 
 
 # set background
-exec_always ~/.random-wallpaper.sh
+exec_always ~/.random-wallpaper.sh ~/Pictures/wallpapers
 
 # run compton in background (required for transparent terms)
 exec compton -b
