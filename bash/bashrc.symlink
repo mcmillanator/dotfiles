@@ -22,3 +22,5 @@ fi
 
 # tmuxinator
 source $DOTFILES/bash/tmuxinator.bash
+
+xmodmap ~/.Xmodmap

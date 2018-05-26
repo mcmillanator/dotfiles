@@ -85,29 +85,47 @@ bindsym $alt+a focus parent
 # focus the child container
 #bindsym $alt+d focus child
 
+# set workspace vars
+set $workspace1 workspace 1
+set $workspace2 workspace 2
+set $workspace3 workspace 3
+set $workspace4 workspace 4
+set $workspace5 workspace 5
+set $workspace6 workspace 6
+set $workspace7 workspace 7
+set $workspace8 workspace 8
+set $workspace9 workspace 9
+set $workspace10 workspace 10
+set $music workspace music
+set $chat workspace chat
+
 # switch to workspace
-bindsym $super+1 workspace 1
-bindsym $super+2 workspace 2
-bindsym $super+3 workspace 3
-bindsym $super+4 workspace 4
-bindsym $super+5 workspace 5
-bindsym $super+6 workspace 6
-bindsym $super+7 workspace 7
-bindsym $super+8 workspace 8
-bindsym $super+9 workspace 9
-bindsym $super+0 workspace 10
+bindsym $super+1 $workspace1
+bindsym $super+2 $workspace2
+bindsym $super+3 $workspace3
+bindsym $super+4 $workspace4
+bindsym $super+5 $workspace5
+bindsym $super+6 $workspace6
+bindsym $super+7 $workspace7
+bindsym $super+8 $workspace8
+bindsym $super+9 $workspace9
+bindsym $super+0 $workspace10
+bindsym $super+m $music
+bindsym $super+c $chat
 
 # move focused container to workspace
-bindsym $alt+$super+1 move container to workspace 1
-bindsym $alt+$super+2 move container to workspace 2
-bindsym $alt+$super+3 move container to workspace 3
-bindsym $alt+$super+4 move container to workspace 4
-bindsym $alt+$super+5 move container to workspace 5
-bindsym $alt+$super+6 move container to workspace 6
-bindsym $alt+$super+7 move container to workspace 7
-bindsym $alt+$super+8 move container to workspace 8
-bindsym $alt+$super+9 move container to workspace 9
-bindsym $alt+$super+0 move container to workspace 10
+bindsym $alt+$super+1 move container to $workspace1
+bindsym $alt+$super+2 move container to $workspace2
+bindsym $alt+$super+3 move container to $workspace3
+bindsym $alt+$super+4 move container to $workspace4
+bindsym $alt+$super+5 move container to $workspace5
+bindsym $alt+$super+6 move container to $workspace6
+bindsym $alt+$super+7 move container to $workspace7
+bindsym $alt+$super+8 move container to $workspace8
+bindsym $alt+$super+9 move container to $workspace9
+bindsym $alt+$super+0 move container to $workspace10
+bindsym $alt+$super+m move container to $music
+bindsym $alt+$super+c move container to $chat
 
 # reload the configuration file
 bindsym $ctrl+Shift+c reload
@@ -151,9 +169,9 @@ exec_always ~/.random-wallpaper.sh ~/Pictures/wallpapers
 exec compton -b
 
 # media keys
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 1 +10%
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 1 -10% 
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 1 toggle
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +10%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -10% 
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
 
 # xmodmap
 exec xmodmap ~/.Xmodmap

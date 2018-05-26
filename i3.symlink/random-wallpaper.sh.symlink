@@ -9,4 +9,3 @@ range=${#imgs[*]}
 let "number %= range"
 
 feh --bg-scale "${imgs[$number]}"
-echo "${imgs[$number]}"
