@@ -34,9 +34,6 @@ floating_modifier $ctrl
 # start a terminal
 bindsym $ctrl+Return exec i3-sensible-terminal
 
-# start chromium
-bindsym $super+w exec chromium-browser
-
 # kill focused window
 bindsym $ctrl+Shift+q kill
 
@@ -96,8 +93,9 @@ set $workspace7 workspace 7
 set $workspace8 workspace 8
 set $workspace9 workspace 9
 set $workspace10 workspace 10
-set $music workspace music
-set $chat workspace chat
+set $music exec --no-startup-id ~/.workspace.sh music "chromium-browser --new-window https://www.pandora.com"
+set $chat exec --no-startup-id ~/.workspace.sh chat "chromium-browser --new-window https://discordapp.com/channels/@me"
+set $web exec --no-startup-id ~/.workspace.sh web chromium-browser
 
 # switch to workspace
 bindsym $super+1 $workspace1
@@ -112,6 +110,9 @@ bindsym $super+9 $workspace9
 bindsym $super+0 $workspace10
 bindsym $super+m $music
 bindsym $super+c $chat
+bindsym $super+w $web
+bindsym $super+Right exec i3-msg workspace next
+bindsym $super+Left exec i3-msg workspace previous
 
 # move focused container to workspace
 bindsym $alt+$super+1 move container to $workspace1
@@ -128,9 +129,9 @@ bindsym $alt+$super+m move container to $music
 bindsym $alt+$super+c move container to $chat
 
 # reload the configuration file
-bindsym $ctrl+Shift+c reload
+bindsym $ctrl+Shift+r reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $ctrl+Shift+r restart
+#bindsym $ctrl+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $ctrl+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
