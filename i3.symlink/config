@@ -139,7 +139,7 @@ bindsym $alt+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        status_command i3status | ~/.parse.sh
+        status_command i3status
 }
 
 bindsym $super+l exec ~/.lock.sh 
@@ -155,3 +155,5 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 1 +10%
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 1 -10% 
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 1 toggle
 
+# xmodmap
+exec xmodmap ~/.Xmodmap
