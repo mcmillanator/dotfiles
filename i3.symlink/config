@@ -135,7 +135,7 @@ bindsym $alt+$super+w move container to $web
 bindsym $ctrl+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $ctrl+Shift+e exec "~/.i3/dmenu_prompt.sh 'Log off?' 'i3-msg exit'"
-bindsym $ctrl+Shift+p exec "~/.i4/dmenu_prompt.sh 'Shutdown?' 'Shutdown -P now'"
+bindsym $ctrl+Shift+p exec "~/.i3/dmenu_prompt.sh 'Shutdown?' 'shutdown -P now'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
