@@ -113,6 +113,7 @@ bindsym $super+m exec --no-startup-id ~/.i3/scripts/workspace.sh music "chromium
 bindsym $super+c exec --no-startup-id ~/.i3/scripts/workspace.sh chat "chromium-browser --new-window https://discordapp.com/channels/@me"
 bindsym $super+Right exec i3-msg workspace next
 bindsym $super+Left exec i3-msg workspace previous
+bindsym $super+p exec --no-startup-id ~/.i3/scripts/named-space.sh
 
 # move focused container to workspace
 bindsym $alt+$super+1 move container to $workspace1

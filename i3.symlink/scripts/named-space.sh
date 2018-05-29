@@ -5,20 +5,24 @@ prompt () {
 	prompt=`echo $list | sed 's/ /\n/g' | dmenu -i`
 }
 
+switch () {
+	~/.i3/scripts/workspace.sh $1 $2
+}
+
 pick () {
 	prompt
 	case $prompt in
 	web)
-	 ~/.workspace.sh web chromium-browser
+	 switch web chromium-browser
 		;;
 	chat)
-		 ~/.workspace.sh chat "chromium-browser --new-window https://discordapp.com/channels/@me"
+		 switch chat "chromium-browser --new-window https://discordapp.com/channels/@me"
 		;;
 	music)
-		 ~/.workspace.sh music "chromium-browser --new-window https://www.pandora.com"
+		 switch music "chromium-browser --new-window https://www.pandora.com"
 		;;
 	*)
-		i3-msg -q workspace $prompt
+		switch $prompt
 	esac
 }
 
