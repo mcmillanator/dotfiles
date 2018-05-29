@@ -2,7 +2,7 @@
 list="web music chat $@"
 
 prompt () {
-	prompt=`echo $list | sed 's/ /\n/g' | dmenu -i`
+	prompt=`echo $list | sed 's/ /\n/g' | dmenu -i -p "Select or create a workspace"`
 }
 
 switch () {
