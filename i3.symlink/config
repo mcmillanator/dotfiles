@@ -168,7 +168,6 @@ bindsym $super+l exec ~/.i3/scripts/lock.sh
 # set background
 set $wp "~/.i3/scripts/random-wallpaper.sh ~/Pictures/wallpapers"
 exec $wp
-bindsym $ctrl+Shift+w exec ~/.i3/scripts/dmenu_prompt.sh 'testing' 'echo test'
 
 # run compton in background (required for transparent terms)
 exec compton -b
