@@ -165,6 +165,7 @@ bar {
 }
 
 bindsym $super+l exec ~/.i3/scripts/lock.sh 
+exec xautolock -time 15 -locker '~/.i3/scripts/lock.sh'
 
 # set background
 set $wp "~/.i3/scripts/random-wallpaper.sh ~/Pictures/wallpapers"
