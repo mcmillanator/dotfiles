@@ -7,6 +7,6 @@ else
 	for i in "${@/$1}"
 	do
 		:
-		i3-msg -q exec $i
+		i3-msg -q exec "$i"
 	done
 fi
