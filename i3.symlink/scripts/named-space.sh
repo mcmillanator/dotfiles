@@ -6,7 +6,7 @@ prompt () {
 }
 
 switch () {
-	~/.i3/scripts/workspace.sh $@
+	~/.i3/scripts/workspace.sh "$@"
 }
 
 pick () {
