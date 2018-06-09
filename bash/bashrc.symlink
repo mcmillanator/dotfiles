@@ -23,4 +23,7 @@ fi
 # tmuxinator
 source $DOTFILES/bash/tmuxinator.bash
 
-xmodmap ~/.Xmodmap 2&>1 > /dev/null
+xmodmap ~/.Xmodmap 2&> /dev/null
+
+# enable vi mode in bash by pressing esc key
+set -o vi
