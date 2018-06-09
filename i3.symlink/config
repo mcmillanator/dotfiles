@@ -181,3 +181,5 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
 
 # xmodmap
 exec_always xmodmap ~/.Xmodmap
+
+for_window [class="^.*"] border pixel 1
