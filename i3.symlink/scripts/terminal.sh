@@ -8,15 +8,19 @@ workspace() {
 	i3-msg -q workspace $1
 }
 
+app() {
+	i3-msg -q exec "$1"
+}
+
 name=$1
 shift
 workspace $name
-while getopts o:e: opt; do
+while getopts a:t: opt; do
 	case $opt in
-		e)
+		t)
 			 terminal "$OPTARG"
 			;;
-		o)
+		a)
 			app "$OPTARG"
 			;;
 	esac
