@@ -66,9 +66,9 @@ bindsym $ctrl+minus split v
 bindsym $alt+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $ctrl+s layout stacking
-bindsym $ctrl+w layout tabbed
-bindsym $ctrl+e layout toggle split
+bindsym $alt+s layout stacking
+bindsym $alt+w layout tabbed
+bindsym $alt+e layout toggle split
 
 # toggle tiling / floating
 bindsym $alt+Shift+space floating toggle
@@ -110,10 +110,10 @@ bindsym $super+9 $workspace9
 bindsym $super+0 $workspace10
 bindsym $super+w exec --no-startup-id ~/.i3/scripts/workspace.sh web chromium-browser
 bindsym $super+m exec --no-startup-id ~/.i3/scripts/workspace.sh music "chromium-browser --new-window https://www.pandora.com"
-bindsym $super+c exec --no-startup-id ~/.i3/scripts/workspace.sh chat "chromium-browser --new-window https://discordapp.com/channels/@me"
-bindsym $super+Right exec i3-msg workspace next
-bindsym $super+Left exec i3-msg workspace previous
-bindsym $super+p exec --no-startup-id ~/.i3/scripts/named-space.sh
+bindsym $super+c exec --no-startup-id ~/.i3/scripts/workspace.sh chat discord
+bindsym $super+l exec i3-msg workspace next
+bindsym $super+h exec i3-msg workspace previous
+bindsym $super+Tab exec --no-startup-id ~/.i3/scripts/named-space.sh
 
 # move focused container to workspace
 bindsym $alt+$super+1 move container to $workspace1
@@ -164,7 +164,7 @@ bar {
         status_command i3status
 }
 
-bindsym $super+l exec ~/.i3/scripts/lock.sh 
+bindsym $super+alt+l exec ~/.i3/scripts/lock.sh 
 exec xautolock -time 15 -locker '~/.i3/scripts/lock.sh'
 
 # set background
@@ -175,8 +175,8 @@ exec $wp
 exec compton -b
 
 # media keys
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +10%
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -10% 
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 1 +10%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 1 -10% 
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
 
 # xmodmap
