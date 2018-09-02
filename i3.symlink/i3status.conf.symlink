@@ -18,7 +18,7 @@ tztime local {
 volume master {
         format = "♪: %volume"
         format_muted = "♪: muted (%volume)"
-        device = "pulse:0"
+        device = "pulse:1"
 }
 
 wireless wlx74da388b28fd {

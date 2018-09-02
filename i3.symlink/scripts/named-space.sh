@@ -9,6 +9,10 @@ switch () {
 	~/.i3/scripts/workspace.sh "$@"
 }
 
+terminal() {
+	~/.i3/scripts/terminal.sh "$@"
+}
+
 pick () {
 	prompt
 	case $prompt in
@@ -22,7 +26,7 @@ pick () {
 		 switch music "chromium-browser --new-window https://www.pandora.com"
 		;;
 	*)
-		switch $prompt
+		terminal $prompt
 	esac
 }
 
