@@ -9,24 +9,20 @@ switch () {
 	~/.i3/scripts/workspace.sh "$@"
 }
 
-terminal() {
-	~/.i3/scripts/terminal.sh "$@"
-}
-
 pick () {
 	prompt
 	case $prompt in
 	web)
-	 switch web chromium-browser
+		switch web -a chromium-browser
 		;;
 	chat)
-		 switch chat "chromium-browser --new-window https://discordapp.com/channels/@me"
+		switch chat -a discord
 		;;
 	music)
-		 switch music "chromium-browser --new-window https://www.pandora.com"
+		switch music -a "chromium-browser --new-window https://www.pandora.com"
 		;;
 	*)
-		terminal $prompt
+		switch $prompt
 	esac
 }
 
