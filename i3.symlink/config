@@ -8,6 +8,7 @@
 # i3 config file (v4)
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
+workspace_auto_back_and_forth yes
 
 set $alt Mod1
 set $super Mod4
@@ -83,6 +84,24 @@ bindsym $alt+a focus parent
 # focus the child container
 #bindsym $alt+d focus child
 
+mode "game" {
+        # These bindings trigger as soon as you enter the mode
+        set $game workspace game
+        bindsym g $game
+        bindsym $alt+g move container to $game
+
+        bindsym c exec --no-startup-id ~/.i3/scripts/workspace.sh chat -a discord
+        bindsym s exec --no-startup-id ~/.i3/scripts/workspace.sh game -a steam
+        bindsym l exec --no-startup-id ~/.i3/scripts/workspace.sh lutris -a lutris
+        bindsym b exec --no-startup-id ~/.i3/scripts/workspace.sh bnet -a lutris lutris:rungameid/1
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $alt+g mode "game"
+
 # set workspace vars
 set $workspace1 workspace 1
 set $workspace2 workspace 2
@@ -94,12 +113,12 @@ set $workspace7 workspace 7
 set $workspace8 workspace 8
 set $workspace9 workspace 9
 set $workspace10 workspace 10
+set $game workspace game
+set $bnet workspace bnet
 set $web  workspace web
 set $chat workspace chat
 set $music workspace music
-set $game workspace game
 set $video workspace video
-set $test workspace test
 
 # switch to workspace
 bindsym $super+1 $workspace1
@@ -113,8 +132,8 @@ bindsym $super+8 $workspace8
 bindsym $super+9 $workspace9
 bindsym $super+0 $workspace10
 bindsym $super+g $game
+bindsym $super+b $bnet
 bindsym $super+v $video
-bindsym $super+t $test
 bindsym $super+w exec --no-startup-id ~/.i3/scripts/workspace.sh web -a chromium-browser
 bindsym $super+m exec --no-startup-id ~/.i3/scripts/workspace.sh music -a "chromium-browser --new-window https://www.pandora.com"
 bindsym $super+c exec --no-startup-id ~/.i3/scripts/workspace.sh chat -a discord
@@ -135,8 +154,8 @@ bindsym $alt+$super+9 move container to $workspace9
 bindsym $alt+$super+0 move container to $workspace10
 bindsym $alt+$super+m move container to $music
 bindsym $alt+$super+g move container to $game
+bindsym $alt+$super+b move container to $bnet
 bindsym $alt+$super+v move container to $video
-bindsym $alt+$super+t move container to $test
 bindsym $alt+$super+c move container to $chat
 bindsym $alt+$super+w move container to $web
 
@@ -193,3 +212,16 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
 exec_always xmodmap ~/.Xmodmap
 
 for_window [class="^.*"] border pixel 1
+
+# scratchpad
+
+# Make the currently focused window a scratchpad
+bindsym $alt+Shift+minus move scratchpad
+
+# Show the first scratchpad window
+bindsym $alt+minus scratchpad show
+
+# Show the sup-mail scratchpad window, if any.
+bindsym $alt+Shift+m [title="^My Music"] scratchpad show
+
+
