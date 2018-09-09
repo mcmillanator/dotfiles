@@ -16,6 +16,7 @@ set relativenumber
 set paste
 set hls
 
+map <C-n> :NERDTreeToggle<CR>
 map <C-N><C-N> :set number!<cr>
 map <C-N><C-R> :set relativenumber!<cr>
 
