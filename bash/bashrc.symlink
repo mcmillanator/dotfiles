@@ -15,10 +15,8 @@ if [ -a /usr/local/share/chruby/chruby.sh ]
 fi
 
 # load ssh-agent
-if [ -z "$SSH_AUTH_SOCK" ] ; then
-    eval `ssh-agent`
-    ssh-add
-fi
+eval `ssh-agent`
+ssh-add
 
 # tmuxinator
 source $DOTFILES/bash/tmuxinator.bash
