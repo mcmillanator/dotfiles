@@ -1,0 +1,38 @@
+{
+    "layout": "splitv",
+    "percent": 0.4,
+    "type": "con",
+    "nodes": [
+        // vim:ts=4:sw=4:et
+        {
+            "border": "pixel",
+            "name": "st",
+            "percent": 0.5,
+            "swallows": [
+               {
+                "class": "^blog-vim$"
+               }
+            ],
+            "type": "con"
+        },
+        {
+            // splitv split container with 1 children
+            "layout": "splitv",
+            "percent": 0.5,
+            "type": "con",
+            "nodes": [
+                {
+                    "name": "Terminal",
+                    "percent": 1,
+                    "swallows": [
+                       {
+                        "class": "^blog-term$"
+                       }
+                    ],
+                    "type": "con"
+                }
+            ]
+        }
+    ]
+}
+
