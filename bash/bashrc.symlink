@@ -1,3 +1,4 @@
+xmodmap ~/.Xmodmap 2&> /dev/null
 source ~/.dotfiles_config
 
 bash_files=($(find $DOTFILES/bash -type f ! -name '*.*'))
@@ -22,8 +23,6 @@ fi
 
 # tmuxinator
 source $DOTFILES/bash/tmuxinator.bash
-
-xmodmap ~/.Xmodmap 2&> /dev/null
 
 # enable vi mode in bash by pressing esc key
 set -o vi
