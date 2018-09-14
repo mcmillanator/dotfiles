@@ -3,6 +3,7 @@ git submodule init
 git submodule update
 
 DOTFILES=`pwd`
+$DOTFILES/i3.symlink/scripts/i3status.sh
 echo "export DOTFILES=$DOTFILES" > ~/.dotfiles_config
 files=($(find . -name '*.symlink' -print))
 files+=(vim .tmux/.tmux.conf)
@@ -30,3 +31,4 @@ done
 ln -sfn $DOTFILES/config/ranger ~/.config
 
 source ~/.bashrc
+i3-msg reload
