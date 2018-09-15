@@ -1,0 +1,11 @@
+# Start the first availible command in a list of commands
+# this is useful if you have a list of prioritized programs and you want to start the first availible ignoring the rest
+start() {
+	for i in ${@} 
+		do
+			if $i >/dev/null 2>&1
+				then
+					break
+			fi
+	done
+}
