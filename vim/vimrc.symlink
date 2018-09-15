@@ -16,6 +16,7 @@ set relativenumber
 set paste
 set hls
 set clipboard=unnamedplus
+set spell spelllang=en_us
 
 map <C-n> :NERDTreeToggle<CR>
 map <C-N><C-N> :set number!<cr>
