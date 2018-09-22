@@ -30,3 +30,4 @@ source $DOTFILES/bash/tmuxinator.bash
 
 # enable vi mode in bash by pressing esc key
 set -o vi
+TZ='America/New_York'; export TZ
