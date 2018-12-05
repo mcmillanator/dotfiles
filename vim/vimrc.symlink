@@ -1,9 +1,4 @@
-" enable pathogen vim plugin manager
-syntax on 
-execute pathogen#infect()
-filetype plugin indent on
-
-" enable syntax highlighting and solarized color scheme
+syntax on
 set background=dark
 let g:solarized_termtrans = 1
 colorscheme solarized
@@ -18,10 +13,6 @@ set hls
 set clipboard=unnamedplus
 set spell spelllang=en_us
 
-map <C-n> :NERDTreeToggle<CR>
-map <C-N><C-N> :set number!<cr>
-map <C-N><C-R> :set relativenumber!<cr>
-
 " splits
 
 set splitbelow
@@ -31,16 +22,54 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
-set nocompatible              " be iMproved, required
-filetype on
+" fzf
 
-" ctrl-P ignore files
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip
-  let g:ctrlp_custom_ignore = {
-      \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-      \ 'file': '\v\.(exe|so|dll)$',
-      \ 'link': 'some_bad_symbolic_links',
-      \ }
+nnoremap <C-p> :<C-u>FZF<CR>
+nnoremap <C-f> :GFiles<CR>
 
-" ctrlp settings
-set runtimepath^=~/.vim/bundle/ctrlp.vim
+" commands
+
+command! PackUpdate call minpac#update()
+command! PackClean call minpac#clean()
+
+" packages
+
+packadd minpac
+call minpac#init()
+call minpac#add('junegunn/fzf')
+call minpac#add('junegunn/fzf.vim')
+call minpac#add('k-takata/minpac', {'type': 'opt'})
+call minpac#add('tpope/vim-dispatch')
+call minpac#add('tpope/vim-projectionist')
+call minpac#add('tpope/vim-scriptease', {'type': 'opt'})
+call minpac#add('tpope/vim-unimpaired')
+
+call minpac#add('tpope/vim-fugitive')
+call minpac#add('scrooloose/nerdtree')
+call minpac#add('vim-syntastic/syntastic')
+call minpac#add('kien/ctrlp.vim')
+call minpac#add('vim-airline/vim-airline')
+call minpac#add('ctrlpvim/ctrlp.vim')
+call minpac#add('jlanzarotta/bufexplorer')
+call minpac#add('scrooloose/nerdcommenter')
+call minpac#add('vim-airline/vim-airline-themes')
+call minpac#add('vim-ruby/vim-ruby')
+call minpac#add('tpope/vim-haml')
+call minpac#add('skalnik/vim-vroom')
+call minpac#add('luochen1990/rainbow')
+call minpac#add('honza/vim-snippets')
+call minpac#add('tpope/vim-rails')
+call minpac#add('tpope/vim-rake')
+call minpac#add('tpope/vim-sleuth')
+call minpac#add('garbas/vim-snipmate')
+call minpac#add('ekalinin/Dockerfile.vim')
+call minpac#add('tpope/vim-projectionist')
+call minpac#add('tpope/vim-surround')
+call minpac#add('NLKNguyen/vim-docker-compose-syntax')
+call minpac#add('moll/vim-node')
+call minpac#add('tomtom/tlib_vim')
+call minpac#add('altercation/vim-colors-solarized')
+call minpac#add('tpope/vim-bundler')
+call minpac#add('kchmck/vim-coffee-script')
+call minpac#add('MarcWeber/vim-addon-mw-utils')
+call minpac#add('kopischke/unite-spell-suggest')
