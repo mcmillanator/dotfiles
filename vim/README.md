@@ -13,7 +13,7 @@ C-]		 	| follow link
 C-o		 	| go back
 C-w w 	| switch panes
 
-## Projectionist
+## [Projectionist](https://github.com/tpope/vim-projectionist)
 
 Command   | Effect
 --------- | -----
@@ -22,3 +22,11 @@ Command   | Effect
 :Vtype 		| Opens the specified type in a vertical split 
 :Ttype 		| Opens the specified type in a new tabpage
 
+## [ALE](https://github.com/w0rp/ale)
+
+Command | Effect
+------- | ------
+[W      | ale_first
+[w			| ale_previous
+]w			| ale_next
+]W 			| ale_last
