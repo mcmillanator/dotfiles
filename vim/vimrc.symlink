@@ -12,6 +12,7 @@ set paste
 set hls
 set clipboard=unnamedplus
 set spell spelllang=en_us
+set sessionoptions=blank,buffers,curdir,folds,help,tabpages,winsize,terminal
 
 " splits
 
@@ -48,6 +49,18 @@ nmap <silent> [w <Plug>(ale_previous)
 nmap <silent> ]w <Plug>(ale_next)
 nmap <silent> ]W <Plug>(ale_last)
 
+" grepper
+let g:grepper = {}
+let g:grepper.tools = ['grep', 'git', 'rg']
+" search for the current word
+nnoremap <Leader>* :Grepper -cword -noprompt<CR>
+" Search for the current selection
+nmap gs <plug>(GrepperOperator)
+xmap gs <plug>(GrepperOperator)
+
+" vim-test
+let test#strategy = 'dispatch'
+
 " packages
 
 packadd minpac
@@ -61,6 +74,9 @@ call minpac#add('tpope/vim-scriptease', {'type': 'opt'})
 call minpac#add('tpope/vim-unimpaired')
 call minpac#add('JamshedVesuna/vim-markdown-preview')
 call minpac#add('w0rp/ale')
+call minpac#add('mhinz/vim-grepper')
+call minpac#add('janko-m/vim-test')
+call minpac#add('tpope/vim-obsession')
 
 call minpac#add('tpope/vim-fugitive')
 call minpac#add('scrooloose/nerdtree')
