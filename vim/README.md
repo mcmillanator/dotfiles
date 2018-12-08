@@ -4,6 +4,8 @@ Command | Effect
 ------- | ------
 gt 			| next tab
 C-d 		| list possible command auto complete
+mksession | save session to a session file
+help [command] | display help
 
 ## Navigating help
 
@@ -30,3 +32,19 @@ Command | Effect
 [w			| ale_previous
 ]w			| ale_next
 ]W 			| ale_last
+
+## Vim-Test
+
+Command | Effect
+------- | ------
+:TestSuite | Run entire test suite
+:TestFile | Run the current test file
+:TestNearest | Run the test closest to your current cursor position 
+:TestLast | Re-Run the most recent test runner
+
+## Obsession
+
+Command | Effect
+------- | ------
+:Obsession | Track the session in Session.vim
+:Obsession! | Remove the Session.vim file and stop tracking the session
