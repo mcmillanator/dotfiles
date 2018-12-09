@@ -19,10 +19,22 @@ if [ -a /usr/local/share/chruby/chruby.sh ]
     chruby ruby 
 fi
 
+get-ssh-agent() {
+  SSH_AUTH_SOCK=`find /tmp/ssh-* -type s -name agent.* | head -n 1`
+  export SSH_AUTH_SOCK
+  export SSH_AGENT_PID=`pgrep ssh-agent`;
+  echo Agent pid $SSH_AGENT_PID;
+}
+
 # load ssh-agent
 if [ -z "$SSH_AUTH_SOCK" ] ; then
-    eval `ssh-agent`
-    ssh-add
+    pgrep ssh-agent >/dev/null 2>&1
+    if [ $? -ne 0 ] ; then
+      eval `ssh-agent`
+      ssh-add
+    else
+      get-ssh-agent
+    fi
 fi
 
 # tmuxinator
