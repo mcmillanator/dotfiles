@@ -12,7 +12,7 @@ set paste
 set hls
 set clipboard=unnamedplus
 set spell spelllang=en_us
-set sessionoptions=blank,buffers,curdir,folds,help,tabpages,winsize,terminal
+set sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,terminal"
 
 " splits
 
