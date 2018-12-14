@@ -27,19 +27,26 @@ get-ssh-agent() {
 }
 
 # load ssh-agent
-if [ -z "$SSH_AUTH_SOCK" ] ; then
-    pgrep ssh-agent >/dev/null 2>&1
-    if [ $? -ne 0 ] ; then
-      eval `ssh-agent -a $HOME/.ssh/agent`
-      ssh-add
-    else
-      get-ssh-agent
-    fi
-fi
+load-ssh-agent() {
+  if [ -z "$SSH_AUTH_SOCK" ] ; then
+      pgrep ssh-agent >/dev/null 2>&1
+      if [ $? -ne 0 ] ; then
+        eval `ssh-agent -a $HOME/.ssh/agent`
+        ssh-add
+      else
+        get-ssh-agent
+      fi
+  fi
+}
 
 # tmuxinator
 source $DOTFILES/bash/tmuxinator.bash
 
 # enable vi mode in bash by pressing esc key
 set -o vi
+
+# add fzf auto complete and keybindings to bash
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# set time zone
 TZ='America/New_York'; export TZ
