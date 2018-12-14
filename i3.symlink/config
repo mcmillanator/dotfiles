@@ -121,7 +121,6 @@ bindsym $super+m exec --no-startup-id ~/.i3/scripts/workspace.sh music -a "chrom
 bindsym $super+c exec --no-startup-id ~/.i3/scripts/workspace.sh chat -a discord
 bindsym $super+l exec i3-msg workspace next
 bindsym $super+h exec i3-msg workspace previous
-bindsym $super+Tab exec --no-startup-id ~/.i3/scripts/named-space.sh
 
 # move focused container to workspace
 bindsym $alt+$super+Tab exec i3-msg move container to workspace `~/.i3/scripts/workspaces.py | dmenu`
