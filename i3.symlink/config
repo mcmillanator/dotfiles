@@ -102,6 +102,7 @@ set $music workspace music
 set $video workspace video
 
 # switch to workspace
+bindsym $super+Tab exec i3-msg workspace `~/.i3/scripts/workspaces.py | dmenu`
 bindsym $super+1 $workspace1
 bindsym $super+2 $workspace2
 bindsym $super+3 $workspace3
@@ -123,6 +124,7 @@ bindsym $super+h exec i3-msg workspace previous
 bindsym $super+Tab exec --no-startup-id ~/.i3/scripts/named-space.sh
 
 # move focused container to workspace
+bindsym $alt+$super+Tab exec i3-msg move container to workspace `~/.i3/scripts/workspaces.py | dmenu`
 bindsym $alt+$super+1 move container to $workspace1
 bindsym $alt+$super+2 move container to $workspace2
 bindsym $alt+$super+3 move container to $workspace3
