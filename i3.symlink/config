@@ -141,6 +141,7 @@ bindsym $alt+$super+v move container to $video
 bindsym $alt+$super+c move container to $chat
 bindsym $alt+$super+w move container to $web
 
+
 # reload the configuration file
 bindsym $ctrl+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -155,13 +156,13 @@ bar {
         status_command i3status
 }
 
-bindsym $super+alt+l exec ~/.i3/scripts/lock.sh 
-exec xautolock -time 15 -locker '~/.i3/scripts/lock.sh'
+bindsym $alt+$super+l exec "~/.i3/scripts/lock.sh"
+exec xautolock -time 15 -locker "~/.i3/scripts/lock.sh"
 
 # set background
 set $wp "~/.i3/scripts/random-wallpaper.sh ~/Pictures/wallpapers"
 exec $wp
-bindsym $ctrl+w exec "~/.i3/scripts/random-wallpaper.sh ~/Pictures/wallpapers"
+bindsym $ctrl+w exec $wp
 
 # run compton in background (required for transparent terms)
 exec compton -b
