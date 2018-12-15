@@ -39,4 +39,4 @@ do
 done
 
 source ~/.bashrc
-i3-msg reload
+i3-msg reload >/dev/null 2&>1
