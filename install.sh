@@ -10,7 +10,7 @@ config_files=($(find config -maxdepth 1 -print | awk '{if(NR>1) print}'))
 files+=(vim .tmux/.tmux.conf)
 
 function link () {
-	rm -r $2
+	rm -rf $2
 	ln -sfn $DOTFILES/$1 $2
 	echo "symlinked $2 to $DOTFILES/$1"
 }
