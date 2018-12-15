@@ -6,10 +6,11 @@ DOTFILES=`pwd`
 $DOTFILES/i3.symlink/scripts/i3status.sh
 echo "export DOTFILES=$DOTFILES" > ~/.dotfiles_config
 files=($(find . -name '*.symlink' -print))
-config_files=($(ls config))
+config_files=($(find config -maxdepth 1 -print | awk '{if(NR>1) print}'))
 files+=(vim .tmux/.tmux.conf)
 
 function link () {
+	rm -r $2
 	ln -sfn $DOTFILES/$1 $2
 	echo "symlinked $2 to $DOTFILES/$1"
 }
@@ -34,7 +35,7 @@ for i in "${config_files[@]}"
 do
   :
 	file=$(parse-filename $i)
-	link "~/.config/$i" "$file"
+	link $i ~/.config/$file
 done
 
 source ~/.bashrc
