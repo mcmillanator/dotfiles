@@ -1,0 +1,52 @@
+# set the variable
+# bind the focus workspace key
+# bind the move container key
+# var
+- workspace:
+    key: c
+    name: chat
+    app:
+      type: app
+      command: discord
+- workspace:
+    key: m
+    name: music
+    app:
+      type: app
+      command: "chromium-browser --new-window https://www.pandora.com"
+- workspace:
+    key: b
+    name: bnet
+- workspace:
+    key: w
+    name: web
+    app:
+      command: "qutebrowser chromium-browser firefox"
+- workspace:
+    key: v
+    name: video
+- mode:
+    key: g
+    name: game
+    bindings:
+        - workspace:
+            name: chat
+            key: c
+            app:
+              type: app
+              command: discord
+
+    #        # These bindings trigger as soon as you enter the mode
+    #        set $game workspace game
+    #        bindsym g $game
+    #        bindsym $alt+g move container to $game
+    #
+    #        bindsym c exec --no-startup-id ~/.i3/scripts/workspace.sh chat -a discord ; mode "default"
+    #        bindsym s exec --no-startup-id ~/.i3/scripts/workspace.sh game -a steam ; mode "default"
+    #        bindsym l exec --no-startup-id ~/.i3/scripts/workspace.sh lutris -a lutris ; mode "default"
+    #        bindsym b exec --no-startup-id ~/.i3/scripts/workspace.sh bnet -a lutris lutris:rungameid/1 ; mode "default"
+    #
+    #        # back to normal: Enter or Escape
+    #        bindsym Return mode "default"
+    #        bindsym Escape mode "default"
+    #}
