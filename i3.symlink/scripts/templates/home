@@ -1,0 +1,37 @@
+set $chat workspace chat
+bindsym $super+c exec --no-startup-id ~/.i3/scripts/workspace.sh chat -a "discord"
+bindsym $alt+$super+c move container to $chat
+
+set $music workspace music
+bindsym $super+m exec --no-startup-id ~/.i3/scripts/workspace.sh music -a "chromium-browser --new-window https://www.pandora.com"
+bindsym $alt+$super+m move container to $music
+
+set $bnet workspace bnet
+bindsym $super+b $bnet
+bindsym $alt+$super+b move container to $bnet
+
+set $web workspace web
+bindsym $super+w exec --no-startup-id ~/.i3/scripts/workspace.sh web -s "qutebrowser chromium-browser firefox"
+bindsym $alt+$super+w move container to $web
+
+set $video workspace video
+bindsym $super+v $video
+bindsym $alt+$super+v move container to $video
+
+mode "game" {
+        # These bindings trigger as soon as you enter the mode
+        set $game workspace game
+        bindsym g $game
+        bindsym $alt+g move container to $game
+
+        bindsym c exec --no-startup-id ~/.i3/scripts/workspace.sh chat -a discord ; mode "default"
+        bindsym s exec --no-startup-id ~/.i3/scripts/workspace.sh game -a steam ; mode "default"
+        bindsym l exec --no-startup-id ~/.i3/scripts/workspace.sh lutris -a lutris ; mode "default"
+        bindsym b exec --no-startup-id ~/.i3/scripts/workspace.sh bnet -a lutris lutris:rungameid/1 ; mode "default"
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $alt+g mode "game"
