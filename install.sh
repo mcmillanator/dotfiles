@@ -30,7 +30,7 @@ do
 	link $i ~/.$file
 done
 
-
+mkdir -p ~/.config
 for i in "${config_files[@]}"
 do
   :
