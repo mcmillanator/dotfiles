@@ -16,6 +16,7 @@ bindsym $ctrl+Return exec i3-sensible-terminal
 bindsym $ctrl+Shift+q kill
 
 bindsym $super+r exec --no-startup-id i3-dmenu-desktop
+bindsym $super+d exec "~/.i3/scripts/dmenu.sh"
 
 # change focus
 bindsym $alt+h focus left
@@ -96,27 +97,27 @@ bindsym $alt+$super+9 move container to $workspace9
 bindsym $alt+$super+0 move container to $workspace10
 
 # reload the configuration file
-bindsym $ctrl+Shift+c reload
+bindsym $ctrl+Shift+r reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $ctrl+Shift+r restart
+bindsym $alt+$ctrl+r restart
 # exit i3 (logs you out of your X session)
-bindsym $ctrl+Shift+e exec "~/.i3/scripts/dmenu_prompt.sh 'Log off?' 'i3-msg exit'"
-bindsym $ctrl+Shift+p exec "~/.i3/scripts/dmenu_prompt.sh 'Shutdown?' 'shutdown -P now'"
-bindsym $ctrl+Shift+s exec "~/.i3/scripts/dmenu_prompt.sh 'Suspend?' 'pm-suspend'"
+bindsym $alt+$ctrl+e exec "~/.i3/scripts/dmenu_prompt.sh 'Log off?' 'i3-msg exit'"
+bindsym $alt+$ctrl+p exec "~/.i3/scripts/dmenu_prompt.sh 'Shutdown?' 'shutdown -P now'"
+bindsym $alt+$ctrl+s exec "~/.i3/scripts/dmenu_prompt.sh 'Suspend?' 'systemctl suspend'"
 
 bar {
         status_command i3status
 }
 
+bindsym $alt+$ctrl+l exec "~/.i3/scripts/lock.sh"
 bindsym $alt+$super+l exec "~/.i3/scripts/lock.sh"
-# TODO find out if xautolock is on CentOS
-exec xautolock -time 15 -locker "~/.i3/scripts/lock.sh"
+exec xautolock -detectsleep -time 15 -locker "~/.i3/scripts/lock.sh" -killer "systemctl suspend"
 
 # set background
 # TODO find out what will work on CentOS
 set $wp "~/.i3/scripts/random-wallpaper.sh ~/Pictures/wallpapers"
 exec $wp
-bindsym $ctrl+w exec $wp
+bindsym $alt+$ctrl+w exec $wp
 
 # run compton in background (required for transparent terms)
 # TODO find something which will work on CentOS
