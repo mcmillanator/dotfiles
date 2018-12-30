@@ -1,19 +1,41 @@
 #!/bin/bash
+function confirm() {
+	[ $(echo -e "No\nYes" | dmenu -i -p "$1") == "Yes" ] && $2
+}
 function logoff() {
-	i3-msg exec "~/.i3/scripts/dmenu_prompt.sh 'Log off?' 'i3-msg exit'"
+	confirm 'Log off?' 'i3-msg exit'
 }
 
 function shutdown() {
-	i3-msg exec "~/.i3/scripts/dmenu_prompt.sh 'Shutdown?' 'shutdown -P now'"
+	confirm 'Shutdown?' 'shutdown -P now'
 }
 
 function suspend() {
-	i3-msg exec "~/.i3/scripts/dmenu_prompt.sh 'Suspend?' 'systemctl suspend'"
+	confirm 'Suspend?' 'systemctl suspend'
 }
 
 function random_wallpaper() {
 	~/.i3/scripts/random-wallpaper.sh ~/Pictures/wallpapers
 }
 
-cmd=$(printf "suspend\nshutdown\nlogoff\nrandom wallpaper" | dmenu -l 4)
-${cmd/ /_}
+function list_workspaces() {
+	i3-msg workspace $(~/.i3/scripts/workspaces.py | dmenu)
+}
+
+function list_modes(){
+	list=$(echo `i3-msg -t get_binding_modes` | sed 's/"//g
+		s/,/\n/g
+		s/\[//g
+		s/\]//g')
+		i3-msg mode $(printf "$list"	| dmenu -l `line_count "$list"`)
+}
+
+function line_count() {
+	count=$(printf "${1// /_}" | wc -l)
+	echo $((count+1))
+}
+
+list="suspend\nshutdown\nlogoff\nrandom wallpape\nlist modes\nlist workspaces\n"
+count=$(line_count "$list")
+cmd=`printf "$list" | dmenu -l $((count))`
+${cmd// /_}
