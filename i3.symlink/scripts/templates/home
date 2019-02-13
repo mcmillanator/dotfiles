@@ -11,7 +11,7 @@ bindsym $super+b $bnet
 bindsym $alt+$super+b move container to $bnet
 
 set $web workspace web
-bindsym $super+w exec --no-startup-id ~/.i3/scripts/workspace.sh web -s "qutebrowser chromium-browser firefox"
+bindsym $super+w exec --no-startup-id ~/.i3/scripts/workspace.sh web -s "vivaldi qutebrowser chromium-browser firefox"
 bindsym $alt+$super+w move container to $web
 
 set $video workspace video
