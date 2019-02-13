@@ -6,3 +6,4 @@ then
 else
 	cat templates/$1 >> ../config
 fi
+i3-msg reload
