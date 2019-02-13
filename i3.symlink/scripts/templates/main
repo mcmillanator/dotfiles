@@ -24,6 +24,10 @@ bindsym $alt+j focus down
 bindsym $alt+k focus up
 bindsym $alt+l focus right
 
+# move workspace
+bindsym $ctrl+$super+l move workspace to output left
+bindsym $ctrl+$super+h move workspace to output right
+
 # move focused window
 bindsym $ctrl+Shift+h move left
 bindsym $ctrl+Shift+j move down
