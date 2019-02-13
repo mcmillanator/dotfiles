@@ -35,7 +35,7 @@ function line_count() {
 	echo $((count+1))
 }
 
-list="suspend\nshutdown\nlogoff\nrandom wallpape\nlist modes\nlist workspaces\n"
+list="suspend\nshutdown\nlogoff\nrandom wallpaper\nlist modes\nlist workspaces\n"
 count=$(line_count "$list")
 cmd=`printf "$list" | dmenu -l $((count))`
 ${cmd// /_}
