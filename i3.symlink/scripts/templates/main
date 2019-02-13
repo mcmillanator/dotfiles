@@ -103,7 +103,7 @@ bindsym $alt+$ctrl+r restart
 # exit i3 (logs you out of your X session)
 bindsym $alt+$ctrl+e exec "~/.i3/scripts/dmenu_prompt.sh 'Log off?' 'i3-msg exit'"
 bindsym $alt+$ctrl+p exec "~/.i3/scripts/dmenu_prompt.sh 'Shutdown?' 'shutdown -P now'"
-bindsym $alt+$ctrl+s exec "~/.i3/scripts/dmenu_prompt.sh 'Suspend?' 'systemctl suspend'"
+bindsym $alt+$ctrl+s exec "~/.i3/scripts/dmenu_prompt.sh 'Suspend?' '~/.i3/scripts/lock.sh && systemctl suspend'"
 
 bar {
         status_command i3status

@@ -1,6 +1,6 @@
 #!/bin/bash
 function confirm() {
-	[ $(echo -e "No\nYes" | dmenu -i -p "$1") == "Yes" ] && $2
+	[ $(echo -e "No\nYes" | dmenu -i -p "$1") == "Yes" ] && bash -c "$2"
 }
 function logoff() {
 	confirm 'Log off?' 'i3-msg exit'
@@ -11,7 +11,7 @@ function shutdown() {
 }
 
 function suspend() {
-	confirm 'Suspend?' 'systemctl suspend'
+	confirm 'Suspend?' './lock.sh && systemctl suspend'
 }
 
 function random_wallpaper() {
