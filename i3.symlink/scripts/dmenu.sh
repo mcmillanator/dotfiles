@@ -11,7 +11,7 @@ function shutdown() {
 }
 
 function suspend() {
-	confirm 'Suspend?' './lock.sh && systemctl suspend'
+	confirm 'Suspend?' '~/.i3/scripts/lock.sh && systemctl suspend'
 }
 
 function random_wallpaper() {
@@ -37,5 +37,11 @@ function line_count() {
 
 list="suspend\nshutdown\nlogoff\nrandom wallpaper\nlist modes\nlist workspaces\n"
 count=$(line_count "$list")
-cmd=`printf "$list" | dmenu -l $((count))`
-${cmd// /_}
+if [[ $1 ]] 
+then
+	$1
+	exit
+else
+	cmd=`printf "$list" | dmenu -l $((count))`
+	${cmd// /_}
+fi

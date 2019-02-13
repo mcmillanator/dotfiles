@@ -101,9 +101,9 @@ bindsym $ctrl+Shift+r reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $alt+$ctrl+r restart
 # exit i3 (logs you out of your X session)
-bindsym $alt+$ctrl+e exec "~/.i3/scripts/dmenu_prompt.sh 'Log off?' 'i3-msg exit'"
-bindsym $alt+$ctrl+p exec "~/.i3/scripts/dmenu_prompt.sh 'Shutdown?' 'shutdown -P now'"
-bindsym $alt+$ctrl+s exec "~/.i3/scripts/dmenu_prompt.sh 'Suspend?' '~/.i3/scripts/lock.sh && systemctl suspend'"
+bindsym $alt+$ctrl+e exec "~/.i3/scripts/dmenu.sh logoff"
+bindsym $alt+$ctrl+p exec "~/.i3/scripts/dmenu.sh shutdown"
+bindsym $alt+$ctrl+s exec "~/.i3/scripts/dmenu.sh suspend"
 
 bar {
         status_command i3status
@@ -115,7 +115,7 @@ exec xautolock -detectsleep -time 15 -locker "~/.i3/scripts/lock.sh" -killer "sy
 
 # set background
 # TODO find out what will work on CentOS
-set $wp "~/.i3/scripts/random-wallpaper.sh ~/Pictures/wallpapers"
+set $wp "~/.i3/scripts/dmenu.sh random_wallpaper"
 exec $wp
 bindsym $alt+$ctrl+w exec $wp
 
