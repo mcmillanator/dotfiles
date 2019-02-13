@@ -25,9 +25,4 @@ bindsym $alt+$super+g move container to $game
 bindsym $super+s exec --no-startup-id ~/.i3/scripts/workspace.sh game -a steam
 bindsym $alt+$super+s move container to workspace steam
 
-        # back to normal: Enter or Escape
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
-
-bindsym $alt+g mode "game"
+exec xrandr --output DP-0 --mode 2560x1080 --refresh 120 --primary --output HDMI-0 --mode 2560x1080 --right-of DP-0
