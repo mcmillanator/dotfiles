@@ -27,6 +27,8 @@ bindsym $alt+l focus right
 # move workspace
 bindsym $ctrl+$super+l move workspace to output left
 bindsym $ctrl+$super+h move workspace to output right
+bindsym $ctrl+$super+j move workspace to output down
+bindsym $ctrl+$super+k move workspace to output up
 
 # move focused window
 bindsym $ctrl+Shift+h move left
@@ -110,7 +112,8 @@ bindsym $alt+$ctrl+p exec "~/.i3/scripts/dmenu.sh shutdown"
 bindsym $alt+$ctrl+s exec "~/.i3/scripts/dmenu.sh suspend"
 
 bar {
-        status_command i3status
+  status_command i3status
+  tray_output primary
 }
 
 bindsym $alt+$ctrl+l exec "~/.i3/scripts/lock.sh"

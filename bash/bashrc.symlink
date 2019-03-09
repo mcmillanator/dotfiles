@@ -38,6 +38,7 @@ load-ssh-agent() {
       fi
   fi
 }
+load-ssh-agent
 
 # tmuxinator
 source $DOTFILES/bash/tmuxinator.bash
