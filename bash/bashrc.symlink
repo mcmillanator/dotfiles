@@ -28,15 +28,15 @@ get-ssh-agent() {
 
 # load ssh-agent
 load-ssh-agent() {
-  if [ -z "$SSH_AUTH_SOCK" ] ; then
-      pgrep ssh-agent >/dev/null 2>&1
-      if [ $? -ne 0 ] ; then
-        eval `ssh-agent -a $HOME/.ssh/agent`
-        ssh-add
-      else
-        get-ssh-agent
-      fi
-  fi
+    pgrep ssh-agent >/dev/null 2>&1
+    if [ $? -ne 0 ] ; then
+      echo 'starting agent'
+      eval `ssh-agent -a $HOME/.ssh/agent`
+      ssh-add
+    else
+      echo 'agent already running'
+      get-ssh-agent
+    fi
 }
 load-ssh-agent
 
