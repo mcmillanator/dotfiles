@@ -109,3 +109,6 @@ bower.json
 
 # Ignore Byebug command history file.
 .byebug_history
+
+# Ignore vim session file
+Session.vim
