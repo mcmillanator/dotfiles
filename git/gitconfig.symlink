@@ -2,7 +2,7 @@
 	ui = true
 [user]
 	name =mcmillanator 
-	email = me@stanleymcmillan.com 
+	email = stan@stanleymcmillan.com 
 [core]
 	excludesfile = ~/.gitignore_global
 	editor = vim
