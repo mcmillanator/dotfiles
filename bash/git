@@ -4,3 +4,4 @@ GIT_PS1_SHOWDIRTYSTATE=true
 GIT_PS1_SHOWCOLORHINTS=true
 PROMPT_COMMAND='__git_ps1 "\W" "\\\$ "'
 source ~/.git-prompt.sh
+source ~/.git-completion.bash
