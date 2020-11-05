@@ -2,6 +2,9 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+SSH_DIR="$HOME/.ssh"
+SSH_AUTH_SOCK="$SSH_DIR/agent"
+
 xmodmap ~/.Xmodmap 2&> /dev/null
 source ~/.dotfiles_config
 
@@ -20,9 +23,9 @@ if [ -a /usr/local/share/chruby/chruby.sh ]
 fi
 
 get-ssh-agent() {
-  SSH_AUTH_SOCK="$HOME/.ssh/agent"
+  mkdir -p $SSH_DIR
   export SSH_AUTH_SOCK
-  export SSH_AGENT_PID=`pgrep -u $USER ssh-agent`;
+  export SSH_AGENT_PID=$(pgrep -u $(id -u) ssh-agent);
   echo Agent pid $SSH_AGENT_PID;
 }
 
@@ -31,7 +34,8 @@ load-ssh-agent() {
     pgrep ssh-agent >/dev/null 2>&1
     if [ $? -ne 0 ] ; then
       echo 'starting agent'
-      eval `ssh-agent -a $HOME/.ssh/agent`
+      rm -rf $SSH_AUTH_SOCK
+      eval $(ssh-agent -a $SSH_AUTH_SOCK)
       ssh-add
     else
       echo 'agent already running'
