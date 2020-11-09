@@ -16,6 +16,8 @@
 
 
 # -- windows & pane creation ---------------------------------------------------
+# override horizontal split
+bind \\ split-window -h
 
 # new window retains current path, possible values are:
 #   - true
