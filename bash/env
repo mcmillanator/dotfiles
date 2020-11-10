@@ -4,3 +4,4 @@ export EDITOR="$VISUAL"
 export TMUXINATOR_CONFIG=~/.tmuxinator
 export PATH=$PATH:~/Library/Python/3.6/bin
 export TERM=xterm-256color
+export ID=$(id -u)
