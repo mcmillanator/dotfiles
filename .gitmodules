@@ -1,6 +1,6 @@
 [submodule ".tmux"]
 	path = .tmux
-	url = git@github.com:gpakosz/.tmux.git
+	url = https://github.com/gpakosz/.tmux.git
 [submodule "vim/pack/bundle/opt/minpac"]
 	path = vim/pack/bundle/opt/minpac
 	url = https://github.com/k-takata/minpac.git
