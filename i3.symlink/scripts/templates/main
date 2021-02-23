@@ -4,7 +4,7 @@ set $alt Mod1
 set $super Mod4
 set $ctrl control
 
-font pango:DejaVu Sans Mono 16
+font pango:Hack DejaVu Sans Mono 16
 
 # Use Mouse+$ctrl to drag floating windows to their wanted position
 floating_modifier $ctrl
@@ -126,9 +126,8 @@ set $wp "~/.i3/scripts/dmenu.sh random_wallpaper"
 exec $wp
 bindsym $alt+$ctrl+w exec $wp
 
-# run compton in background (required for transparent terms)
-# TODO find something which will work on CentOS
-exec compton -b
+# run picom in background (required for transparent terms)
+exec_always picom -b --experimental-backends
 
 # media keys
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume alsa_output.pci-0000_00_1b.0.analog-stereo +10%
