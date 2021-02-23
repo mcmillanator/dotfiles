@@ -24,7 +24,7 @@ bindsym $super+c exec --no-startup-id ~/.i3/scripts/workspace.sh chat -a "discor
 bindsym $alt+$super+c move container to $chat
 
 set $music workspace music
-bindsym $super+m exec --no-startup-id ~/.i3/scripts/workspace.sh music -a "chromium-browser --new-window https://www.pandora.com"
+bindsym $super+m exec --no-startup-id ~/.i3/scripts/workspace.sh music -a "brave-browser --new-window https://www.pandora.com"
 bindsym $alt+$super+m move container to $music
 
 set $bnet workspace bnet
@@ -32,7 +32,7 @@ bindsym $super+b $bnet
 bindsym $alt+$super+b move container to $bnet
 
 set $web workspace web
-bindsym $super+w exec --no-startup-id ~/.i3/scripts/workspace.sh web -s "vivaldi qutebrowser chromium-browser firefox"
+bindsym $super+w exec --no-startup-id ~/.i3/scripts/workspace.sh web -s "brave-browser vivaldi qutebrowser chromium-browser firefox"
 bindsym $alt+$super+w move container to $web
 
 set $game workspace game
