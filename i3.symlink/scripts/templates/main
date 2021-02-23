@@ -161,10 +161,18 @@ mode "scratchpad" {
         bindsym a move scratchpad ; mode "default"
 
         # Show the first scratchpad window
-        bindsym s scratchpad show ; mode "default"
+        bindsym s scratchpad show
+
+        # Can also be thought of as next
+        bindsym n scratchpad show
 
         # Show the i3 config scratchpad window, if any.
         bindsym c [title="^i3-config"] scratchpad show ; mode "default"
+
+        # Show pandora
+        bindsym p [title="Pandora"] scratchpad show
+
+        bindsym f floating toggle
 
         # back to normal: Enter or Escape
         bindsym Return mode "default"
