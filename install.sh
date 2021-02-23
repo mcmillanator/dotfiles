@@ -7,7 +7,6 @@ $DOTFILES/i3.symlink/scripts/i3status.sh
 echo "export DOTFILES=$DOTFILES" > ~/.dotfiles_config
 files=($(find . -name '*.symlink' -print))
 config_files=($(find config -maxdepth 1 -print | awk '{if(NR>1) print}'))
-files+=(vim)
 
 function link () {
 	rm -rf $2

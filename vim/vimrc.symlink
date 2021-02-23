@@ -1,20 +1,65 @@
+" Pathogen for installing plugins
+execute pathogen#infect()
+" syntax highlighting on
 syntax on
-set background=dark
-let g:solarized_termtrans = 1
+filetype plugin indent on
+" solarized color them
 colorscheme solarized
-
+" solarized dark
+set background=dark
+" number of spaces that a <Tab> counts for
 set tabstop=2
 set shiftwidth=2
+" use spaces to insert a <Tab>
 set expandtab
+" line numbers
 set number
+" relative line numbers
 set relativenumber
+" highlight search
 set hls
+" use system clipboard
 set clipboard=unnamedplus
+" enable spell check
 set spell spelllang=en_us
+" vim-obsession options
 set sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,terminal"
 
-" splits
+" Open man page in a window
+" pressing K will open the man page of the highlighted word
+runtime! ftplugin/man.vim
 
+" Configuration vim Airline
+let g:airline_theme='solarized'
+let g:airlie_solarized_bg='dark'
+let g:airline#extensions#tabline#enabled=1
+let g:airline_powerline_fonts=1
+set laststatus=2
+
+" Silver Searcher
+if executable('ag') 
+    " Note we extract the column as well as the file and line number
+    set grepprg=ag\ --nogroup\ --nocolor\ --column
+    set grepformat=%f:%l:%c%m
+
+    " Use ag in CtrlP for listing files. Lightning fast and respects
+    " .gitignore
+    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+    " ag is fast enough that CtrlP doesn't need to cache
+    let g:ctrlp_use_caching = 0
+endif
+" bind K to grep word under cursor
+nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+
+" Configuration NERDTree
+nnoremap <C-n> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
+
+" Configuration floaterm
+let g:floaterm_keymap_toggle = '<F12>'
+
+" splits
 set splitbelow
 set splitright
 nnoremap <C-J> <C-W><C-J>
@@ -22,88 +67,5 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
-" fzf
-
-nnoremap <C-p> :<C-u>FZF<CR>
-nnoremap <C-f> :GFiles<CR>
-
-" commands
-
-command! PackUpdate call minpac#update()
-command! PackClean call minpac#clean()
-
-" ultisnips
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-
-" snipmate
-let g:snipMate = { 'snippet_version' : 1 }
-
-" markdown preview
-
-let vim_markdown_preview_hotkey='<C-m>'
-let vim_markdown_preview_github=1
-
-" ale
-nmap <silent> [W <Plug>(ale_first)
-nmap <silent> [w <Plug>(ale_previous)
-nmap <silent> ]w <Plug>(ale_next)
-nmap <silent> ]W <Plug>(ale_last)
-
-" grepper
-let g:grepper = {}
-let g:grepper.tools = ['grep', 'git', 'rg']
-" search for the current word
-nnoremap <Leader>* :Grepper -cword -noprompt<CR>
-" Search for the current selection
-nmap gs <plug>(GrepperOperator)
-xmap gs <plug>(GrepperOperator)
-
-" vim-test
-let test#strategy = 'dispatch'
-
-" packages
-
-packadd minpac
-call minpac#init()
-call minpac#add('junegunn/fzf')
-call minpac#add('junegunn/fzf.vim')
-call minpac#add('k-takata/minpac', {'type': 'opt'})
-call minpac#add('tpope/vim-dispatch')
-call minpac#add('tpope/vim-projectionist')
-call minpac#add('tpope/vim-scriptease', {'type': 'opt'})
-call minpac#add('tpope/vim-unimpaired')
-call minpac#add('JamshedVesuna/vim-markdown-preview')
-call minpac#add('w0rp/ale')
-call minpac#add('mhinz/vim-grepper')
-call minpac#add('janko-m/vim-test')
-call minpac#add('tpope/vim-obsession')
-
-call minpac#add('tpope/vim-fugitive')
-call minpac#add('scrooloose/nerdtree')
-call minpac#add('vim-syntastic/syntastic')
-call minpac#add('vim-airline/vim-airline')
-call minpac#add('jlanzarotta/bufexplorer')
-call minpac#add('scrooloose/nerdcommenter')
-call minpac#add('vim-airline/vim-airline-themes')
-call minpac#add('vim-ruby/vim-ruby')
-call minpac#add('tpope/vim-haml')
-call minpac#add('skalnik/vim-vroom')
-call minpac#add('luochen1990/rainbow')
-call minpac#add('honza/vim-snippets')
-call minpac#add('tpope/vim-rails')
-call minpac#add('tpope/vim-rake')
-call minpac#add('tpope/vim-sleuth')
-call minpac#add('garbas/vim-snipmate')
-call minpac#add('ekalinin/Dockerfile.vim')
-call minpac#add('tpope/vim-projectionist')
-call minpac#add('tpope/vim-surround')
-call minpac#add('NLKNguyen/vim-docker-compose-syntax')
-call minpac#add('moll/vim-node')
-call minpac#add('tomtom/tlib_vim')
-call minpac#add('altercation/vim-colors-solarized')
-call minpac#add('tpope/vim-bundler')
-call minpac#add('kchmck/vim-coffee-script')
-call minpac#add('MarcWeber/vim-addon-mw-utils')
-call minpac#add('kopischke/unite-spell-suggest')
+" ctrlp
+set runtimepath^=~/.vim/bundle/ctrlp.vim
