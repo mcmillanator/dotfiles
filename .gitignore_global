@@ -10,7 +10,6 @@
 # Icon must end with two \r
 Icon
 
-
 # Thumbnails
 ._*
 
@@ -80,6 +79,7 @@ build-iPhoneSimulator/
 capybara-*.html
 .rspec
 /log
+*.log
 /db/*.sqlite3
 /db/*.sqlite3-journal
 /public/system
@@ -107,8 +107,13 @@ bower.json
 # Ignore pow environment settings
 .powenv
 
-# Ignore Byebug command history file.
+# Ignore history files.
 .byebug_history
+.pry_history
+.bash_history
 
 # Ignore vim session file
 Session.vim
+
+# Ignore vscode files
+.vscode

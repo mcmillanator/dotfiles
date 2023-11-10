@@ -1,7 +1,0 @@
-ethernet $interface {
-	# if you use %speed, i3status requires the cap_net_admin capability
-	format_up = "E: %ip"
-	format_down = "E: down"
-}
-
-order += "ethernet $interface"

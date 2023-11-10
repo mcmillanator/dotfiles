@@ -1,7 +1,0 @@
-GIT_PS1_SHOWUPSTREAM="verbose"
-GIT_PS1_SHOWSTASHSTATE=true
-GIT_PS1_SHOWDIRTYSTATE=true
-GIT_PS1_SHOWCOLORHINTS=true
-PROMPT_COMMAND='__git_ps1 "\W" "\\\$ "'
-source ~/.git-prompt.sh
-source ~/.git-completion.bash
