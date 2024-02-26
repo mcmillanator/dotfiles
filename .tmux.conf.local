@@ -410,3 +410,5 @@ tmux_conf_update_plugins_on_reload=true
 #
 # "$@"
 # # /!\ do not remove the previous line
+
+set-option -sa terminal-features ',xterm-256color:RGB'
