@@ -1,7 +1,7 @@
 # Oh my zsh
 alias zshconfig="vim ~/.zshrc"
-alias omz="vim ~/.oh-my-zsh"
-alias omzconfig="vim ~/.oh-my-zsh"
+alias omz="cd ~/.omz_custom && nvim ; popd"
+alias omzconfig="cd ~/.oh-my-zsh ; nvim && popd"
 
 alias myip="curl http://ipecho.net/plain; echo"
 alias apps="cd ~/Documents/Projects"
@@ -11,4 +11,5 @@ alias ll='ls -lah'
 # ruby
 alias be='bundle exec $@'
 
-alias win10='sudo /home/stan/Documents/Projects/virtual_machines/windows10vm.sh'
+# python
+alias python='python3'
