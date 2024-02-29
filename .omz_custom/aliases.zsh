@@ -13,3 +13,9 @@ alias be='bundle exec $@'
 
 # python
 alias python='python3'
+
+# devcontainers
+alias dcbash='devcontainer exec --workspace-folder . bash'
+alias dcnvim='devcontainer exec --workspace-folder . nvim'
+alias dcup='devcontainer --workspace-folder . up'
+alias dcbuild='devcontainer --workspace-folder . build'
