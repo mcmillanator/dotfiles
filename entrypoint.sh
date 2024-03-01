@@ -1,4 +1,4 @@
 #!/bin/bash
-ln -s ~/.mackup ~/Documents/Projects/dotfiles/.mackup
-ln -s ~/.mackup.cfg ~/Documents/Projects/dotfiles/.mackup.cfg
+ln -s ~/Documents/Projects/dotfiles/.mackup ~/.mackup
+ln -s ~/Documents/Projects/dotfiles/.mackup.cfg ~/.mackup.cfg
 mackup restore -f
