@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/zsh
 ln -s ~/Documents/Projects/dotfiles/.mackup ~/.mackup
 ln -s ~/Documents/Projects/dotfiles/.mackup.cfg ~/.mackup.cfg
-mackup restore -f
+/usr/local/py-utils/bin/mackup restore -f
