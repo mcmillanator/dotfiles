@@ -20,6 +20,10 @@ dcbash()
   devcontainer exec --workspace-folder . --override-config $HOME/.devcontainers/$1.jsonc bash 
 }
 
+dczsh()
+{
+  devcontainer exec --workspace-folder . --override-config $HOME/.devcontainers/$1.jsonc  /usr/bin/zsh
+}
 dcnvim()
 {
   devcontainer exec --workspace-folder . --override-config $HOME/.devcontainers/$1.jsonc nvim
