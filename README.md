@@ -5,17 +5,18 @@ Here are my dotfiles managed with mackup.
 
 ## My Favorite Programs and Plugins
 
+* LazyVim
 * NeoVim
-    * NvChad
-* zsh
-    * oh my zsh
-* the silver searcher
-* mackup
-* zoxide
-* ruby-install
+* [silicon](https://github.com/Aloxaf/silicon)
+* alacritty
 * chruby
 * docker
+* fzf
 * git
-* alacritty
+* mackup
+* oh my zsh
+* ripgrep
+* ruby-install
 * tmux
-
+* zoxide
+* zsh
