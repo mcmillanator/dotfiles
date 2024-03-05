@@ -1,0 +1,42 @@
+{
+  "name": "TypeScript Devcontainer",
+  "service": "app",
+  "image": "mcr.microsoft.com/vscode/devcontainers/base:0-buster",
+  "overrideCommand": true,
+  "workspaceMount": "source=${localWorkspaceFolder},target=/srv,type=bind,consistency=cached",
+  "workspaceFolder": "/srv",
+  "updateRemoteUserUID": true,
+  "mounts": [
+    {
+      "source": "${localEnv:HOME}/Documents/Projects/dotfiles",
+      "target": "/home/dev/Documents/Projects/dotfiles",
+      "type": "bind",
+      "consistency": "cached"
+    }
+  ],
+  "features": {
+    "ghcr.io/devcontainers/features/common-utils:2": {
+      "installZsh": true,
+      "configureZshAsDefaultShell": true,
+      "installOhMyZsh": true,
+    },
+    "ghcr.io/devcontainers-contrib/features/fzf:1": {},
+    "ghcr.io/devcontainers-contrib/features/mackup:1": {},
+    "ghcr.io/devcontainers-contrib/features/neovim-homebrew:1": {},
+    "ghcr.io/devcontainers-contrib/features/ripgrep:1": {},
+    "ghcr.io/devcontainers-contrib/features/apt-get-packages:1": {
+      "packages": "fd-find"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-azuretools.vscode-docker",
+      ]
+    }
+  },
+  // Use 'postCreateCommand' to run commands after the container is created.
+  "postCreateCommand": "/usr/bin/zsh /home/dev/Documents/Projects/dotfiles/entrypoint.sh"
+  // Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+  //"remoteUser": "root"
+}
