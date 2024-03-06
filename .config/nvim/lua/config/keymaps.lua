@@ -19,7 +19,7 @@ end
 -- Which key prefix registration
 local wk = require("which-key")
 wk.register({
-  name = "Telescope",
+  name = "Telescope/Terminal",
   mode = "n",
   prefix = "<leader>t",
 })
@@ -41,7 +41,7 @@ map("n", "<leader>fp", function()
   require("telescope.builtin").find_files({ cwd = require("lazy.core.config").options.root })
 end, { desc = "Find Plugin File" })
 map("n", "<leader>ff", function()
-  require("telescope.builtin").find_files({ hidden = true, no_ignore = false, use_git_root = true })
+  require("telescope.builtin").find_files({ hidden = true, no_ignore = true, use_git_root = true })
 end, { desc = "Find Files (git root)" })
 -- Gitsigns keymaps
 map("n", "<leader>ga", "<cmd>Gitsigns stage_hunk<cr>", { desc = "Stage hunk" })
