@@ -10,6 +10,9 @@ return {
       pad_vert = 0,
       no_round_corner = true,
       no_window_controls = true,
+      watermark = {
+        text = " @mcmillanator",
+      },
     })
   end,
 }
