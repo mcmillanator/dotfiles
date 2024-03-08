@@ -45,7 +45,10 @@ wk.register {
 -- Define conficting keymaps
 -- Neotree
 map('n', '<leader>n', '<cmd>Neotree toggle<cr>', { desc = 'Neotree toggle' })
+map('n', '<leader>ge', '<cmd>Neotree git_status toggle<cr>', { desc = 'Git explorer' })
+map('n', '<leader>gf', '<cmd>Neotree git_status toggle reveal<cr>', { desc = 'Reveal in git explorer' })
 map('n', '<C-n>', '<cmd>Neotree toggle<cr>', { desc = 'Neotree toggle' })
+map('n', '<C-f>', '<cmd>Neotree reveal<cr>', { desc = 'Neotree reveal' })
 -- Telescope keymaps
 map('n', '<leader>tn', '<cmd>Telescope notify<cr>', { desc = 'Telescope notify' })
 map('n', '<leader>tk', '<cmd>Telescope keymaps<cr>', { desc = 'Telescope keymaps' })
