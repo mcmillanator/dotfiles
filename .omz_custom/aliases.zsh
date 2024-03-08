@@ -1,3 +1,6 @@
+# nvim
+alias nvim-kickstart='NVIM_APPNAME="nvim-kickstart" nvim'
+
 # Oh my zsh
 alias zshconfig="vim ~/.zshrc"
 alias omz="cd ~/.omz_custom && nvim ; popd"
