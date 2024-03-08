@@ -7,6 +7,7 @@ local map = vim.keymap.set
 local term = require("nvterm.terminal")
 local term_modes = { "n", "v", "i", "t" }
 local dap = require("dap")
+local dapui = require("dapui")
 local term_float = function()
   term.toggle("float")
 end
@@ -67,9 +68,26 @@ map(term_modes, "<A-f>", term_float, { noremap = true, silent = true, desc = "Fl
 map(term_modes, "<A-h>", term_horizontal, { noremap = true, silent = true, desc = "Horizontal terminal" })
 map(term_modes, "<A-v>", term_vertical, { noremap = true, silent = true, desc = "Vertical terminal" })
 -- nvim-dap
-map("n", "<Leader>db", function()
+map("n", "<Leader>dt", function()
   dap.toggle_breakpoint()
-end, { desc = "Toggle [D]ebug [B]reakpoint" })
+end, { desc = "Toggle Debug [B]reakpoint" })
+
 map("n", "<Leader>dc", function()
   dap.continue()
-end, { desc = "[D]ebug [C]ontinue" })
+end, { desc = "Debug [C]ontinue" })
+
+map("n", "<Leader>dbq", function()
+  dap.list_breakpoints()
+end, { desc = "[Q]uickfix all breakpoints" })
+
+map("n", "<Leader>dbc", function()
+  dap.clear_breakpoints()
+end, { desc = "[C]lear all breakpoints" })
+
+map("n", "<Leader>di", function()
+  dap.set_into()
+end, { desc = "Step [i]nto" })
+
+map("n", "<Leader>do", function()
+  dap.set_over()
+end, { desc = "Set [o]ver" })
