@@ -43,8 +43,9 @@ wk.register {
 }
 
 -- Define conficting keymaps
---vim.keymap.del('n', '<leader>gs')
---vim.keymap.del('n', '<leader>ff')
+-- Neotree
+map('n', '<leader>n', '<cmd>Neotree toggle<cr>', { desc = 'Neotree toggle' })
+map('n', '<C-n>', '<cmd>Neotree toggle<cr>', { desc = 'Neotree toggle' })
 -- Telescope keymaps
 map('n', '<leader>tn', '<cmd>Telescope notify<cr>', { desc = 'Telescope notify' })
 map('n', '<leader>tk', '<cmd>Telescope keymaps<cr>', { desc = 'Telescope keymaps' })
@@ -55,15 +56,24 @@ map('n', '<leader>gS', '<cmd>Telescope git_status<cr>', { desc = 'git status' })
 map('n', '<leader>sc', '<cmd>Telescope commands<cr>', { desc = 'Commands' })
 map('n', '<leader>sk', '<cmd>Telescope keymaps<cr>', { desc = 'Commands' })
 -- Find
+local telescope = require 'telescope.builtin'
+
 map('n', '<leader>fp', function()
-  require('telescope.builtin').find_files { cwd = require('lazy.core.config').options.root }
+  telescope.find_files { cwd = require('lazy.core.config').options.root }
 end, { desc = 'Find Plugin File' })
+
 map('n', '<leader>fa', function()
-  require('telescope.builtin').find_files { hidden = true, no_ignore = true, use_git_root = true }
+  telescope.find_files { hidden = true, no_ignore = true, use_git_root = true }
 end, { desc = 'Find All Files (git root)' })
+
 map('n', '<leader>ff', function()
-  require('telescope.builtin').find_files { hidden = true, use_git_root = true }
+  telescope.find_files { hidden = true, use_git_root = true }
 end, { desc = 'Find Files (git root)' })
+
+map('n', '<C-p>', function()
+  telescope.find_files { hidden = true, use_git_root = true }
+end, { desc = 'Find Files (git root)' })
+
 -- Gitsigns keymaps
 map('n', '<leader>ga', '<cmd>Gitsigns stage_hunk<cr>', { desc = 'git add' })
 map('n', '<leader>gd', '<cmd>Gitsigns diffthis<cr>', { desc = 'git dff' })
