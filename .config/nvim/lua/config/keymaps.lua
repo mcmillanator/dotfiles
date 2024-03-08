@@ -6,6 +6,7 @@
 local map = vim.keymap.set
 local term = require("nvterm.terminal")
 local term_modes = { "n", "v", "i", "t" }
+local dap = require("dap")
 local term_float = function()
   term.toggle("float")
 end
@@ -27,6 +28,11 @@ wk.register({
   name = "Gitsigns",
   mode = "n",
   prefix = "<leader>gs",
+})
+wk.register({
+  name = "Debugger",
+  mode = "n",
+  prefix = "<leader>d",
 })
 
 -- Define conficting keymaps
@@ -58,3 +64,10 @@ map("n", "<leader>tv", term_vertical, { noremap = true, silent = true, desc = "V
 map(term_modes, "<A-f>", term_float, { noremap = true, silent = true, desc = "Floating terminal" })
 map(term_modes, "<A-h>", term_horizontal, { noremap = true, silent = true, desc = "Horizontal terminal" })
 map(term_modes, "<A-v>", term_vertical, { noremap = true, silent = true, desc = "Vertical terminal" })
+-- nvim-dap
+map("n", "<Leader>db", function()
+  dap.toggle_breakpoint()
+end, { desc = "Toggle [D]ebug [B]reakpoint" })
+map("n", "<Leader>dc", function()
+  dap.continue()
+end, { desc = "[D]ebug [C]ontinue" })
