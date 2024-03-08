@@ -1,12 +1,12 @@
 return {
-  "mfussenegger/nvim-dap",
+  'mfussenegger/nvim-dap',
   dependencies = {
-    "rcarriga/nvim-dap-ui",
-    "mfussenegger/nvim-dap-python",
+    'rcarriga/nvim-dap-ui',
+    'mfussenegger/nvim-dap-python',
   },
   config = function()
-    require("dapui").setup()
-    local dap, dapui = require("dap"), require("dapui")
+    require('dapui').setup()
+    local dap, dapui = require 'dap', require 'dapui'
     dap.listeners.before.attach.dapui_config = function()
       dapui.open()
     end
