@@ -11,4 +11,4 @@ export ARCHFLAGS="-arch x86_64"
 # Source directory for my applications
 export APPS_DIR="$HOME/Documents/Projects"
 
-export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$HOME/.local/bin:$PATH"
