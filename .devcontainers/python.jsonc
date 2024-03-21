@@ -1,9 +1,7 @@
 {
   "name": "Python 3.12 Devcontainer",
   "dockerComposeFile": "${localWorkspaceFolder}/docker-compose.yml",
-  "build": {
-    "dockerfile": "./Dockerfile"
-  },
+  "service": "app",
   "overrideCommand": true,
   "workspaceMount": "source=${localWorkspaceFolder},target=/srv,type=bind,consistency=cached",
   "workspaceFolder": "/srv",
