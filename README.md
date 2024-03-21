@@ -9,6 +9,7 @@ Here are my dotfiles managed with mackup.
 - [silicon](https://github.com/Aloxaf/silicon) - v0.5.2
 - alacritty - 0.10.1
 - chruby - v0.3.9
+- [devcontainers/cli](https://github.com/devcontainers/cli)
 - docker - v25.0.5
 - fd
 - fzf 0.29 (devel)
@@ -21,3 +22,4 @@ Here are my dotfiles managed with mackup.
 - tmux - v3.2a
 - zoxide - v0.9.4
 - zsh - v5.8.1
+- .[nvm](https://github.com/nvm-sh/nvm?tab=readme-ov-file#installing-and-updating) - v0.39.7
