@@ -70,8 +70,14 @@ dcbuild ()
   if [ -z "$1" ]; then
     devcontainer --workspace-folder . --config .devcontainer/devcontainer.json build
   else
-    devcontainer --workspace-folder . --config $HOME/.devcontainers/$1.jsonc --image-name="${1:gs/\//-}:latest" build
+    devcontainer --workspace-folder . --config $HOME/.devcontainers/$1.jsonc --image-name="mcmillanator/${1:gs/\//-}:latest" build
   fi
+}
+
+dcprebuildpush()
+{
+  for i in $(docker images | grep mcmillanator/prebuilt | awk '{print $1}' )
+  docker push $i
 }
 
 dcprebuild()
