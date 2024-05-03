@@ -1,6 +1,6 @@
 {
   "name": "Terraform",
-  "image": "prebuilt-base",
+  "image": "mcmillanator/prebuilt-base",
   "features": {
     "ghcr.io/devcontainers/features/aws-cli:1": {},
     "ghcr.io/devcontainers-contrib/features/terraform-ls-asdf:2": {},

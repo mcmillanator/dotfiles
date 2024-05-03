@@ -1,4 +1,3 @@
-//prebuilt image: python-base-devcontainer
 {
   "name": "Python 3.12 Devcontainer",
   "dockerComposeFile": [

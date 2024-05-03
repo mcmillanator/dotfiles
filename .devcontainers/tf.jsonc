@@ -1,6 +1,6 @@
 {
   "name": "Terraform",
-  "image": "prebuilt-tf",
+  "image": "mcmillanator/prebuilt-tf",
   "workspaceMount": "source=${localWorkspaceFolder},target=/srv,type=bind,consistency=cached",
   "workspaceFolder": "/srv",
   "mounts": [
@@ -56,5 +56,4 @@
   "postCreateCommand": "/usr/bin/bash /home/ubuntu/Documents/Projects/dotfiles/.devcontainers/entrypoint.sh ; npm i -g cdktf-cli@latest",
   // Comment out to connect as root instead. More info: https://aka.ms/dev-remote/containers/non-root.
   "features": {}
-
 }

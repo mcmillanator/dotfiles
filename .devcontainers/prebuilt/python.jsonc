@@ -1,6 +1,6 @@
 {
   "name": "Terraform",
-  "image": "prebuilt-base",
+  "image": "mcmillanator/prebuilt-base",
   "features": {
     "ghcr.io/devcontainers-contrib/features/pipenv:2": {},
     "ghcr.io/devcontainers/features/python:1": {}
