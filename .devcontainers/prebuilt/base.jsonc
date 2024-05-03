@@ -1,0 +1,33 @@
+{
+  "name": "Base",
+  "image": "ubuntu:24.04",
+  "remoteUser": "ubuntu",
+  "containerUser": "ubuntu",
+  "updateRemoteUserUID": true,
+  "overrideFeatureInstallОrder": [
+    "ghcr.io/devcontainers/features/git",
+    "ghcr.io/devcontainers-contrib/features/fzf"
+  ],
+  "features": {
+    "ghcr.io/devcontainers/features/common-utils:2": {
+      "installZsh": true,
+      "configureZshAsDefaultShell": true,
+      "installOhMyZsh": true,
+      "username": "ubuntu"
+    },
+    "ghcr.io/devcontainers/features/git:1": {},
+    // FIXME:
+    // fzf keeps complaining about missing git
+    // InstallOrder has not helped
+    //"ghcr.io/devcontainers-contrib/features/fzf:1": {},
+    "ghcr.io/devcontainers-contrib/features/mackup:1": {},
+    "ghcr.io/GeorgOfenbeck/features/lazygit-linuxbinary:1": {},
+    "ghcr.io/devcontainers-contrib/features/neovim-homebrew:1": {},
+    "ghcr.io/devcontainers-contrib/features/ripgrep:1": {},
+    "ghcr.io/devcontainers-contrib/features/markdownlint-cli2:1": {},
+    "ghcr.io/devcontainers-contrib/features/apt-get-packages:1": {
+      "packages": "fd-find"
+    },
+    "ghcr.io/stuartleeks/dev-container-features/shell-history:0": {}
+  }
+}

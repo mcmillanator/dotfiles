@@ -19,21 +19,37 @@ alias python='python3'
 # devcontainers
 dcbash()
 {
-  devcontainer exec --workspace-folder . --override-config $HOME/.devcontainers/$1.jsonc bash 
+  if [ -z "$1" ]; then
+    devcontainer exec --workspace-folder . --override-config .devcontainer/devcontainer.json bash 
+  else
+    devcontainer exec --workspace-folder . --override-config $HOME/.devcontainers/$1.jsonc bash 
+  fi
 }
 
 dczsh()
 {
-  devcontainer exec --workspace-folder . --override-config $HOME/.devcontainers/$1.jsonc  /usr/bin/zsh
+  if [ -z "$1" ]; then
+    devcontainer exec --workspace-folder . --override-config .devcontainer/devcontainer.json  /usr/bin/zsh
+  else
+    devcontainer exec --workspace-folder . --override-config $HOME/.devcontainers/$1.jsonc  /usr/bin/zsh
+  fi
 }
 dcnvim()
 {
-  devcontainer exec --workspace-folder . --override-config $HOME/.devcontainers/$1.jsonc nvim
+  if [ -z "$1" ]; then
+    devcontainer exec --workspace-folder . --override-config .devcontainer/devcontainer.json nvim
+  else
+    devcontainer exec --workspace-folder . --override-config $HOME/.devcontainers/$1.jsonc nvim
+  fi
 }
 
 dcup()
 {
-  devcontainer --workspace-folder . --override-config $HOME/.devcontainers/$1.jsonc up
+  if [ -z "$1" ]; then
+    devcontainer --workspace-folder . --override-config .devcontainer/devcontainer.json up
+  else
+    devcontainer --workspace-folder . --override-config $HOME/.devcontainers/$1.jsonc up
+  fi
 }
 
 dcsetup()
@@ -51,5 +67,17 @@ dcsetup()
 
 dcbuild ()
 {
-  devcontainer --workspace-folder . --config $HOME/.devcontainers/$1.jsonc build
+  if [ -z "$1" ]; then
+    devcontainer --workspace-folder . --config .devcontainer/devcontainer.json build
+  else
+    devcontainer --workspace-folder . --config $HOME/.devcontainers/$1.jsonc --image-name="${1:gs/\//-}:latest" build
+  fi
+}
+
+dcprebuild()
+{
+  dcbuild prebuilt/base
+  dcbuild prebuilt/tf || true
+  dcbuild prebuilt/python || true
+  dcbuild prebuilt/ruby || true
 }
