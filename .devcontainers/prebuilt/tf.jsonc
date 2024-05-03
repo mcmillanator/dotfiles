@@ -1,15 +1,12 @@
 {
-  "name": "Terraform",
-  "image": "mcmillanator/prebuilt-base",
+  "name": "Terraform with Typescript",
+  "image": "mcmillanator/prebuilt-ts",
   "features": {
     "ghcr.io/devcontainers/features/aws-cli:1": {},
     "ghcr.io/devcontainers-contrib/features/terraform-ls-asdf:2": {},
     "ghcr.io/devcontainers/features/terraform": {
       "terragrunt": "latest",
       "tflint": "latest"
-    },
-    "ghcr.io/devcontainers/features/node:1": {
-      "version": "lts"
     },
     "ghcr.io/joshuanianji/devcontainer-features/aws-cli-persistence": {}
   }
