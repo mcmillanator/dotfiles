@@ -1,7 +1,7 @@
 {
   "name": "TypeScript Devcontainer",
   "service": "app",
-  "image": "mcmillanator/prebuilt-base",
+  "image": "mcmillanator/prebuilt-ts",
   "overrideCommand": true,
   "workspaceMount": "source=${localWorkspaceFolder},target=/srv,type=bind,consistency=cached",
   "workspaceFolder": "/srv",
@@ -56,8 +56,5 @@
       "consistency": "cached"
     }
   ],
-  "features": {
-    "ghcr.io/devcontainers-contrib/features/typescript:2": {}
-  },
   "postCreateCommand": "/usr/bin/bash /home/ubuntu/Documents/Projects/dotfiles/.devcontainers/entrypoint.sh"
 }
