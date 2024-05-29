@@ -1,8 +1,10 @@
 {
-  "name": "Terraform",
+  "name": "Python",
   "image": "mcmillanator/prebuilt-base",
   "features": {
     "ghcr.io/devcontainers-contrib/features/pipenv:2": {},
-    "ghcr.io/devcontainers/features/python:1": {}
+    "ghcr.io/devcontainers/features/python:1": {
+      "version": "3.12"
+    }
   }
 }
