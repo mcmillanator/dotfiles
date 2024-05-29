@@ -2,6 +2,7 @@
   "name": "Terraform",
   "image": "mcmillanator/prebuilt-tf",
   "workspaceMount": "source=${localWorkspaceFolder},target=/srv,type=bind,consistency=cached",
+  "privileged": true,
   "workspaceFolder": "/srv",
   "mounts": [
     {
@@ -54,5 +55,7 @@
     }
   ],
   "postCreateCommand": "/usr/bin/bash /home/ubuntu/Documents/Projects/dotfiles/.devcontainers/entrypoint.sh ; npm i -g cdktf-cli@latest",
-  "features": {}
+  "features": {
+    "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {}
+  }
 }
