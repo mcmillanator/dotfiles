@@ -2,7 +2,10 @@
   "name": "Base",
   "build": {
     "context": ".",
-    "dockerfile": "Dockerfile"
+    "dockerfile": "Dockerfile",
+    "args": {
+      "IMAGE": "ubuntu:22.04"
+    }
   },
   "remoteUser": "ubuntu",
   "remoteUserHome": "/home/ubuntu",
