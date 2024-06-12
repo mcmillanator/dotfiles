@@ -13,3 +13,4 @@ export APPS_DIR="$HOME/Documents/Projects"
 
 export PATH="$HOME/.cargo/bin:$HOME/.local/bin:$HOME/usr/local/py-utils/bin/mackup:$PATH"
 export DIP_INFRA_NETWORK_NGINX=dip-net-nginx-latest
+export PATH="/opt/homebrew/bin:$PATH"
