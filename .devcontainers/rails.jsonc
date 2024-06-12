@@ -1,0 +1,73 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/ruby
+{
+  "name": "rails",
+  "dockerComposeFile": [
+    "${localWorkspaceFolder}/docker/docker-compose.yml",
+    "${localWorkspaceFolder}/.devcontainer/docker-compose.override.yml"
+  ],
+  "service": "app",
+  "forwardPorts": [
+    22,
+    3000
+  ],
+  "overrideCommand": true,
+  "workspaceMount": "source=${localWorkspaceFolder},target=/var/www,type=bind,consistency=cached",
+  "workspaceFolder": "/var/www",
+  "remoteUser": "dev",
+  "containerUser": "dev",
+  "updateRemoteUserUID": true,
+  "mounts": [
+    {
+      "source": "${localEnv:HOME}/Documents/Projects/dotfiles",
+      "target": "/home/dev/Documents/Projects/dotfiles",
+      "type": "bind",
+      "consistency": "cached"
+    },
+    {
+      "source": "${localEnv:HOME}/.aws",
+      "target": "/home/dev/.aws",
+      "type": "bind",
+      "consistency": "cached"
+    },
+    {
+      "source": "${localEnv:HOME}/.local/share/nvim",
+      "target": "/home/dev/.local/share/nvim",
+      "type": "bind",
+      "consistency": "cached"
+    },
+    {
+      "source": "${localEnv:HOME}/.local/state",
+      "target": "/home/dev/.local/state",
+      "type": "bind",
+      "consistency": "cached"
+    },
+    {
+      "source": "${localEnv:HOME}/.cache/nvim",
+      "target": "/home/dev/.cache/nvim",
+      "type": "bind",
+      "consistency": "cached"
+    },
+    {
+      "source": "${localEnv:HOME}/.local/share/nvim-kickstart",
+      "target": "/home/dev/.local/share/nvim-kickstart",
+      "type": "bind",
+      "consistency": "cached"
+    },
+    {
+      "source": "${localEnv:HOME}/.local/state/nvim-kickstart",
+      "target": "/home/dev/.local/state/nvim-kickstart",
+      "type": "bind",
+      "consistency": "cached"
+    },
+    {
+      "source": "${localEnv:HOME}/.cache/nvim-kickstart",
+      "target": "/home/dev/.cache/nvim-kickstart",
+      "type": "bind",
+      "consistency": "cached"
+    }
+  ],
+  "features": {},
+  "postCreateCommand": "/bin/bash /home/dev/Documents/Projects/dotfiles/.devcontainers/entrypoint.sh",
+  "postAttachCommand": "entrypoint rails"
+}
