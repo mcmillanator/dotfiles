@@ -7,7 +7,7 @@ return {
     linters_by_ft = {
       fish = { "fish" },
       python = { "flake8" },
-      markdown = { "markdownlint" },
+      markdown = { "markdownlint-cli2" },
     },
     -- LazyVim extension to easily override linter options
     -- or add custom linters.
