@@ -3,6 +3,7 @@ return {
   dependencies = {
     "rcarriga/nvim-dap-ui",
     "mfussenegger/nvim-dap-python",
+    "suketa/nvim-dap-ruby",
   },
   config = function()
     require("dapui").setup()
@@ -12,12 +13,6 @@ return {
     end
     dap.listeners.before.launch.dapui_config = function()
       dapui.open()
-    end
-    dap.listeners.before.event_terminated.dapui_config = function()
-      dapui.close()
-    end
-    dap.listeners.before.event_exited.dapui_config = function()
-      dapui.close()
     end
   end,
 }
