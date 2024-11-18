@@ -33,26 +33,8 @@
       "source": "${localEnv:HOME}/.cache/nvim",
       "target": "/home/ubuntu/.cache/nvim",
       "type": "bind",
-      "consistency": "cached"
+      "consistency": "cached",
     },
-    {
-      "source": "${localEnv:HOME}/.local/share/nvim-kickstart",
-      "target": "/home/ubuntu/.local/share/nvim-kickstart",
-      "type": "bind",
-      "consistency": "cached"
-    },
-    {
-      "source": "${localEnv:HOME}/.local/state/nvim-kickstart",
-      "target": "/home/ubuntu/.local/state/nvim-kickstart",
-      "type": "bind",
-      "consistency": "cached"
-    },
-    {
-      "source": "${localEnv:HOME}/.cache/nvim-kickstart",
-      "target": "/home/ubuntu/.cache/nvim-kickstart",
-      "type": "bind",
-      "consistency": "cached"
-    }
   ],
   "postCreateCommand": "/usr/bin/bash /home/ubuntu/Documents/Projects/dotfiles/.devcontainers/entrypoint.sh ; npm i -g cdktf-cli@latest",
   "features": {
