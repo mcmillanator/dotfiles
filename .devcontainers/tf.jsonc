@@ -1,9 +1,9 @@
 {
   "name": "Terraform",
   "image": "mcmillanator/prebuilt-tf",
-  "workspaceMount": "source=${localWorkspaceFolder},target=/srv,type=bind,consistency=cached",
+  "workspaceMount": "source=${localWorkspaceFolder},target=${localWorkspaceFolder},type=bind,consistency=cached",
   "privileged": true,
-  "workspaceFolder": "/srv",
+  "workspaceFolder": "${localWorkspaceFolder}",
   "mounts": [
     {
       "source": "${localEnv:HOME}/Documents/Projects/dotfiles",
