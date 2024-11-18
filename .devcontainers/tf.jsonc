@@ -38,6 +38,6 @@
   ],
   "postCreateCommand": "/usr/bin/bash /home/ubuntu/Documents/Projects/dotfiles/.devcontainers/entrypoint.sh ; npm i -g cdktf-cli@latest",
   "features": {
-    "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {}
-  }
+    "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {},
+  },
 }
