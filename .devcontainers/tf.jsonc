@@ -9,25 +9,25 @@
       "source": "${localEnv:HOME}/Documents/Projects/dotfiles",
       "target": "/home/ubuntu/Documents/Projects/dotfiles",
       "type": "bind",
-      "consistency": "cached"
+      "consistency": "cached",
     },
     {
       "source": "${localEnv:HOME}/.aws",
       "target": "/home/ubuntu/.aws",
       "type": "bind",
-      "consistency": "cached"
+      "consistency": "cached",
     },
     {
       "source": "${localEnv:HOME}/.local/share/nvim",
       "target": "/home/ubuntu/.local/share/nvim",
       "type": "bind",
-      "consistency": "cached"
+      "consistency": "cached",
     },
     {
       "source": "${localEnv:HOME}/.local/state",
       "target": "/home/ubuntu/.local/state",
       "type": "bind",
-      "consistency": "cached"
+      "consistency": "cached",
     },
     {
       "source": "${localEnv:HOME}/.cache/nvim",

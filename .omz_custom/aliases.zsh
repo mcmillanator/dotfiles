@@ -83,6 +83,7 @@ dcprebuildpush()
 dcprebuild()
 {
   dcbuild prebuilt/base
+  dcbuild prebuilt/ts
   dcbuild prebuilt/tf || true
   dcbuild prebuilt/python || true
   dcbuild prebuilt/ruby || true

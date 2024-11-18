@@ -2,7 +2,7 @@ ARG IMAGE=ubuntu:22.04
 FROM ${IMAGE} as base
 RUN apt-get update && \
 # dependencies for rest.nvim https://github.com/rest-nvim/rest.nvim?tab=readme-ov-file#install
-  apt-get install --no-install-recommends -y ca-certificates libcurlpp-dev curl luarocks lua5.4 gcc && \
+  apt-get install --no-install-recommends -y ca-certificates libcurlpp-dev curl luarocks lua5.4 gcc tmux && \
   rm -rf /var/lib/apt/lists/* && \
   luarocks install lua-curl CURL_INCDIR=/usr/include/x86_64-linux-gnu/
 ENV CURL_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt

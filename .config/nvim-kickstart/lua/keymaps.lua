@@ -5,8 +5,10 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 local map = vim.keymap.set
 local term = require 'nvterm.terminal'
 local term_modes = { 'n', 'v', 'i', 't' }
-local dap = require 'dap'
-local dapui = require 'dapui'
+--TODO: move to dap config file
+--local dap = require 'dap'
+-- TODO: move to dapui config file
+--local dapui = require 'dapui'
 local term_float = function()
   term.toggle 'float'
 end
@@ -19,29 +21,29 @@ end
 
 -- Which key prefix registration
 local wk = require 'which-key'
-wk.register {
-  ['<leader>c'] = { name = 'Code', _ = 'which_key_ignore' },
-  ['<leader>d'] = { name = 'Document', _ = 'which_key_ignore' },
-  ['<leader>r'] = { name = 'Rename', _ = 'which_key_ignore' },
-  ['<leader>s'] = { name = 'Search', _ = 'which_key_ignore' },
-  ['<leader>w'] = { name = 'Workspace', _ = 'which_key_ignore' },
+wk.add {
+  { '<leader>c', group = 'Code' },
+  { '<leader>d', group = 'Document' },
+  { '<leader>g', group = 'Git' },
+  { '<leader>gc', group = 'Commit' },
+  { '<leader>r', group = 'Rename' },
+  { '<leader>s', group = 'Search' },
+  { '<leader>w', group = 'Workspace' },
+  {
+    '<leader>b',
+    group = 'buffers',
+    expand = function()
+      return require('which-key.extras').expand.buf()
+    end,
+  },
 }
-wk.register {
-  name = 'Telescope/Terminal',
-  mode = 'n',
-  prefix = '<leader>t',
-}
-wk.register {
-  name = 'Gitsigns',
-  mode = 'n',
-  prefix = '<leader>gs',
-}
-wk.register {
-  name = 'Debugger',
-  mode = 'n',
-  prefix = '<leader>d',
+wk.add {
+  { '<leader>t', group = 'Telescope/Terminal' },
+  { '<leader>gs', group = 'Gitsigns' },
+  { '<leader>d', group = 'Debugger' },
 }
 
+map('n', '<leader>l', '<cmd>Lazy<cr>', { desc = 'Open Lazy UI' })
 -- Define conficting keymaps
 -- Neotree
 map('n', '<leader>n', '<cmd>Neotree toggle<cr>', { desc = 'Neotree toggle' })
@@ -94,6 +96,7 @@ map('n', '<leader>tv', term_vertical, { noremap = true, silent = true, desc = 'T
 map(term_modes, '<A-f>', term_float, { noremap = true, silent = true, desc = 'Floating terminal' })
 map(term_modes, '<A-h>', term_horizontal, { noremap = true, silent = true, desc = 'Horizontal terminal' })
 map(term_modes, '<A-v>', term_vertical, { noremap = true, silent = true, desc = 'Vertical terminal' })
+-- TODO: Move to dap config file
 -- nvim-dap
 map('n', '<Leader>dt', function()
   dap.toggle_breakpoint()

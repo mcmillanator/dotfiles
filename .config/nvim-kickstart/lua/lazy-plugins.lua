@@ -23,7 +23,15 @@ require('lazy').setup {
   --    require('Comment').setup({})
 
   -- "gc" to comment visual regions/lines
-  { 'numToStr/Comment.nvim', opts = {} },
+  {
+    'numToStr/Comment.nvim',
+    opts = {
+      function()
+        local map = vim.keymap.set
+        map('n', '<leader>l', '<cmd>Lazy<cr>', { desc = 'Open Lazy UI' })
+      end,
+    },
+  },
 
   -- modular approach: using `require 'path/name'` will
   -- include a plugin definition from file lua/path/name.lua
