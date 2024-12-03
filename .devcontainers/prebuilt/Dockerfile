@@ -10,3 +10,4 @@ RUN curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linu
   rm -rf /opt/nvim && \
   tar -C /opt -xzf nvim-linux64.tar.gz
 ENV PATH=$PATH:/opt/nvim-linux64/bin
+RUN curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
