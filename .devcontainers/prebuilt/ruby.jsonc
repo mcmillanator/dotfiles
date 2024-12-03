@@ -1,7 +1,7 @@
 {
   "name": "Ruby",
-  "image": "mcmillanator/prebuilt-base:ruby-2.6.9",
+  "image": "mcmillanator/prebuilt-base:latest",
   "features": {
-    "ghcr.io/devcontainers/features/node:1": {}
-  }
+    "ghcr.io/devcontainers/features/node:1": {},
+  },
 }
