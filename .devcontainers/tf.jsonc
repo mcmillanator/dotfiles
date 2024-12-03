@@ -1,43 +1,68 @@
 {
   "name": "Terraform",
-  "image": "mcmillanator/prebuilt-tf",
+  "service": "app",
+  //"image": "mcmillanator/prebuilt-tf",
+  "dockerComposeFile": [
+    "${localWorkspaceFolder}/docker-compose.yml",
+    "${localWorkspaceFolder}/.devcontainer/docker-compose.override.yml",
+  ],
   "workspaceMount": "source=${localWorkspaceFolder},target=${localWorkspaceFolder},type=bind,consistency=cached",
   "privileged": true,
   "workspaceFolder": "${localWorkspaceFolder}",
+  "remoteUser": "stan",
+  "containerUser": "stan",
   "mounts": [
     {
+      "source": "${localWorkspaceFolder}",
+      "target": "${localWorkspaceFolder}",
+      "type": "bind",
+      "consistency": "cached",
+    },
+    {
       "source": "${localEnv:HOME}/Documents/Projects/dotfiles",
-      "target": "/home/ubuntu/Documents/Projects/dotfiles",
+      "target": "${localEnv:HOME}/Documents/Projects/dotfiles",
+      "type": "bind",
+      "consistency": "cached",
+    },
+    {
+      "source": "${localEnv:HOME}/.oh-my-zsh/",
+      "target": "${localEnv:HOME}/.oh-my-zsh/",
+      "type": "bind",
+      "consistency": "cached",
+    },
+    {
+      "source": "${localEnv:HOME}/.ssh/",
+      "target": "${localEnv:HOME}/.ssh/",
       "type": "bind",
       "consistency": "cached",
     },
     {
       "source": "${localEnv:HOME}/.aws",
-      "target": "/home/ubuntu/.aws",
+      "target": "${localEnv:HOME}/.aws",
       "type": "bind",
       "consistency": "cached",
     },
-    {
-      "source": "${localEnv:HOME}/.local/share/nvim",
-      "target": "/home/ubuntu/.local/share/nvim",
-      "type": "bind",
-      "consistency": "cached",
-    },
-    {
-      "source": "${localEnv:HOME}/.local/state",
-      "target": "/home/ubuntu/.local/state",
-      "type": "bind",
-      "consistency": "cached",
-    },
-    {
-      "source": "${localEnv:HOME}/.cache/nvim",
-      "target": "/home/ubuntu/.cache/nvim",
-      "type": "bind",
-      "consistency": "cached",
-    },
+    //{
+    //  "source": "${localEnv:HOME}/.local/share/nvim",
+    //  "target": "${localEnv:HOME}/.local/share/nvim",
+    //  "type": "bind",
+    //  "consistency": "cached",
+    //},
+    //{
+    //  "source": "${localEnv:HOME}/.local/state",
+    //  "target": "${localEnv:HOME}/.local/state",
+    //  "type": "bind",
+    //  "consistency": "cached",
+    //},
+    //{
+    //  "source": "${localEnv:HOME}/.cache/nvim",
+    //  "target": "${localEnv:HOME}/.cache/nvim",
+    //  "type": "bind",
+    //  "consistency": "cached",
+    //},
   ],
-  "postCreateCommand": "/usr/bin/bash /home/ubuntu/Documents/Projects/dotfiles/.devcontainers/entrypoint.sh ; npm i -g cdktf-cli@latest",
-  "features": {
-    "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {},
-  },
+  "postCreateCommand": "/usr/bin/bash ${localEnv:HOME}/Documents/Projects/dotfiles/.devcontainers/entrypoint.sh #; npm i -g cdktf-cli@latest",
+  //"features": {
+  //  "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {},
+  //},
 }
