@@ -11,10 +11,6 @@
   "remoteUserHome": "/home/ubuntu",
   "containerUser": "ubuntu",
   "updateRemoteUserUID": true,
-  "overrideFeatureInstallОrder": [
-    "ghcr.io/devcontainers/features/git",
-    "ghcr.io/devcontainers-contrib/features/fzf"
-  ],
   "features": {
     "ghcr.io/devcontainers/features/common-utils:2": {
       "installZsh": true,
@@ -22,11 +18,7 @@
       "installOhMyZsh": true,
       "username": "ubuntu"
     },
-    "ghcr.io/devcontainers/features/git:1": {},
-    // FIXME:
-    // fzf keeps complaining about missing git
-    // InstallOrder has not helped
-    //"ghcr.io/devcontainers-contrib/features/fzf:1": {},
+    "ghcr.io/devcontainers-contrib/features/fzf:1": {},
     "ghcr.io/devcontainers-contrib/features/mackup:1": {},
     "ghcr.io/GeorgOfenbeck/features/lazygit-linuxbinary:1": {},
     "ghcr.io/devcontainers-contrib/features/ripgrep:1": {},
