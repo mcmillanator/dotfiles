@@ -4,6 +4,7 @@ RUN apt-get update && \
 # dependencies for rest.nvim https://github.com/rest-nvim/rest.nvim?tab=readme-ov-file#install
   apt-get install --no-install-recommends -y ca-certificates \
   curl \
+  fd-find \
   gcc \
   git \
   libcurlpp-dev \

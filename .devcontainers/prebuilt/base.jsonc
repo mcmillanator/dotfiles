@@ -23,9 +23,6 @@
     "ghcr.io/GeorgOfenbeck/features/lazygit-linuxbinary:1": {},
     "ghcr.io/devcontainers-contrib/features/ripgrep:1": {},
     "ghcr.io/devcontainers-contrib/features/markdownlint-cli2:1": {},
-    "ghcr.io/devcontainers-contrib/features/apt-get-packages:1": {
-      "packages": "fd-find"
-    }
     //FIXME: shell-history keeps throwing an error about requiring 
     //remoteUserHome to be set although it is set
     //"ghcr.io/stuartleeks/dev-container-features/shell-history:0": {}
