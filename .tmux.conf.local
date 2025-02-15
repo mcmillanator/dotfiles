@@ -39,7 +39,7 @@ set -g status-right "$wg_is_keys_off #{sysstat_cpu} | #{sysstat_mem} | #{sysstat
 if-shell "test -n \"$SSH_CONNECTION\""  'source ~/.tmux.remote.conf'
 # -- navigation ----------------------------------------------------------------
 
-bind-key -n C-w run-shell "bash -x ~/.tmux/scripts/tmux-servers.zsh"
+bind-key S run-shell "bash -x ~/.tmux/scripts/tmux-servers.zsh"
 # if you're running tmux within iTerm2
 #   - and tmux is 1.9 or 1.9a
 #   - and iTerm2 is configured to let option key act as +Esc
