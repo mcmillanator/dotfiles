@@ -54,6 +54,12 @@
       "type": "bind",
       "consistency": "cached",
     },
+    {
+      "source": "${localEnv:TMUX_SOCKET_DIR}",
+      "target": "${localEnv:TMUX_SOCKET_DIR}",
+      "type": "bind",
+      "consistency": "cached",
+    },
   ],
   "features": {},
   "postCreateCommand": "/usr/bin/bash ${localEnv:HOME}/Documents/Projects/dotfiles/.devcontainers/entrypoint.sh",
