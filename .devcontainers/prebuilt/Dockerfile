@@ -1,5 +1,5 @@
 ARG IMAGE=ubuntu:22.04
-FROM ${IMAGE} as base
+FROM ${IMAGE}
 RUN apt-get update && \
 # dependencies for rest.nvim https://github.com/rest-nvim/rest.nvim?tab=readme-ov-file#install
   apt-get install --no-install-recommends -y ca-certificates \
