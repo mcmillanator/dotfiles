@@ -35,24 +35,6 @@
       "type": "bind",
       "consistency": "cached",
     },
-    //{
-    //  "source": "${localEnv:HOME}/.local/share/nvim",
-    //  "target": "${localEnv:HOME}/.local/share/nvim",
-    //  "type": "bind",
-    //  "consistency": "cached",
-    //},
-    //{
-    //  "source": "${localEnv:HOME}/.local/state",
-    //  "target": "${localEnv:HOME}/.local/state",
-    //  "type": "bind",
-    //  "consistency": "cached",
-    //},
-    //{
-    //  "source": "${localEnv:HOME}/.cache/nvim",
-    //  "target": "${localEnv:HOME}/.cache/nvim",
-    //  "type": "bind",
-    //  "consistency": "cached",
-    //},
     {
       "source": "${localEnv:HOME}/.oh-my-zsh/",
       "target": "${localEnv:HOME}/.oh-my-zsh/",
