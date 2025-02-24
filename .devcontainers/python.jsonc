@@ -32,8 +32,9 @@
     {
       "source": "dev_home",
       "target": "/home/${localEnv:USER}",
-      "type": "bind",
+      "type": "volume",
       "consistency": "cached",
+      "external": "true",
     },
     {
       "source": "${localEnv:HOME}/.oh-my-zsh/",
