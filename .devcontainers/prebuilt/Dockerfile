@@ -3,11 +3,15 @@ FROM ${IMAGE}
 RUN apt-get update && \
 # dependencies for rest.nvim https://github.com/rest-nvim/rest.nvim?tab=readme-ov-file#install
   apt-get install --no-install-recommends -y ca-certificates \
+  # needed to compile tmux
+  byacc \
   curl \
   fd-find \
   gcc \
   git \
   libcurlpp-dev \
+  # needed to compile tmux
+  libevent-dev \
   lua5.4 \
   luarocks \
   && \
