@@ -14,6 +14,7 @@ RUN apt-get update && \
   libevent-dev \
   lua5.4 \
   luarocks \
+  make \
   && \
   rm -rf /var/lib/apt/lists/* && \
   luarocks install lua-curl CURL_INCDIR=/usr/include/x86_64-linux-gnu/
