@@ -47,6 +47,12 @@
       "type": "bind",
       "consistency": "cached",
     },
+    {
+      "source": "${localEnv:HOME}/.gnupg/",
+      "target": "${localEnv:HOME}/.gnupg/",
+      "type": "bind",
+      "consistency": "cached",
+    },
   ],
   "features": {},
   "postCreateCommand": "/usr/bin/bash ${localEnv:HOME}/Documents/Projects/dotfiles/.devcontainers/entrypoint.sh",
