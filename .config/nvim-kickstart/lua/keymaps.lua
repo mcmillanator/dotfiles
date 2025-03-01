@@ -117,7 +117,7 @@ end, { desc = "Step into" })
 
 map("n", "<Leader>do", function()
   dap.set_over()
-end, { desc = "Set over" })
+end, { desc = "Step over" })
 
 -- Diagnostic keymaps
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous Diagnostic message" })
