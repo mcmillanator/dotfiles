@@ -6,9 +6,9 @@ local map = vim.keymap.set
 local term = require("nvterm.terminal")
 local term_modes = { "n", "v", "i", "t" }
 --TODO: move to dap config file
---local dap = require 'dap'
+local dap = require("dap")
 -- TODO: move to dapui config file
---local dapui = require 'dapui'
+local dapui = require("dapui")
 local term_float = function()
   term.toggle("float")
 end
