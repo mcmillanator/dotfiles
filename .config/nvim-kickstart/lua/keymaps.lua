@@ -119,6 +119,18 @@ map("n", "<Leader>do", function()
   dap.set_over()
 end, { desc = "Step over" })
 
+map("n", "<Leader>dut", function()
+  dapui.toggle()
+end, { desc = "Toggle dapui" })
+
+map("n", "<Leader>duo", function()
+  dapui.open()
+end, { desc = "Open dapui" })
+
+map("n", "<Leader>duc", function()
+  dapui.close()
+end, { desc = "Close dapui" })
+
 -- Diagnostic keymaps
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous Diagnostic message" })
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next Diagnostic message" })
