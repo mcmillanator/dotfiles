@@ -23,12 +23,8 @@ end
 local wk = require("which-key")
 wk.add({
   { "<leader>c", group = "Code" },
-  { "<leader>d", group = "Document" },
   { "<leader>g", group = "Git" },
-  { "<leader>gc", group = "Commit" },
-  { "<leader>r", group = "Rename" },
   { "<leader>s", group = "Search" },
-  { "<leader>w", group = "Workspace" },
   {
     "<leader>b",
     group = "buffers",
