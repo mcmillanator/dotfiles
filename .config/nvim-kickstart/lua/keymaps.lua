@@ -93,9 +93,6 @@ map('n', '<leader>gsb', '<cmd>Gitsigns toggle_current_line_blame<cr>', { desc = 
 map('n', '<leader>tf', term_float, { noremap = true, silent = true, desc = 'Terminal Floating' })
 map('n', '<leader>th', term_horizontal, { noremap = true, silent = true, desc = 'Terminal Horizontal' })
 map('n', '<leader>tv', term_vertical, { noremap = true, silent = true, desc = 'Terminal Vertical' })
-map(term_modes, '<A-f>', term_float, { noremap = true, silent = true, desc = 'Floating terminal' })
-map(term_modes, '<A-h>', term_horizontal, { noremap = true, silent = true, desc = 'Horizontal terminal' })
-map(term_modes, '<A-v>', term_vertical, { noremap = true, silent = true, desc = 'Vertical terminal' })
 -- TODO: Move to dap config file
 -- nvim-dap
 map('n', '<Leader>dt', function()
