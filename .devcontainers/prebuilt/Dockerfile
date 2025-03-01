@@ -4,6 +4,7 @@ RUN apt-get update && \
   apt-get install --no-install-recommends -y ca-certificates \
   # needed to compile tmux
   byacc \
+  cmake \
   curl \
   fd-find \
   gcc \
@@ -14,6 +15,7 @@ RUN apt-get update && \
   lua5.4 \
   luarocks \
   make \
+  pinentry-tty \
   && \
   rm -rf /var/lib/apt/lists/* && \
   luarocks install lua-curl CURL_INCDIR=/usr/include/x86_64-linux-gnu/
