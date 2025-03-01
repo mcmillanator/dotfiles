@@ -4,7 +4,6 @@ vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 -- Variables
 local map = vim.keymap.set
 local term = require("nvterm.terminal")
-local term_modes = { "n", "v", "i", "t" }
 --TODO: move to dap config file
 local dap = require("dap")
 -- TODO: move to dapui config file
