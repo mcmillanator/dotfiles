@@ -1,4 +1,5 @@
 #!/usr/bin/zsh
+echo "Running entrypoint as user: ${USER}"
 mackup_dir=~/Documents/Projects/dotfiles/.mackup
 mackup_conf=~/Documents/Projects/dotfiles/.mackup.cfg
 if [ ! -d ~/.mackup ]; then
