@@ -88,3 +88,15 @@ dcprebuild()
   dcbuild prebuilt/python || true
   dcbuild prebuilt/ruby || true
 }
+
+dcrebuild()
+{
+for i in $(docker ps -a | grep -i ${PWD##*/} | awk '{print $1}')
+  docker stop $i ; docker rm $i ; dcbuild $1 && dcup $1 && dczsh $1
+}
+
+dcdown()
+{
+for i in $(docker ps -a | grep -i ${PWD##*/} | awk '{print $1}')
+  docker stop $i ; docker rm $i
+}
