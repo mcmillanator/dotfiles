@@ -62,7 +62,7 @@
     }
   ],
   "features": {
-    "ghcr.io/mcmillanator/create-remote-user:1": {
+    "ghcr.io/mcmillanator/devcontainers-features/create-remote-user:latest": {
       "version": "latest",
       "REMOTE_GID": "1000",
       "REMOTE_GROUP": "stan",
@@ -71,7 +71,5 @@
       "REMOTE_UID": "1000"
     }
   },
-  "postStartCommand": "/usr/bin/bash ${localEnv:HOME}/Documents/Projects/dotfiles/.devcontainers/entrypoint.sh",
-  //  "postCreateCommand": "/usr/bin/bash ${localEnv:HOME}/Documents/Projects/dotfiles/.devcontainers/switch_user.sh",
-  "onCreateCommand": "/usr/bin/bash ${localEnv:HOME}/Documents/Projects/dotfiles/.devcontainers/dev_user.sh"
+  "postCreateCommand": "/usr/bin/bash ${localEnv:HOME}/Documents/Projects/dotfiles/.devcontainers/entrypoint.sh"
 }
