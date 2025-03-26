@@ -70,7 +70,7 @@ dcbuild ()
   if [ -z "$1" ]; then
     devcontainer --workspace-folder . --config .devcontainer/devcontainer.json build
   else
-    devcontainer --workspace-folder . --config $HOME/.devcontainers/$1.jsonc --image-name="mcmillanator/${1:gs/\//-}:latest" build
+    devcontainer --workspace-folder . --config $HOME/.devcontainers/$1.jsonc --image-name="mcmillanator/${PWD##*/}:latest" build
   fi
 }
 
