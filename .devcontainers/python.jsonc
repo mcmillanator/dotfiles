@@ -1,66 +1,67 @@
 {
   "name": "Python 3.12 Devcontainer",
-  "dockerComposeFile": [
-    "${localWorkspaceFolder}/docker-compose.yml",
-    "${localWorkspaceFolder}/.devcontainer/docker-compose.override.yml",
-  ],
+  "image": "mcmillanator/prebuilt-python",
   "service": "app",
   "overrideCommand": true,
   "workspaceMount": "source=${localWorkspaceFolder},target=${localWorkspaceFolder},type=bind,consistency=cached",
   "workspaceFolder": "${localWorkspaceFolder}",
   "remoteUser": "stan",
   "containerUser": "stan",
+  "updateRemoteUserUID": true,
   "mounts": [
-    {
-      "source": "${localWorkspaceFolder}",
-      "target": "${localWorkspaceFolder}",
-      "type": "bind",
-      "consistency": "cached",
-    },
     {
       "source": "${localEnv:HOME}/Documents/Projects/dotfiles",
       "target": "${localEnv:HOME}/Documents/Projects/dotfiles",
       "type": "bind",
-      "consistency": "cached",
+      "consistency": "cached"
     },
     {
       "source": "${localEnv:HOME}/.aws",
       "target": "${localEnv:HOME}/.aws",
       "type": "bind",
-      "consistency": "cached",
+      "consistency": "cached"
     },
     {
       "source": "dev_home",
       "target": "/home/${localEnv:USER}",
       "type": "volume",
       "consistency": "cached",
-      "external": "true",
+      "external": "true"
     },
     {
       "source": "${localEnv:HOME}/.oh-my-zsh/",
       "target": "${localEnv:HOME}/.oh-my-zsh/",
       "type": "bind",
-      "consistency": "cached",
+      "consistency": "cached"
     },
     {
       "source": "${localEnv:HOME}/.ssh/",
       "target": "${localEnv:HOME}/.ssh/",
       "type": "bind",
-      "consistency": "cached",
+      "consistency": "cached"
     },
     {
       "source": "${localEnv:HOME}/.gnupg/",
       "target": "${localEnv:HOME}/.gnupg/",
       "type": "bind",
-      "consistency": "cached",
+      "consistency": "cached"
     },
     {
       "source": "${localEnv:TMUX_SOCKET_DIR}",
       "target": "${localEnv:TMUX_SOCKET_DIR}",
       "type": "bind",
-      "consistency": "cached",
-    },
+      "consistency": "cached"
+    }
   ],
-  "features": {},
   "postCreateCommand": "/usr/bin/bash ${localEnv:HOME}/Documents/Projects/dotfiles/.devcontainers/entrypoint.sh",
+  "features": {
+    "ghcr.io/mcmillanator/devcontainers-features/create-remote-user:latest": {
+      "version": "latest",
+      "REMOTE_GID": "1000",
+      "REMOTE_GROUP": "stan",
+      "REMOTE_HOME": "/home/stan",
+      "REMOTE_SHELL": "/usr/bin/zsh",
+      "REMOTE_UID": "1000"
+    }
+  }
 }
