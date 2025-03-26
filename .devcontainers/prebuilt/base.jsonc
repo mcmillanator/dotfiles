@@ -12,6 +12,14 @@
   "containerUser": "ubuntu",
   "updateRemoteUserUID": true,
   "features": {
+    "ghcr.io/mcmillanator/devcontainers-features/create-remote-user:latest": {
+      "version": "latest",
+      "REMOTE_GID": "1000",
+      "REMOTE_GROUP": "stan",
+      "REMOTE_HOME": "/home/stan",
+      "REMOTE_SHELL": "/usr/bin/zsh",
+      "REMOTE_UID": "1000"
+    },
     "ghcr.io/devcontainers/features/common-utils:2": {
       "installZsh": true,
       "configureZshAsDefaultShell": true,
