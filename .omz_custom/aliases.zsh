@@ -70,7 +70,7 @@ dcbuild ()
   if [ -z "$1" ]; then
     devcontainer --workspace-folder . --config .devcontainer/devcontainer.json build
   else
-    devcontainer --workspace-folder . --config $HOME/.devcontainers/$1.jsonc --image-name="mcmillanator/${PWD##*/}:latest" build
+    devcontainer --workspace-folder . --config $HOME/.devcontainers/$1.jsonc --image-name="mcmillanator/$(name_from_pwd):latest" build
   fi
 }
 
@@ -91,12 +91,17 @@ dcprebuild()
 
 dcrebuild()
 {
-for i in $(docker ps -a | grep -i ${PWD##*/} | awk '{print $1}')
+  for i in $(docker ps -a | grep -i $(name_from_pwd) | awk '{print $1}')
   docker stop $i ; docker rm $i ; dcbuild $1 && dcup $1 && dczsh $1
 }
 
 dcdown()
 {
-for i in $(docker ps -a | grep -i ${PWD##*/} | awk '{print $1}')
+  for i in $(docker ps -a | grep -i $(name_from_pwd) | awk '{print $1}')
   docker stop $i ; docker rm $i
+}
+
+name_from_pwd()
+{
+  echo ${(L)PWD##*/}
 }
