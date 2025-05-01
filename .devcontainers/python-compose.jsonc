@@ -62,6 +62,7 @@
     }
   ],
   "features": {
+    "ghcr.io/devcontainers/features/node:1": {},
     "ghcr.io/mcmillanator/devcontainers-features/create-remote-user:latest": {
       "version": "latest",
       "REMOTE_GID": "1000",
