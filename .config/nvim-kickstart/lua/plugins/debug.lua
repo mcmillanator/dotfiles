@@ -20,12 +20,12 @@ return {
     -- Installs the debug adapters for you
     'williamboman/mason.nvim',
     'jay-babu/mason-nvim-dap.nvim',
+
+    -- Add your own debuggers here
+    -- 'leoluz/nvim-dap-go',
     -- TODO: find out if I still need to declare these manually
     'mfussenegger/nvim-dap-python',
     -- "suketa/nvim-dap-ruby",
-
-    -- Add your own debuggers here
-    'leoluz/nvim-dap-go',
   },
   keys = {
     -- Basic debugging keymaps, feel free to change to your liking!
@@ -105,6 +105,91 @@ return {
     local dap = require 'dap'
     local dapui = require 'dapui'
 
+    require('dap-python').setup 'python3'
+    -- Python DAP configurations
+    dap.configurations.python = {
+      {
+        type = 'python',
+        request = 'launch',
+        name = 'Pytest',
+        module = 'pytest',
+        pythonPath = function()
+          return 'python3'
+        end,
+        console = 'integratedTerminal',
+      },
+      {
+        type = 'python',
+        request = 'launch',
+        name = 'Python file',
+        program = '${file}', -- Debug the current file
+        pythonPath = function()
+          return 'python3'
+        end,
+        console = 'integratedTerminal',
+      },
+      {
+        type = 'python',
+        request = 'launch',
+        name = 'Pytest file',
+        module = 'pytest',
+        args = { '${file}', '-v' }, -- Debug the current test file
+        pythonPath = function()
+          return 'python3'
+        end,
+        console = 'integratedTerminal',
+      },
+
+      {
+        type = 'python',
+        request = 'launch',
+        name = 'Debug single pytest',
+        module = 'pytest',
+        args = function()
+          local file = vim.fn.expand '%:p' -- Full path to current file
+          local test_name = ''
+
+          -- Search backward for a test function or method
+          local line = vim.fn.search('^def test_w+', 'bcnW')
+          if line > 0 then
+            local line_text = vim.fn.getline(line)
+            test_name = line_text:match 'def (test_%w+)'
+          else
+            -- Check for class-based test (e.g., class TestMyClass)
+            local class_line = vim.fn.search('^class Testw+', 'bcnW')
+            if class_line > 0 then
+              local class_text = vim.fn.getline(class_line)
+              local class_name = class_text:match 'class (Test%w+)'
+              -- Search forward from class for a test method
+              local method_line = vim.fn.search('^    def test_w+', 'cnW', vim.fn.line '$')
+              if method_line > 0 then
+                local method_text = vim.fn.getline(method_line)
+                local method_name = method_text:match 'def (test_%w+)'
+                if method_name then
+                  test_name = class_name .. '::' .. method_name
+                end
+              end
+            end
+          end
+
+          -- Fallback to user input if no test is found
+          if test_name == '' or test_name == nil then
+            test_name = vim.fn.input 'Test name (e.g., test_function or TestClass::test_method): '
+          end
+
+          -- If still empty, run all tests in file
+          if test_name == '' then
+            return { file, '-v' }
+          end
+          return { file .. '::' .. test_name, '-v' }
+        end,
+        pythonPath = function()
+          return 'python' -- Or '/path/to/your/poetry/env/bin/python'
+        end,
+        console = 'integratedTerminal',
+      },
+    }
+    require('mason').setup()
     require('mason-nvim-dap').setup {
       -- Makes a best effort to setup the various debuggers with
       -- reasonable debug configurations
@@ -119,6 +204,11 @@ return {
       ensure_installed = {
         -- Update this to ensure that you have the debuggers for the langs you want
         'delve',
+        'debugpy',
+        'flake8',
+        'shellcheck',
+        'shfmt',
+        'stylua',
       },
     }
 
@@ -159,14 +249,20 @@ return {
     dap.listeners.after.event_initialized['dapui_config'] = dapui.open
     dap.listeners.before.event_terminated['dapui_config'] = dapui.close
     dap.listeners.before.event_exited['dapui_config'] = dapui.close
+    -- Add a listener to log when the debugger stops
+    dap.listeners.after.event_stopped['dapui_config'] = function()
+      print 'Debugger stopped'
+      dapui.open()
+    end
+    dap.set_log_level 'TRACE'
 
     -- Install golang specific config
-    require('dap-go').setup {
-      delve = {
-        -- On Windows delve must be run attached or it crashes.
-        -- See https://github.com/leoluz/nvim-dap-go/blob/main/README.md#configuring
-        detached = vim.fn.has 'win32' == 0,
-      },
-    }
+    -- require('dap-go').setup {
+    --   delve = {
+    --     -- On Windows delve must be run attached or it crashes.
+    --     -- See https://github.com/leoluz/nvim-dap-go/blob/main/README.md#configuring
+    --     detached = vim.fn.has 'win32' == 0,
+    --   },
+    -- }
   end,
 }
