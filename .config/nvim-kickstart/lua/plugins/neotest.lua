@@ -11,6 +11,12 @@ return {
     'olimorris/neotest-rspec',
   },
   config = function()
+    vim.keymap.set('n', '<leader>d]', function()
+      require('neotest').jump.next { status = 'failed ' }
+    end, { desc = 'Next failed test' })
+    vim.keymap.set('n', '<leader>d[', function()
+      require('neotest').jump.prev { status = 'failed ' }
+    end, { desc = 'Previous failed test' })
     require('neotest').setup {
       adapters = {
         require 'neotest-python' {
