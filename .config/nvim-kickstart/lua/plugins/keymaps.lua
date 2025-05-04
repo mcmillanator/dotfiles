@@ -37,8 +37,8 @@ return {
   map('n', '<leader>gst', '<cmd>Telescope git_status<cr>', { desc = 'git status' }),
   map('n', '<leader>gS', '<cmd>Telescope git_status<cr>', { desc = 'git status' }),
   -- Search
-  map('n', '<leader>sc', '<cmd>Telescope commands<cr>', { desc = 'Commands' }),
-  map('n', '<leader>sk', '<cmd>Telescope keymaps<cr>', { desc = 'Commands' }),
+  map('n', '<leader>sc', '<cmd>Telescope commands<cr>', { desc = 'Search Commands' }),
+  map('n', '<leader>sk', '<cmd>Telescope keymaps<cr>', { desc = 'Search Keymaps' }),
   -- Find
   --
   map('n', '<leader>fp', function()
