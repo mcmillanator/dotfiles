@@ -3,6 +3,8 @@
 -- Warning: tree-sitter and nvim-treesitter are an experimental feature of nightly versions of Neovim. Please consider the experience with this plug-in as experimental until tree-sitter support in Neovim is stable! We recommend using the nightly builds of Neovim or the latest stable version.
 return {
   'nvim-treesitter/nvim-treesitter-textobjects',
+  event = 'VeryLazy',
+  enabled = true,
   lazy = true,
   after = 'nvim-treesitter',
   config = function()
