@@ -21,11 +21,5 @@ return {
     vim.keymap.set('n', '[e', function()
       require('todo-comments').jump_prev { keywords = { 'ERROR', 'WARNING' } }
     end, { desc = 'Next error/warning todo comment' })
-    vim.keymap.set('n', ']f', function()
-      require('todo-comments').jump_next { keywords = { 'FIX' } }
-    end, { desc = 'Next fix todo comment' })
-    vim.keymap.set('n', '[f', function()
-      require('todo-comments').jump_prev { keywords = { 'FIX' } }
-    end, { desc = 'Next fix todo comment' })
   end,
 }
