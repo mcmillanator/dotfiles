@@ -31,32 +31,6 @@ return {
   map('n', '<leader>gf', '<cmd>Neotree git_status toggle reveal<cr>', { desc = 'Reveal in git explorer' }),
   map('n', '<C-n>', '<cmd>Neotree toggle<cr>', { desc = 'Neotree toggle' }),
   map('n', '<C-f>', '<cmd>Neotree reveal<cr>', { desc = 'Neotree reveal' }),
-  -- Telescope keymaps
-  map('n', '<leader>tn', '<cmd>Telescope noice<cr>', { desc = 'Show notifications in Telescope' }),
-  map('n', '<leader>tk', '<cmd>Telescope keymaps<cr>', { desc = 'Telescope keymaps' }),
-  map('n', '<leader>gst', '<cmd>Telescope git_status<cr>', { desc = 'git status' }),
-  map('n', '<leader>gS', '<cmd>Telescope git_status<cr>', { desc = 'git status' }),
-  -- Search
-  map('n', '<leader>sc', '<cmd>Telescope commands<cr>', { desc = 'Search Commands' }),
-  map('n', '<leader>sk', '<cmd>Telescope keymaps<cr>', { desc = 'Search Keymaps' }),
-  -- Find
-  --
-  map('n', '<leader>fp', function()
-    telescope.find_files { cwd = require('lazy.core.config').options.root }
-  end, { desc = 'Find Plugin File' }),
-
-  map('n', '<leader>fa', function()
-    telescope.find_files { hidden = true, no_ignore = true, use_git_root = true }
-  end, { desc = 'Find All Files (git root)' }),
-
-  map('n', '<leader>ff', function()
-    telescope.find_files { hidden = true, use_git_root = true }
-  end, { desc = 'Find Files (git root)' }),
-
-  map('n', '<C-p>', function()
-    telescope.find_files { hidden = true, use_git_root = true }
-  end, { desc = 'Find Files (git root)' }),
-
   -- Gitsigns keymaps
   map('n', '<leader>ga', '<cmd>Gitsigns stage_hunk<cr>', { desc = 'git add' }),
   map('n', '<leader>gd', '<cmd>Gitsigns diffthis<cr>', { desc = 'git dff' }),
