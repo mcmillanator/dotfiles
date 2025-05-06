@@ -5,6 +5,7 @@ return { -- Useful plugin to show you pending keybinds.
     spec = {
       -- Add labels to existing keycombos
       { '<leader>b', group = 'Buffers' },
+      { 'gl', group = 'LSP' },
       { '<leader>c', group = 'Change' },
       { '<leader>d', group = 'Debugger' },
       { '<leader>g', group = 'Git', mode = { 'n', 'v' }, desc = 'Git' },
