@@ -3,10 +3,11 @@ return {
   'folke/persistence.nvim',
   event = 'BufReadPre', -- this will only start session saving when an actual file was opened
   opts = {
-    -- Close Neo-tree before saving a session
+    -- Run some commands before saving the session
     vim.api.nvim_create_autocmd('User', {
       pattern = 'PersistenceSavePre',
       callback = function()
+        -- Close Neo-tree before saving a session
         vim.cmd 'Neotree close'
       end,
       desc = 'Close Neo-tree before saving session',
