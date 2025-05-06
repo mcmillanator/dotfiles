@@ -1,27 +1,6 @@
 -- Variables
 local map = vim.keymap.set
-local telescope = require 'telescope.builtin'
 return {
-
-  -- Which key prefix registration
-  -- local wk = require 'which-key'
-  -- wk.add {
-  --   { '<leader>c', group = 'Code' },
-  --   { '<leader>g', group = 'Git' },
-  --   { '<leader>s', group = 'Search' },
-  --   {
-  --     '<leader>b',
-  --     group = 'buffers',
-  --     expand = function()
-  --       return require('which-key.extras').expand.buf()
-  --     end,
-  --   },
-  -- }
-  -- wk.add {
-  --   { '<leader>t', group = 'Telescope/Terminal' },
-  --   { '<leader>gs', group = 'Gitsigns' },
-  --   { '<leader>d', group = 'Debugger' },
-  -- }
 
   map('n', '<leader>l', '<cmd>Lazy<cr>', { desc = 'Open Lazy UI' }),
   -- Define conficting keymaps
@@ -40,21 +19,6 @@ return {
   map('n', '<leader>gss', '<cmd>Gitsigns toggle_signs<cr>', { desc = 'Toggle Signs' }),
   map('n', '<leader>gsh', '<cmd>Gitsigns toggle_linehl<cr>', { desc = 'Toggle Line Highlight' }),
   map('n', '<leader>gsb', '<cmd>Gitsigns toggle_current_line_blame<cr>', { desc = 'Toggle Current Line Blame' }),
-  -- FIXME:
-  -- nvterm keymaps
-  -- local term = require 'nvterm.terminal'
-  -- local term_float = function()
-  --   term.toggle 'float'
-  -- end
-  -- local term_vertical = function()
-  --   term.toggle 'vertical'
-  -- end
-  -- local term_horizontal = function()
-  --   term.toggle 'horizontal'
-  -- end
-  -- map('n', '<leader>tf', term_float, { noremap = true, silent = true, desc = 'Terminal Floating' })
-  -- map('n', '<leader>th', term_horizontal, { noremap = true, silent = true, desc = 'Terminal Horizontal' })
-  -- map('n', '<leader>tv', term_vertical, { noremap = true, silent = true, desc = 'Terminal Vertical' })
 
   -- Diagnostic keymaps
   vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous Diagnostic message' }),
