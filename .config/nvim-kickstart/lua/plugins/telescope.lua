@@ -85,8 +85,6 @@ return { -- Fuzzy Finder (files, lsp, etc)
     -- Telescope keymaps
     map('n', '<leader>tn', '<cmd>Telescope noice<cr>', { desc = 'Show notifications in Telescope' })
     map('n', '<leader>tk', '<cmd>Telescope keymaps<cr>', { desc = 'Telescope keymaps' })
-    map('n', '<leader>gst', '<cmd>Telescope git_status<cr>', { desc = 'git status' })
-    map('n', '<leader>gS', '<cmd>Telescope git_status<cr>', { desc = 'git status' })
     -- Search
     map('n', '<leader>sc', '<cmd>Telescope commands<cr>', { desc = 'Search Commands' })
     map('n', '<leader>sk', '<cmd>Telescope keymaps<cr>', { desc = 'Search Keymaps' })
