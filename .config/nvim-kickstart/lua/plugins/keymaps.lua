@@ -26,7 +26,6 @@ return {
   map('n', '<leader>l', '<cmd>Lazy<cr>', { desc = 'Open Lazy UI' }),
   -- Define conficting keymaps
   -- Neotree
-  map('n', '<leader>n', '<cmd>Neotree toggle<cr>', { desc = 'Neotree toggle' }),
   map('n', '<leader>ge', '<cmd>Neotree git_status toggle<cr>', { desc = 'Git explorer' }),
   map('n', '<leader>gf', '<cmd>Neotree git_status toggle reveal<cr>', { desc = 'Reveal in git explorer' }),
   map('n', '<C-n>', '<cmd>Neotree toggle<cr>', { desc = 'Neotree toggle' }),
