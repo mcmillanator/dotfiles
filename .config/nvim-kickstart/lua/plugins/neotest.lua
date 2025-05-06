@@ -16,19 +16,19 @@ return {
 
     map('n', '<leader>df', function()
       neotest.run.run { vim.fn.expand '%', strategy = 'dap' }
-    end, { desc = '[D]ebug [F]ile' })
+    end, { desc = 'Debug File' })
 
     map('n', '<leader>dn', function()
       neotest.run.run { strategy = 'dap' }
-    end, { desc = '[D]ebug [N]earest' })
+    end, { desc = 'Debug Nearest' })
 
     map('n', '<leader>nr', function()
       neotest.run.run(vim.fn.expand '%')
-    end, { desc = '[N]eotest [R]un' })
+    end, { desc = 'Neotest Run' })
 
     map('n', '<leader>nn', function()
       neotest.run.run()
-    end, { desc = '[N]eotest Run [N]earest' })
+    end, { desc = 'Neotest Run Nearest' })
 
     map('n', '<leader>n]', function()
       neotest.jump.next { status = 'failed ' }
@@ -40,35 +40,35 @@ return {
 
     map('n', '<leader>nl', function()
       neotest.run.run_last()
-    end, { desc = '[N]eotest Run [L]ast' })
+    end, { desc = 'Neotest Run Last' })
 
     map('n', '<leader>dl', function()
       neotest.run.run_last { strategy = 'dap' }
-    end, { desc = '[D]ebug [L]ast' })
+    end, { desc = 'Debug Last' })
 
     map('n', '<leader>nS', function()
       neotest.run.stop()
-    end, { desc = '[N]eotest [S]top' })
+    end, { desc = 'Neotest Stop' })
 
     map('n', '<leader>ns', function()
       neotest.run.status()
-    end, { desc = '[N]eotest [s]tatus' })
+    end, { desc = 'Neotest status' })
 
     map('n', '<leader>nt', function()
       neotest.summary.toggle()
-    end, { desc = '[N]eotest Summary [T]oggle' })
+    end, { desc = 'Neotest Summary Toggle' })
 
     map('n', '<leader>nwn', function()
       neotest.watch.toggle()
-    end, { desc = '[N]eotest [W]atch [N]earest' })
+    end, { desc = 'Neotest Watch Nearest' })
 
     map('n', '<leader>nwf', function()
       neotest.watch.toggle(vim.fn.expand '%')
-    end, { desc = '[N]eotest [W]atch [F]ile' })
+    end, { desc = 'Neotest Watch File' })
 
     map('n', '<leader>nws', function()
       neotest.watch.stop()
-    end, { desc = '[N]eotest [W]atch [S]top' })
+    end, { desc = 'Neotest Watch Stop' })
 
     neotest.setup {
       adapters = {
