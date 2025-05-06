@@ -6,6 +6,7 @@ return { -- Useful plugin to show you pending keybinds.
       -- width = 10,
       height = { min = 5, max = 1000 },
     },
+    sort = { 'alphanum' },
     -- delay between pressing a key and opening which-key (milliseconds)
     -- this setting is independent of vim.opt.timeoutlen
     delay = 0,
