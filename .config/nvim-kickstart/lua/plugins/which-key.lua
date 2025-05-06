@@ -2,6 +2,18 @@ return { -- Useful plugin to show you pending keybinds.
   'folke/which-key.nvim',
   event = 'VimEnter', -- Sets the loading event to 'VimEnter'
   opts = {
+    spec = {
+      -- Add labels to existing keycombos
+      { '<leader>b', group = 'Buffers' },
+      { '<leader>c', group = 'Change' },
+      { '<leader>d', group = 'Debugger' },
+      { '<leader>g', group = 'Git', mode = { 'n', 'v' }, desc = 'Git' },
+      { '<leader>gh', group = 'Git Hunk', mode = { 'n', 'v' }, desc = 'Git Hunk' },
+      { '<leader>gs', group = 'Gitsigns' },
+      { '<leader>s', group = 'Search' },
+      { '<leader>t', group = 'Toggle' },
+      { '<leader>w', proxy = '<c-w>', group = 'windows', desc = 'Windows' }, -- proxy to window mappings
+    },
     win = {
       -- width = 10,
       height = { min = 5, max = 1000 },
@@ -45,13 +57,6 @@ return { -- Useful plugin to show you pending keybinds.
         F11 = '<F11>',
         F12 = '<F12>',
       },
-    },
-
-    -- Document existing key chains
-    spec = {
-      { '<leader>s', group = 'Search' },
-      { '<leader>t', group = 'Toggle' },
-      { '<leader>h', group = 'Git Hunk', mode = { 'n', 'v' } },
     },
   },
 }
