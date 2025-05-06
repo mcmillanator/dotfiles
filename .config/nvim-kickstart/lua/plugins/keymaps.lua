@@ -4,12 +4,6 @@ return {
 
   -- Open Layz UI
   map('n', '<leader>ll', '<cmd>Lazy<cr>', { desc = 'Open Lazy UI' }),
-  -- Define conficting keymaps
-  -- Neotree
-  map('n', '<leader>ge', '<cmd>Neotree git_status toggle<cr>', { desc = 'Git explorer' }),
-  map('n', '<leader>gf', '<cmd>Neotree git_status toggle reveal<cr>', { desc = 'Reveal in git explorer' }),
-  map('n', '<C-n>', '<cmd>Neotree toggle<cr>', { desc = 'Neotree toggle' }),
-  map('n', '<C-f>', '<cmd>Neotree reveal<cr>', { desc = 'Neotree reveal' }),
 
   -- Diagnostic keymaps
   vim.keymap.set('n', '[d', function()
