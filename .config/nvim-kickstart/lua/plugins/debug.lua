@@ -65,7 +65,7 @@ return {
       desc = 'Debug: Toggle Breakpoint',
     },
     {
-      '<leader>db',
+      '<leader>dt',
       function()
         require('dap').toggle_breakpoint()
       end,
@@ -80,7 +80,7 @@ return {
     },
     -- Toggle to see last session result. Without this, you can't see session output in case of unhandled exception.
     {
-      '<leader>dt',
+      '<leader>dr',
       function()
         require('dapui').toggle()
       end,
