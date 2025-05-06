@@ -2,7 +2,8 @@
 local map = vim.keymap.set
 return {
 
-  map('n', '<leader>l', '<cmd>Lazy<cr>', { desc = 'Open Lazy UI' }),
+  -- Open Layz UI
+  map('n', '<leader>ll', '<cmd>Lazy<cr>', { desc = 'Open Lazy UI' }),
   -- Define conficting keymaps
   -- Neotree
   map('n', '<leader>ge', '<cmd>Neotree git_status toggle<cr>', { desc = 'Git explorer' }),
