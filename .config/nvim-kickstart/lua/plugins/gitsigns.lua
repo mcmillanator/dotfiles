@@ -15,6 +15,17 @@ return {
       },
       on_attach = function(bufnr)
         local gitsigns = require 'gitsigns'
+        local map = vim.keymap.set
+        -- Gitsigns keymaps
+        map('n', '<leader>ga', '<cmd>Gitsigns stage_hunk<cr>', { desc = 'git add' })
+        map('n', '<leader>gd', '<cmd>Gitsigns diffthis<cr>', { desc = 'git dff' })
+        map('n', '<leader>gu', '<cmd>Gitsigns undo_stage_hunk<cr>', { desc = 'git unstage' })
+        map('n', '<leader>gsd', '<cmd>Gitsigns toggle_deleted<cr>', { desc = 'Toggle Deleted' })
+        map('n', '<leader>gsw', '<cmd>Gitsigns toggle_word_diff<cr>', { desc = 'Toggle Word Diff' })
+        map('n', '<leader>gsn', '<cmd>Gitsigns toggle_numhl<cr>', { desc = 'Toggle Num Hightlight' })
+        map('n', '<leader>gss', '<cmd>Gitsigns toggle_signs<cr>', { desc = 'Toggle Signs' })
+        map('n', '<leader>gsh', '<cmd>Gitsigns toggle_linehl<cr>', { desc = 'Toggle Line Highlight' })
+        map('n', '<leader>gsb', '<cmd>Gitsigns toggle_current_line_blame<cr>', { desc = 'Toggle Current Line Blame' })
 
         local function map(mode, l, r, opts)
           opts = opts or {}
