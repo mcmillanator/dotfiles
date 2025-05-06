@@ -9,6 +9,8 @@ return {
       callback = function()
         -- Close Neo-tree before saving a session
         vim.cmd 'Neotree close'
+        -- Close neotest before saving a session
+        require('neotest').summary.close()
       end,
       desc = 'Close Neo-tree before saving session',
     }),
