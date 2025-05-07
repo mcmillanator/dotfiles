@@ -19,6 +19,15 @@ return {
         -- Gitsigns keymaps
         map('n', '<leader>ga', '<cmd>Gitsigns stage_hunk<cr>', { desc = 'git add' })
         map('n', '<leader>gd', '<cmd>Gitsigns diffthis<cr>', { desc = 'git dff' })
+
+        map('n', '<leader>grh', function()
+          require('gitsigns').reset_hunk()
+        end, { desc = 'git reset hunk' })
+
+        map('n', '<leader>grb', function()
+          require('gitsigns').reset_buffer()
+        end, { desc = 'git reset buffer' })
+
         map('n', '<leader>gu', '<cmd>Gitsigns undo_stage_hunk<cr>', { desc = 'git unstage' })
         map('n', '<leader>gsd', '<cmd>Gitsigns toggle_deleted<cr>', { desc = 'Toggle Deleted' })
         map('n', '<leader>gsw', '<cmd>Gitsigns toggle_word_diff<cr>', { desc = 'Toggle Word Diff' })
