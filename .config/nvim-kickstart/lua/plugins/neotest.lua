@@ -55,7 +55,7 @@ return {
     end, { desc = 'Neotest Stop' })
 
     map('n', '<leader>ns', function()
-      neotest.run.status()
+      neotest.output_panel.toggle()
     end, { desc = 'Neotest status' })
 
     map('n', '<leader>nt', function()
