@@ -22,6 +22,10 @@ return {
       neotest.run.run { strategy = 'dap' }
     end, { desc = 'Debug Nearest' })
 
+    map('n', '<leader>no', function()
+      neotest.output_panel.toggle()
+    end, { desc = 'Neotest Output Panel' })
+
     map('n', '<leader>nr', function()
       neotest.run.run(vim.fn.expand '%')
     end, { desc = 'Neotest Run' })
