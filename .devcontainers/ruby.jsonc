@@ -17,50 +17,50 @@
       "source": "${localEnv:HOME}/Documents/Projects/dotfiles",
       "target": "/home/ubuntu/Documents/Projects/dotfiles",
       "type": "bind",
-      "consistency": "cached",
+      "consistency": "cached"
     },
     {
       "source": "${localEnv:HOME}/.aws",
       "target": "/home/ubuntu/.aws",
       "type": "bind",
-      "consistency": "cached",
+      "consistency": "cached"
     },
     {
       "source": "${localEnv:HOME}/.local/share/nvim",
       "target": "/home/ubuntu/.local/share/nvim",
       "type": "bind",
-      "consistency": "cached",
+      "consistency": "cached"
     },
     {
       "source": "${localEnv:HOME}/.local/state",
       "target": "/home/ubuntu/.local/state",
       "type": "bind",
-      "consistency": "cached",
+      "consistency": "cached"
     },
     {
       "source": "${localEnv:HOME}/.cache/nvim",
       "target": "/home/ubuntu/.cache/nvim",
       "type": "bind",
-      "consistency": "cached",
+      "consistency": "cached"
     },
     {
       "source": "${localEnv:HOME}/.local/share/nvim-kickstart",
       "target": "/home/ubuntu/.local/share/nvim-kickstart",
       "type": "bind",
-      "consistency": "cached",
+      "consistency": "cached"
     },
     {
       "source": "${localEnv:HOME}/.local/state/nvim-kickstart",
       "target": "/home/ubuntu/.local/state/nvim-kickstart",
       "type": "bind",
-      "consistency": "cached",
+      "consistency": "cached"
     },
     {
       "source": "${localEnv:HOME}/.cache/nvim-kickstart",
       "target": "/home/ubuntu/.cache/nvim-kickstart",
       "type": "bind",
-      "consistency": "cached",
-    },
+      "consistency": "cached"
+    }
   ],
-  "postCreateCommand": "/bin/bash /home/ubuntu/Documents/Projects/dotfiles/.devcontainers/entrypoint.sh",
+  "postCreateCommand": "/bin/bash /home/ubuntu/Documents/Projects/dotfiles/.devcontainers/entrypoint.sh"
 }
