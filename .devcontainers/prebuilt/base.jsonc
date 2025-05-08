@@ -33,5 +33,7 @@
     "ghcr.io/GeorgOfenbeck/features/lazygit-linuxbinary:1": {},
     "ghcr.io/devcontainers-contrib/features/ripgrep:1": {},
     "ghcr.io/devcontainers-contrib/features/markdownlint-cli2:1": {},
+    "ghcr.io/ChristopherMacGown/devcontainer-features/mcfly:1": {},
+    "ghcr.io/ChristopherMacGown/devcontainer-features/direnv:1": {},
   }
 }
