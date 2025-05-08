@@ -19,3 +19,17 @@ export TERM=xterm-256color
 
 export TMUX_PLUGIN_MANAGER_PATH=~/.tmux/plugins/tpm
 export TMUX_SOCKET_DIR=/tmp/tmux-$(id -u)/
+
+# init mcfly https://github.com/cantino/mcfly
+command -v mcfly 2>&1 > /dev/null
+if [ $? -eq 0 ]
+then
+  source <(mcfly init zsh)
+fi
+
+# init direnv https://github.com/direnv/direnv?tab=readme-ov-file
+command -v direnv 2>&1 > /dev/null
+if [ $? -eq 0 ]
+then
+  eval "$(direnv hook zsh)"
+fi
