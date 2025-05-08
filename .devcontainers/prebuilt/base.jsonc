@@ -26,6 +26,7 @@
       "installOhMyZsh": true,
       "username": "ubuntu"
     },
+    "ghcr.io/duduribeiro/devcontainer-features/neovim:1": {},
     "ghcr.io/duduribeiro/devcontainer-features/tmux:1": {},
     "ghcr.io/devcontainers-contrib/features/fzf:1": {},
     "ghcr.io/devcontainers-contrib/features/mackup:1": {},
