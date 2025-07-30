@@ -28,6 +28,33 @@ return {
       inc_rename = false, -- enables an input dialog for inc-rename.nvim
       lsp_doc_border = false, -- add a border to hover docs and signature help
     },
+    -- Configure views to reposition messages
+    views = {
+      notify = {
+        position = {
+          row = 1, -- Near the top
+          col = '0%', -- Left side of the screen
+        },
+        size = {
+          width = 'auto',
+          max_width = 60,
+        },
+        border = {
+          style = 'single',
+        },
+      },
+    },
+    -- Ensure messages and notifications use the mini or notify view
+    messages = {
+      enabled = true,
+      view = 'notify', -- Use mini view for messages
+      view_error = 'notify', -- Errors to notify
+      view_warn = 'notify', -- Warnings to notify
+    },
+    notify = {
+      enabled = true,
+      view = 'notify',
+    },
   },
   config = function(_, opts)
     require('noice').setup(opts)
