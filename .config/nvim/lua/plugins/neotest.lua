@@ -19,7 +19,7 @@ return {
     end, { desc = 'Debug File' })
 
     map('n', '<leader>dn', function()
-      neotest.run.run { strategy = 'dap' }
+      neotest.run.run { strategy = 'dap', extra_args = { '--log-cli-level=DEBUG' } }
     end, { desc = 'Debug Nearest' })
 
     map('n', '<leader>no', function()
@@ -31,7 +31,7 @@ return {
     end, { desc = 'Neotest Run' })
 
     map('n', '<leader>nn', function()
-      neotest.run.run()
+      neotest.run.run { extra_args = { '--log-cli-level=INFO' } }
     end, { desc = 'Neotest Run Nearest' })
 
     map('n', '<leader>n]', function()
