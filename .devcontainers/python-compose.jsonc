@@ -12,6 +12,12 @@
   "containerUser": "stan",
   "mounts": [
     {
+      "source": "${localEnv:HOME}/Documents/Projects",
+      "target": "${localEnv:HOME}/Documents/Projects",
+      "type": "bind",
+      "consistency": "cached"
+    },
+    {
       "source": "${localWorkspaceFolder}",
       "target": "${localWorkspaceFolder}",
       "type": "bind",
