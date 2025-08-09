@@ -67,10 +67,14 @@ dcsetup()
 
 dcbuild ()
 {
+  image_name="mcmillanator/$(name_from_pwd):latest"
+  if [ -z "$2" ]; then
+    image_name="$2"
+  fi
   if [ -z "$1" ]; then
     devcontainer --workspace-folder . --config .devcontainer/devcontainer.json build
   else
-    devcontainer --workspace-folder . --config $HOME/.devcontainers/$1.jsonc --image-name="mcmillanator/$(name_from_pwd):latest" build
+    devcontainer --workspace-folder . --config $HOME/.devcontainers/$1.jsonc --image-name=$image_name build
   fi
 }
 
@@ -82,11 +86,11 @@ dcprebuildpush()
 
 dcprebuild()
 {
-  dcbuild prebuilt/base
-  dcbuild prebuilt/ts
-  dcbuild prebuilt/tf || true
-  dcbuild prebuilt/python || true
-  dcbuild prebuilt/ruby || true
+  dcbuild prebuilt/base mcmillanator/prebuilt-base
+  dcbuild prebuilt/ts mcmillanator/prebuilt-ts || true
+  dcbuild prebuilt/tf mcmillanator/prebuilt-tf || true
+  dcbuild prebuilt/python mcmillanator/prebuilt-python || true
+  dcbuild prebuilt/ruby mcmillanator/prebuilt-ruby || true
 }
 
 dcrebuild()
