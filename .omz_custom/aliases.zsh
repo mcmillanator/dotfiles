@@ -86,11 +86,11 @@ dcprebuildpush()
 
 dcprebuild()
 {
-  dcbuild prebuilt/base mcmillanator/prebuilt-base
-  dcbuild prebuilt/ts mcmillanator/prebuilt-ts || true
-  dcbuild prebuilt/tf mcmillanator/prebuilt-tf || true
-  dcbuild prebuilt/python mcmillanator/prebuilt-python || true
-  dcbuild prebuilt/ruby mcmillanator/prebuilt-ruby || true
+  dcbuild prebuilt/base mcmillanator/prebuilt-base:latest
+  dcbuild prebuilt/ts mcmillanator/prebuilt-ts:latest
+  dcbuild prebuilt/tf mcmillanator/prebuilt-tf:latest || true
+  dcbuild prebuilt/python mcmillanator/prebuilt-python:latest || true
+  dcbuild prebuilt/ruby mcmillanator/prebuilt-ruby:latest || true
 }
 
 dcrebuild()
