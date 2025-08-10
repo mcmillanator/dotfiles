@@ -69,9 +69,6 @@
     }
   ],
   "features": {
-    "ghcr.io/ChristopherMacGown/devcontainer-features/mcfly:1": {},
-    "ghcr.io/ChristopherMacGown/devcontainer-features/direnv:1": {},
-    "ghcr.io/devcontainers/features/node:1": {},
     "ghcr.io/mcmillanator/devcontainers-features/create-remote-user:latest": {
       "version": "latest",
       "REMOTE_GID": "1000",
