@@ -11,6 +11,7 @@
   "workspaceFolder": "${localWorkspaceFolder}",
   "remoteUser": "stan",
   "containerUser": "stan",
+  "updateRemoteUserUID": true,
   "mounts": [
     {
       "source": "${localEnv:HOME}/Documents/Projects",
