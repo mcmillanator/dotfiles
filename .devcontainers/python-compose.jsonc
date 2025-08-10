@@ -2,7 +2,8 @@
   "name": "Python 3.12 Devcontainer",
   "dockerComposeFile": [
     "${localWorkspaceFolder}/docker-compose.yml",
-    "${localWorkspaceFolder}/.devcontainer/docker-compose.override.yml"
+    "${localWorkspaceFolder}/.devcontainer/docker-compose.override.yml",
+    "${localEnv:HOME}/.devcontainers/overrides/docker-compose.override.py.yml"
   ],
   "service": "app",
   "overrideCommand": true,
