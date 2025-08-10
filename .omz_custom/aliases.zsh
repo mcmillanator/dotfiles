@@ -68,7 +68,7 @@ dcsetup()
 dcbuild ()
 {
   image_name="mcmillanator/$(name_from_pwd):latest"
-  if [ -z "$2" ]; then
+  if [ -n "$2" ]; then
     image_name="$2"
   fi
   if [ -z "$1" ]; then
