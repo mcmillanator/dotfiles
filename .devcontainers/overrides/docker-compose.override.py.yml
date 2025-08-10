@@ -1,0 +1,23 @@
+x-template: &service-template
+  restart: always
+  deploy:
+    mode: replicated
+    replicas: 1
+    update_config:
+      parallelism: 1
+      delay: 10s
+      failure_action: rollback
+    rollback_config:
+      parallelism: 1
+      delay: 30s
+      failure_action: pause
+      monitor: 60s
+
+services:
+  app:
+    <<: *service-template
+    image: mcmillanator/python
+    build:
+      args:
+        IMAGE: mcmillanator/prebuilt-python
+
