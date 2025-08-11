@@ -20,41 +20,41 @@ alias python='python3'
 dcbash()
 {
   if [ -z "$1" ]; then
-    devcontainer exec --workspace-folder . --override-config .devcontainer/devcontainer.json bash 
+    devcontainer exec --workspace-folder . --override-config .devcontainer/devcontainer.json{c,} bash
   else
-    devcontainer exec --workspace-folder . --override-config $HOME/.devcontainers/$1.jsonc bash 
+    devcontainer exec --workspace-folder . --override-config $HOME/.devcontainers/$1.json{c,} bash
   fi
 }
 
 dczsh()
 {
   if [ -z "$1" ]; then
-    devcontainer exec --workspace-folder . --override-config .devcontainer/devcontainer.json  /usr/bin/zsh
+    devcontainer exec --workspace-folder . --override-config .devcontainer/devcontainer.json{c,}  /usr/bin/zsh
   else
-    devcontainer exec --workspace-folder . --override-config $HOME/.devcontainers/$1.jsonc  /usr/bin/zsh
+    devcontainer exec --workspace-folder . --override-config $HOME/.devcontainers/$1.json{c,}  /usr/bin/zsh
   fi
 }
 dcnvim()
 {
   if [ -z "$1" ]; then
-    devcontainer exec --workspace-folder . --override-config .devcontainer/devcontainer.json nvim
+    devcontainer exec --workspace-folder . --override-config .devcontainer/devcontainer.json{c,} nvim
   else
-    devcontainer exec --workspace-folder . --override-config $HOME/.devcontainers/$1.jsonc nvim
+    devcontainer exec --workspace-folder . --override-config $HOME/.devcontainers/$1.json{c,} nvim
   fi
 }
 
 dcup()
 {
   if [ -z "$1" ]; then
-    devcontainer --workspace-folder . --override-config .devcontainer/devcontainer.json up
+    devcontainer --workspace-folder . --override-config .devcontainer/devcontainer.json{c,} up
   else
-    devcontainer --workspace-folder . --override-config $HOME/.devcontainers/$1.jsonc up
+    devcontainer --workspace-folder . --override-config $HOME/.devcontainers/$1.json{c,} up
   fi
 }
 
 dcsetup()
 {
-  devcontainer --config $HOME/.devcontainers/$1.jsonc --container-id=$2 set-up 
+  devcontainer --config $HOME/.devcontainers/$1.json{c,} --container-id=$2 set-up 
   #--dotfiles-repository            URL of a dotfiles Git repository (e.g., https://github.com/owner/repository.git)
   #                                                                                                              [string]
   #--dotfiles-install-command       The command to run after cloning the dotfiles repository. Defaults to run the first f
@@ -72,9 +72,9 @@ dcbuild ()
     image_name="$2"
   fi
   if [ -z "$1" ]; then
-    devcontainer --workspace-folder . --config .devcontainer/devcontainer.json build
+    devcontainer --workspace-folder . --config .devcontainer/devcontainer.json{c,} build
   else
-    devcontainer --workspace-folder . --config $HOME/.devcontainers/$1.jsonc --image-name=$image_name build
+    devcontainer --workspace-folder . --config $HOME/.devcontainers/$1.json{c,} --image-name=$image_name build
   fi
 }
 
