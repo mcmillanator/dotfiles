@@ -10,6 +10,7 @@ alias apps="cd ~/Documents/Projects"
 alias la='ls -a'
 alias ll='ls -lah'
 alias fzf-log='fzf --tail 100000 --tac --no-sort --exact --wrap'
+alias tmux='tmux -L $(hostname)'
 
 # ruby
 alias be='bundle exec $@'
