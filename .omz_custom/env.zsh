@@ -27,9 +27,3 @@ then
   source <(mcfly init zsh)
 fi
 
-# init direnv https://github.com/direnv/direnv?tab=readme-ov-file
-command -v direnv 2>&1 > /dev/null
-if [ $? -eq 0 ]
-then
-  eval "$(direnv hook zsh)"
-fi
