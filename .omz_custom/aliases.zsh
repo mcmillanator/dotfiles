@@ -9,6 +9,7 @@ alias myip="curl http://ipecho.net/plain; echo"
 alias apps="cd ~/Documents/Projects"
 alias la='ls -a'
 alias ll='ls -lah'
+alias fzf-log='fzf --tail 100000 --tac --no-sort --exact --wrap'
 
 # ruby
 alias be='bundle exec $@'
