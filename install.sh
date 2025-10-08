@@ -1,4 +1,4 @@
-#!/usr/bin/zsh
+#!/usr/bin/bash
 echo "Running entrypoint as user: ${USER}"
 mackup_dir=$(pwd)/.mackup
 mackup_conf=$(pwd)/.mackup.cfg
