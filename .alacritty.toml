@@ -222,13 +222,13 @@ shell = "/bin/zsh"
 size = 11.0
 
 [font.bold]
-family = "Hack Nerd Font"
+family = "0xProto Nerd Font"
 
 [font.italic]
-family = "Hack Nerd Font"
+family = "0xProto Nerd Font"
 
 [font.normal]
-family = "Hack Nerd Font"
+family = "0xProto Nerd Font"
 
 [font.offset]
 x = 0
