@@ -3,9 +3,6 @@
   "build": {
     "context": ".",
     "dockerfile": "Dockerfile",
-    "args": {
-      "IMAGE": "ubuntu:24.10"
-    }
   },
   "remoteUser": "ubuntu",
   "remoteUserHome": "/home/ubuntu",
