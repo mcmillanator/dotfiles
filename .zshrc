@@ -62,7 +62,7 @@ plugins=(
 # ssh-agent plugin settings
 # IMPORTANT: put these settings before the line that sources oh-my-zsh
 # use multiple identities with ssh-agent by listing them here
-zstyle :omz:plugins:ssh-agent identities id
+zstyle :omz:plugins:ssh-agent identities id id_ed25519
 
 # tmux options
 ZSH_TMUX_AUTOSTART='false'
