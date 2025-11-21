@@ -12,4 +12,4 @@ if [ ! -f ~/.mackup.cfg ]; then
 	ln -fs $mackup_conf ~/.mackup.cfg
 fi
 export PATH=$PATH:/usr/local/py-utils/bin/
-mackup restore -f
+mackup link -f
