@@ -22,8 +22,17 @@ return {
         'williamboman/mason.nvim',
         opts = {
           ensure_installed = {
+            'ast-grep ast_grep',
             'debugpy',
+            'docker-language-server',
+            'erb-formatter',
+            'erb-lint',
             'flake8',
+            'json-lsp',
+            'jsonlint',
+            'lua-language-server',
+            'pyright',
+            'ruby-lsp',
             'shellcheck',
             'shfmt',
             'stylua',
