@@ -22,5 +22,5 @@
       "REMOTE_UID": "1000"
     }
   },
-  "postCreateCommand": "/usr/bin/bash ${localEnv:HOME}/Documents/Projects/dotfiles/.devcontainers/entrypoint.sh"
+  "postCreateCommand": "/usr/bin/bash ${localEnv:HOME}/dotfiles/install.sh"
 }
