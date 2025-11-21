@@ -10,7 +10,7 @@
   "workspaceMount": "source=${localWorkspaceFolder},target=${localWorkspaceFolder},type=bind,consistency=cached",
   "workspaceFolder": "${localWorkspaceFolder}",
   "remoteUser": "stan",
-  "containerUser": "stan",
+  "containerUser": "root",
   "updateRemoteUserUID": true,
   "features": {
     "ghcr.io/mcmillanator/devcontainers-features/create-remote-user:latest": {
