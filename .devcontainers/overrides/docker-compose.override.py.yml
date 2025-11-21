@@ -12,6 +12,17 @@ x-template: &service-template
       delay: 30s
       failure_action: pause
       monitor: 60s
+  volumes:
+    - ${HOME}/Documents:${HOME}/Documents:z
+    - ${HOME}/dotfiles:${HOME}/dotfiles:z
+    - ${PWD}:${PWD}:z
+    - dev_home:/home/${USER:-app}:z
+    - ${HOME}/.oh-my-zsh:${HOME}/.oh-my-zsh:z
+    - ${HOME}/.config:${HOME}/.config:z
+    - ${HOME}/.ssh:${HOME}/.ssh:z
+    - ${HOME}/.aws:${HOME}/.aws:z
+    - ${HOME}/.gnupg:${HOME}/.gnupg:z
+    - ${TMUX_SOCKET_DIR}:${TMUX_SOCKET_DIR}:z,
 
 services:
   app:
@@ -21,3 +32,5 @@ services:
       args:
         IMAGE: mcmillanator/prebuilt-python
 
+volumes:
+  dev_home:
