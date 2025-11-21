@@ -22,5 +22,10 @@ return {
     vim.keymap.set('n', '[e', function()
       require('todo-comments').jump_prev { keywords = { 'ERROR', 'WARNING' } }
     end, { desc = 'Next error/warning todo comment' })
+    -- telescope
+    vim.keymap.set('n', '<leader>stn', '<cmd>TodoTelescope keywords=NOTE<cr>', { desc = 'Search NOTE' })
+    vim.keymap.set('n', '<leader>stt', '<cmd>TodoTelescope keywords=TODO<cr>', { desc = 'Search TODO' })
+    vim.keymap.set('n', '<leader>stt', '<cmd>TodoTelescope keywords=TODO<cr>', { desc = 'Search FIX' })
+    vim.keymap.set('n', '<leader>sta', '<cmd>TodoTelescope<cr>', { desc = 'Search all todos' })
   end,
 }
