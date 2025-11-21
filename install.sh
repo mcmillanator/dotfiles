@@ -1,7 +1,8 @@
 #!/usr/bin/bash
 echo "Running entrypoint as user: ${USER}"
-mackup_dir=$(pwd)/.mackup
-mackup_conf=$(pwd)/.mackup.cfg
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+mackup_dir=$SCRIPT_DIR/.mackup
+mackup_conf=$SCRIPT_DIR/.mackup.cfg
 if [ ! -d ~/.mackup ]; then
   echo "folder not found linking"
 	ln -fs $mackup_dir ~/.mackup
