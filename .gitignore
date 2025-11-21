@@ -1,3 +1,4 @@
 tmp
 *.log
 .venv
+.tmux/plugins/tpm
