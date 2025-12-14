@@ -233,6 +233,11 @@ return {
           },
         },
       }
+      local port = os.getenv 'GDScript_Port' or 6005
+      require('lspconfig').gdscript.setup {
+        cmd = vim.lsp.rpc.connect('127.0.0.1', tonumber(port)),
+        capabilities = require('blink.cmp').get_lsp_capabilities(),
+      }
 
       -- Ensure the servers and tools above are installed
       --
