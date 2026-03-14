@@ -1,3 +1,6 @@
+# vars
+prebuiltTags=(mcmillanator/prebuilt-base mcmillanator/prebuilt-ts mcmillanator/prebuilt-tf mcmillanator/prebuilt-python mcmillanator/prebuilt-ruby)
+gitSha=$(git rev-parse --short HEAD)
 # nivm
 alias nvim-kickstart='NVIM_APPNAME="nvim-kickstart" nvim'
 # Oh my zsh
@@ -84,10 +87,18 @@ dcprebuildpush()
 {
   local results=""
 
-  for i in $(docker images | grep mcmillanator/prebuilt | awk '{print $1}' )
-  docker push $i && results="$results\n$i: Success" || results="$results\n$i: Failed"
+  dctags()
+  for i in $prebuiltTags
+  docker push "$i":$gitSha && results="$results\n$i: Success" || results="$results\n$i: Failed"
+  docker push "$i":latest && results="$results\n$i: Success" || results="$results\n$i: Failed"
 
   echo $results
+}
+
+dctags()
+{
+  for i in $prebuiltTags
+  docker tag "$i":latest "$i":$gitSha
 }
 
 dcprebuild()
@@ -95,11 +106,12 @@ dcprebuild()
   local results=""
   
   dcbuild prebuilt/base mcmillanator/prebuilt-base:latest && results="$results\nprebuilt/base: Success" || results="$results\nprebuilt/base: Failed"
+  dcbuild prebuilt/python mcmillanator/prebuilt-python:latest && results="$results\nprebuilt/python: Success" || results="$results\nprebuilt/python: Failed"
   dcbuild prebuilt/ts mcmillanator/prebuilt-ts:latest && results="$results\nprebuilt/ts: Success" || results="$results\nprebuilt/ts: Failed"
   dcbuild prebuilt/tf mcmillanator/prebuilt-tf:latest && results="$results\nprebuilt/tf: Success" || results="$results\nprebuilt/tf: Failed"
-  dcbuild prebuilt/python mcmillanator/prebuilt-python:latest && results="$results\nprebuilt/python: Success" || results="$results\nprebuilt/python: Failed"
   dcbuild prebuilt/ruby mcmillanator/prebuilt-ruby:latest && results="$results\nprebuilt/ruby: Success" || results="$results\nprebuilt/ruby: Failed"
-  
+  dctags()
+
   echo -e "$results"
 }
 
