@@ -191,7 +191,7 @@ return {
           return { file .. '::' .. test_name, '-v' }
         end,
         pythonPath = function()
-          return 'python' -- Or '/path/to/your/poetry/env/bin/python'
+          return 'python3' -- Or '/path/to/your/poetry/env/bin/python'
         end,
         console = 'integratedTerminal',
       },
