@@ -3,11 +3,9 @@
   "image": "mcmillanator/prebuilt-base",
   "features": {
     "ghcr.io/devcontainers/features/python:1": {
-      "version": "3.12"
-    },
-    "ghcr.io/devcontainers-extra/features/pipx-package:1": {
-      "package": "ast-grep-cli"
-    },
-    "ghcr.io/jsburckhardt/devcontainer-features/uv:1": {}
+      "version": "3.14",
+      "toolsToInstall": "uv,ast-grep-cli",
+      "installTools": true
+    }
   }
 }
