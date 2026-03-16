@@ -1,5 +1,5 @@
 {
-  "name": "Python 3.12 Devcontainer",
+  "name": "Python Devcontainer",
   "dockerComposeFile": [
     "${localWorkspaceFolder}/docker-compose.yml",
     "${localWorkspaceFolder}/.devcontainer/docker-compose.override.yml",
