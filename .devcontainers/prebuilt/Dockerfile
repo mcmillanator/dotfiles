@@ -15,5 +15,6 @@ RUN apt-get update && \
   && \
   rm -rf /var/lib/apt/lists/* && \
   luarocks install lua-curl CURL_INCDIR=/usr/include/x86_64-linux-gnu/
+RUN userdel ubuntu
 ENV CURL_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt
 RUN curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
