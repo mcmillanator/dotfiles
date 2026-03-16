@@ -1,6 +1,6 @@
 {
-  "name": "Python 3.12 Devcontainer",
-  "image": "mcmillanator/prebuilt-python",
+  "name": "Python Devcontainer",
+  "image": "python:3.14",
   "service": "app",
   "overrideCommand": true,
   "workspaceMount": "source=${localWorkspaceFolder},target=${localWorkspaceFolder},type=bind,consistency=cached",
