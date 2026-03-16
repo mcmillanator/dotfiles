@@ -60,6 +60,9 @@
       "configureZshAsDefaultShell": true,
       "installOhMyZsh": true,
       "installOhMyZshConfig": false,
+      "username": "${localEnv:USER}",
+      "userUid": "1000",
+      "userGid": "1000"
     },
     "ghcr.io/devcontainers/features/git:1": {},
     "ghcr.io/ChristopherMacGown/devcontainer-features/direnv:1": {},
