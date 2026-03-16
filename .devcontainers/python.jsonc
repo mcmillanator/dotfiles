@@ -55,8 +55,15 @@
   ],
   "postCreateCommand": "/usr/bin/bash ${localEnv:HOME}/.dotfiles/install.sh",
   "features": {
+    "ghcr.io/devcontainers/features/git:1": {},
+    "ghcr.io/ChristopherMacGown/devcontainer-features/direnv:1": {},
+    "ghcr.io/ChristopherMacGown/devcontainer-features/mcfly:1": {},
+    "ghcr.io/GeorgOfenbeck/features/lazygit-linuxbinary:1": {},
+    "ghcr.io/devcontainers-extra/features/fzf:1": {},
+    "ghcr.io/devcontainers-extra/features/mackup:1": {},
+    "ghcr.io/devcontainers-extra/features/markdownlint-cli2:1": {},
+    "ghcr.io/devcontainers-extra/features/ripgrep:1": {},
     "ghcr.io/devcontainers/features/node:1": {},
-    "ghcr.io/devcontainers-extra/features/poetry:2": {},
     "ghcr.io/mcmillanator/devcontainers-features/create-remote-user:latest": {
       "version": "latest",
       "REMOTE_GID": "1000",
@@ -64,6 +71,15 @@
       "REMOTE_HOME": "/home/stan",
       "REMOTE_SHELL": "/usr/bin/zsh",
       "REMOTE_UID": "1000"
+    "ghcr.io/duduribeiro/devcontainer-features/neovim:1": {},
+    "ghcr.io/duduribeiro/devcontainer-features/tmux:1": {
+      "version": "3.5a"
+    },
+    "ghcr.io/devcontainers-extra/features/fd:1": {},
+    "ghcr.io/devcontainers/features/python:1": {
+      "version": "3.14",
+      "toolsToInstall": "uv,ast-grep-cli",
+      "installTools": true
     }
   }
 }
