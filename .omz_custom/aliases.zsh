@@ -104,15 +104,16 @@ dctags()
 dcprebuild()
 {
   local results=""
-  
+
   dcbuild prebuilt/base mcmillanator/prebuilt-base:latest && results="$results\nprebuilt/base: Success" || results="$results\nprebuilt/base: Failed"
   dcbuild prebuilt/python mcmillanator/prebuilt-python:latest && results="$results\nprebuilt/python: Success" || results="$results\nprebuilt/python: Failed"
   dcbuild prebuilt/ts mcmillanator/prebuilt-ts:latest && results="$results\nprebuilt/ts: Success" || results="$results\nprebuilt/ts: Failed"
   dcbuild prebuilt/tf mcmillanator/prebuilt-tf:latest && results="$results\nprebuilt/tf: Success" || results="$results\nprebuilt/tf: Failed"
   dcbuild prebuilt/ruby mcmillanator/prebuilt-ruby:latest && results="$results\nprebuilt/ruby: Success" || results="$results\nprebuilt/ruby: Failed"
-  dctags()
 
   echo -e "$results"
+
+  dctags
 }
 
 dcrebuild()
