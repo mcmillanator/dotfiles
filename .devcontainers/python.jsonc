@@ -53,7 +53,7 @@
       "consistency": "cached"
     }
   ],
-  "postCreateCommand": "/usr/bin/bash ${localEnv:HOME}/Documents/Projects/dotfiles/.devcontainers/entrypoint.sh",
+  "postCreateCommand": "/usr/bin/bash ${localEnv:HOME}/.dotfiles/install.sh",
   "features": {
     "ghcr.io/devcontainers/features/node:1": {},
     "ghcr.io/devcontainers-extra/features/poetry:2": {},
