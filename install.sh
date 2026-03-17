@@ -7,12 +7,12 @@ mackup_dir=$SCRIPT_DIR/.mackup
 mackup_conf=$SCRIPT_DIR/.mackup.cfg
 if [ ! -d ~/.mackup ]; then
   echo "folder not found linking"
-	ln -fs $mackup_dir "${HOME}.mackup"
+	ln -fs $mackup_dir "${HOME}/.mackup"
 fi
 
 if [ ! -f ~/.mackup.cfg ]; then
   echo "file not found linking"
-	ln -fs $mackup_conf "${HOME}.mackup.cfg"
+	ln -fs $mackup_conf "${HOME}/.mackup.cfg"
 fi
 export PATH=$PATH:/usr/local/py-utils/bin/
-mackup link -f
+mackup link -f --config-file "${HOME}/.mackup.cfg"
