@@ -21,6 +21,5 @@
       "REMOTE_SHELL": "/usr/bin/zsh",
       "REMOTE_UID": "1000"
     }
-  },
-  "postCreateCommand": "/usr/bin/bash curl https://raw.githubusercontent.com/mcmillanator/dotfiles/refs/heads/master/install.sh | /usr/bin/env bash",
+  }
 }

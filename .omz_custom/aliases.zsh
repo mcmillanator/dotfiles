@@ -51,7 +51,7 @@ dcnvim()
 dcup()
 {
   if [ -z "$1" ]; then
-    devcontainer --workspace-folder . --override-config .devcontainer/devcontainer.json up
+    devcontainer --dotfiles-repository="https://github.com/mcmillanator/dotfiles.git" --dotfiles-install-command="${HOME}/dotfiles/install.sh" --workspace-folder . --override-config .devcontainer/devcontainer.json up
   else
     devcontainer --workspace-folder . --override-config $HOME/.devcontainers/$1.jsonc up
   fi

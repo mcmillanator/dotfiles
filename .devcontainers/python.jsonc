@@ -53,7 +53,6 @@
       "consistency": "cached"
     }
   ],
-  "postCreateCommand": "/usr/bin/bash curl https://raw.githubusercontent.com/mcmillanator/dotfiles/refs/heads/master/install.sh | /usr/bin/env bash",
   "features": {
     "ghcr.io/devcontainers/features/common-utils:2": {
       "installZsh": true,
