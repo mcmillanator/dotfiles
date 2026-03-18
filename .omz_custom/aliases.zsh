@@ -24,8 +24,9 @@ alias python='python3'
 # devcontainers
 dcbash()
 {
+  FILE=$(check_for_file ".devcontainer/devcontainer.json")
   if [ -z "$1" ]; then
-    devcontainer exec --workspace-folder . --override-config .devcontainer/devcontainer.json bash 
+    devcontainer exec --workspace-folder . --override-config $FILE bash 
   else
     devcontainer exec --workspace-folder . --override-config $HOME/.devcontainers/$1.jsonc bash 
   fi
@@ -33,16 +34,18 @@ dcbash()
 
 dczsh()
 {
+  FILE=$(check_for_file ".devcontainer/devcontainer.json")
   if [ -z "$1" ]; then
-    devcontainer exec --workspace-folder . --override-config .devcontainer/devcontainer.json  /usr/bin/zsh
+    devcontainer exec --workspace-folder . --override-config $FILE  /usr/bin/zsh
   else
     devcontainer exec --workspace-folder . --override-config $HOME/.devcontainers/$1.jsonc  /usr/bin/zsh
   fi
 }
 dcnvim()
 {
+  FILE=$(check_for_file ".devcontainer/devcontainer.json")
   if [ -z "$1" ]; then
-    devcontainer exec --workspace-folder . --override-config .devcontainer/devcontainer.json nvim
+    devcontainer exec --workspace-folder . --override-config $FILE nvim
   else
     devcontainer exec --workspace-folder . --override-config $HOME/.devcontainers/$1.jsonc nvim
   fi
@@ -50,6 +53,7 @@ dcnvim()
 
 dcup()
 {
+  FILE=$(check_for_file ".devcontainer/devcontainer.json")
   if [ -z "$1" ]; then
     devcontainer --dotfiles-repository="https://github.com/mcmillanator/dotfiles.git" --dotfiles-install-command="${HOME}/dotfiles/install.sh" --workspace-folder . --override-config .devcontainer/devcontainer.json up
   else
@@ -70,14 +74,30 @@ dcsetup()
 
 }
 
+check_for_file()
+{
+  FILE="$1"
+  if [[ -f "$FILE" ]]; then
+    FILE=$FILE
+  elif [[ -f "${FILE}c" ]]; then
+      FILE="${FILE}c"
+  else
+    return 1
+  fi
+  echo "$FILE"
+}
+
 dcbuild ()
 {
   image_name="mcmillanator/$(name_from_pwd):latest"
   if [ -n "$2" ]; then
     image_name="$2"
   fi
+
+  FILE=$(check_for_file ".devcontainer/devcontainer.json")
+
   if [ -z "$1" ]; then
-    devcontainer --workspace-folder . --config .devcontainer/devcontainer.json build
+    devcontainer --workspace-folder . --config $FILE build
   else
     devcontainer --workspace-folder . --config $HOME/.devcontainers/$1.jsonc --image-name=$image_name build
   fi
