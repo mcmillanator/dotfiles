@@ -15,6 +15,36 @@ alias ll='ls -lah'
 alias fzf-log='fzf --tail 100000 --tac --no-sort --exact --wrap'
 alias tmux='tmux -L $(hostname)'
 
+alias areslogs='ssh ares -t "cd prc ; invoke logs"'
+alias aresprc='ssh ares -t "cd prc ; zsh"'
+
+alias vpnservicedown='sudo systemctl stop perimeter81helper'
+alias vpnserviceup='sudo systemctl start perimeter81helper'
+alias vpnservicestatus='sudo systemctl status perimeter81helper'
+alias vpnservicerestart='sudo systemctl restart perimeter81helper'
+alias vpn-disconnect='/usr/bin/p81-helper-daemon ctl vpn-disconnect'
+alias vpn-connect='/usr/bin/p81-helper-daemon ctl vpn-connect'
+alias vpn-status='/usr/bin/p81-helper-daemon ctl vpn-status'
+alias vpnps='pgrep -fai perimeter81'
+alias vpnkill='vpnservicedown ; pkill -i -9 perimeter81'
+alias vpnroutes='ip route show | grep -i -E "(^44|^54)"'
+
+vpnsubnets()
+{
+  vpnroutes | awk '{print $1}'
+}
+vpndelroutes()
+{
+  for i in $(vpnsubnets)
+    sudo ip route del $i
+}
+
+alias dockerdown='sudo systemctl stop docker'
+alias dockerup='sudo systemctl start docker'
+alias dockerrestart='sudo systemctl restart docker'
+alias dockernetworknames="docker network ls --format '{{.Name}}'"
+alias dockersubnet="docker network inspect $1 --format '{{(index .IPAM.Config 0).Subnet}}'"
+
 # ruby
 alias be='bundle exec $@'
 
@@ -29,6 +59,23 @@ dcbash()
     devcontainer exec --workspace-folder . --override-config $FILE bash 
   else
     devcontainer exec --workspace-folder . --override-config $HOME/.devcontainers/$1.jsonc bash 
+  fi
+}
+
+dc()
+{
+  FILE=$(check_for_file ".devcontainer/devcontainer.json")
+
+  if [ -z "$1" ]; then
+    cmd="/usr/bin/zsh"
+  else
+    cmd="$1"
+  fi
+
+  if [ -z "$2" ]; then
+    devcontainer exec --workspace-folder . --override-config $FILE $cmd
+  else
+    devcontainer exec --workspace-folder . --override-config $HOME/.devcontainers/$1.jsonc $cmd
   fi
 }
 
@@ -55,9 +102,9 @@ dcup()
 {
   FILE=$(check_for_file ".devcontainer/devcontainer.json")
   if [ -z "$1" ]; then
-    devcontainer --dotfiles-repository="https://github.com/mcmillanator/dotfiles.git" --dotfiles-install-command="${HOME}/dotfiles/install.sh" --workspace-folder . --override-config $FILE up
+    devcontainer --remove-existing-container --user-data-folder="${HOME}/.local/share/devcontainer-user-data" --dotfiles-repository="https://github.com/mcmillanator/dotfiles.git" --dotfiles-install-command="install.sh" --workspace-folder . --override-config $FILE up
   else
-    devcontainer --workspace-folder . --override-config $HOME/.devcontainers/$1.jsonc up
+    devcontainer --remove-existing-container --user-data-folder="${HOME}/.local/share/devcontainer-user-data" --dotfiles-repository="https://github.com/mcmillanator/dotfiles.git" --dotfiles-install-command="install.sh" --workspace-folder . --override-config $HOME/.devcontainers/$1.jsonc up
   fi
 }
 
@@ -97,7 +144,7 @@ dcbuild ()
   FILE=$(check_for_file ".devcontainer/devcontainer.json")
 
   if [ -z "$1" ]; then
-    devcontainer --workspace-folder . --config $FILE build
+    devcontainer --workspace-folder . --config $FILE build --image-name=$image_name
   else
     devcontainer --workspace-folder . --config $HOME/.devcontainers/$1.jsonc --image-name=$image_name build
   fi
@@ -151,4 +198,13 @@ dcdown()
 name_from_pwd()
 {
   echo ${(L)PWD##*/}
+}
+
+dockersubnets()
+
+{
+  for i in $(dockernetworknames)
+    if [[ $i != "none" ]] && [[ $i != "host" ]]; then
+      echo $i $(dockersubnet $i)
+    fi
 }
