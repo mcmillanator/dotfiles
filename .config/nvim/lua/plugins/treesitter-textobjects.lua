@@ -8,7 +8,7 @@ return {
   lazy = true,
   after = 'nvim-treesitter',
   config = function()
-    require('nvim-treesitter.config').setup {
+    require('nvim-treesitter.configs').setup {
       textobjects = {
         lsp_interop = {
           enable = true,
