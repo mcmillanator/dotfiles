@@ -3,6 +3,7 @@
 
 return {
   'stevearc/aerial.nvim',
+  version = 'v2.7.0',
   lazy = false,
   opts = {},
   -- Optional dependencies

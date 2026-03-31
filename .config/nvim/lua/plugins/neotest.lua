@@ -1,6 +1,7 @@
 return {
   --{ 'folke/neoconf.nvim', cmd = 'Neoconf' },
   'nvim-neotest/neotest',
+  version = 'v5.13.4',
   dependencies = {
     'nvim-neotest/nvim-nio',
     'nvim-lua/plenary.nvim',

@@ -14,6 +14,7 @@ return {
   {
     -- Main LSP Configuration
     'neovim/nvim-lspconfig',
+    version = 'v2.7.0',
     dependencies = {
       -- Automatically install LSPs and related tools to stdpath for Neovim
       -- Mason must be loaded before its dependents so we need to set it up here.
@@ -22,20 +23,20 @@ return {
         'williamboman/mason.nvim',
         opts = {
           ensure_installed = {
-            'ast-grep ast_grep',
             'debugpy',
             'docker-language-server',
             'erb-formatter',
             'erb-lint',
-            'flake8',
             'json-lsp',
             'jsonlint',
             'lua-language-server',
-            'pyright',
             'ruby-lsp',
             'shellcheck',
             'shfmt',
-            'stylua',
+            'stylua', -- Used to format Lua code
+            { 'ast-grep', version = '0.40.5' },
+            { 'python-lsp-server', version = '1.14.0' },
+            { 'ruff', version = '0.15.8' },
           },
         },
       },
@@ -214,9 +215,10 @@ return {
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
+        ruff = {},
         -- clangd = {},
         -- gopls = {},
-        pyright = {},
+        -- pyright = {},
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
@@ -227,20 +229,20 @@ return {
         -- ts_ls = {},
         --
 
-        lua_ls = {
-          -- cmd = { ... },
-          -- filetypes = { ... },
-          -- capabilities = {},
-          settings = {
-            Lua = {
-              completion = {
-                callSnippet = 'Replace',
-              },
-              -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
-              -- diagnostics = { disable = { 'missing-fields' } },
-            },
-          },
-        },
+        -- lua_ls = {
+        --   -- cmd = { ... },
+        --   -- filetypes = { ... },
+        --   -- capabilities = {},
+        --   settings = {
+        --     Lua = {
+        --       completion = {
+        --         callSnippet = 'Replace',
+        --       },
+        --       -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
+        --       -- diagnostics = { disable = { 'missing-fields' } },
+        --     },
+        --   },
+        -- },
       }
       local port = os.getenv 'GDScript_Port' or 6005
       require('lspconfig').gdscript.setup {
@@ -262,18 +264,12 @@ return {
       -- You can add other tools here that you want Mason to install
       -- for you, so that they are available from within Neovim.
       local ensure_installed = vim.tbl_keys(servers or {})
-      vim.list_extend(ensure_installed, {
-        'stylua', -- Used to format Lua code
-        'debugpy',
-        'flake8',
-        'shellcheck',
-        'shfmt',
-      })
+      vim.list_extend(ensure_installed, {})
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
       require('mason-lspconfig').setup {
         ensure_installed = {}, -- explicitly set to an empty table (Kickstart populates installs via mason-tool-installer)
-        automatic_installation = false,
+        automatic_installation = true,
         handlers = {
           function(server_name)
             local server = servers[server_name] or {}
