@@ -13,10 +13,7 @@ return {
           -- 1000ms is the community favorite for a "sticky" mode
           timeout = 1000,
           invoke_on_body = true,
-          hint = {
-            border = 'rounded',
-            offset = 1,
-          },
+          hint = false,
         },
         heads = {
           -- Navigation
