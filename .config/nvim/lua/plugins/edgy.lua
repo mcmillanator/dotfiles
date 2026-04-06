@@ -49,7 +49,7 @@ return {
         },
       },
       right = {
-        { ft = 'neotest-summary', title = 'Test Summary' },
+        { ft = 'neotest-summary', title = 'Test Summary', size = { width = 0.3 } },
       },
     },
   },
