@@ -13,7 +13,12 @@ return { -- Useful plugin to show you pending keybinds.
       { '<leader>gs', group = 'Gitsigns' },
       { '<leader>s', group = 'Search' },
       { '<leader>t', group = 'Toggle' },
-      { '<leader>w', proxy = '<c-w>', group = 'windows', desc = 'Windows' }, -- proxy to window mappings
+      {
+        '<leader>w',
+        proxy = '<c-w>',
+        group = 'Windows (Hydra)',
+        desc = 'Windows',
+      }, -- proxy to window mappings
     },
     win = {
       -- width = 10,
