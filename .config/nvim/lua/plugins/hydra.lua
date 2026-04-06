@@ -1,42 +1,46 @@
 return {
-  {
-    'nvimtools/hydra.nvim',
-    event = 'VeryLazy', -- Loads only when needed to keep startup fast
-    config = function()
-      local Hydra = require 'hydra'
-
-      Hydra {
-        name = 'Window Management',
-        mode = 'n',
-        body = '<C-w>',
-        config = {
-          -- 1000ms is the community favorite for a "sticky" mode
-          timeout = 1000,
-          invoke_on_body = true,
-          hint = {
-            border = 'rounded',
-            offset = 1,
-          },
+  'nvimtools/hydra.nvim',
+  event = 'VeryLazy',
+  config = function()
+    local Hydra = require 'hydra'
+    Hydra {
+      name = 'Window Management',
+      hint = [[
+ ^ ^          Window Management
+ ^ ^---------------------------------------
+ _s_: split            _v_: v-split
+ _h_: focus left       _j_: focus down
+ _k_: focus up         _l_: focus right
+ _+_: height +         _-_: height -
+ _>_: width +          _<_: width -
+ _=_: equalize         _q_: close
+ ^ ^        _<Esc>_ or _w_: exit
+]],
+      config = {
+        invoke_on_body = true,
+        hint = {
+          border = 'rounded',
+          position = 'bottom',
         },
-        heads = {
-          -- Navigation
-          { 'h', '<C-w>h' },
-          { 'j', '<C-w>j' },
-          { 'k', '<C-w>k' },
-          { 'l', '<C-w>l' },
-          -- Resizing (repeated taps feel very smooth here)
-          { '+', '2<C-w>+' },
-          { '-', '2<C-w>-' },
-          { '>', '5<C-w>>' },
-          { '<', '5<C-w><' },
-          -- Splits
-          { 's', '<C-w>s' },
-          { 'v', '<C-w>v' },
-          -- Exit
-          { 'q', '<C-w>q' },
-          { '<Esc>', nil, { exit = true } },
-        },
-      }
-    end,
-  },
+      },
+      mode = 'n',
+      body = '<leader>w',
+      heads = {
+        { 's', '<C-w>s' },
+        { 'v', '<C-w>v' },
+        { 'h', '<C-w>h' },
+        { 'j', '<C-w>j' },
+        { 'k', '<C-w>k' },
+        { 'l', '<C-w>l' },
+        { '+', '<C-w>+' },
+        { '-', '<C-w>-' },
+        { '>', '<C-w>>' },
+        { '<', '<C-w><' },
+        { '=', '<C-w>=' },
+        { 'q', '<C-w>q' },
+        { 'w', nil, { exit = true } },
+        { '<Esc>', nil, { exit = true } },
+      },
+    }
+  end,
 }
