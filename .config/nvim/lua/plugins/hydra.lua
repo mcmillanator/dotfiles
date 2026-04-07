@@ -20,7 +20,6 @@ return {
         invoke_on_body = true,
         nowait = true,
         hint = {
-          border = 'rounded',
           position = 'bottom',
         },
       },
