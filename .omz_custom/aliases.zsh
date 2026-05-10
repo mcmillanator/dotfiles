@@ -154,8 +154,9 @@ dcprebuildpush()
 {
   local results=""
 
-  dctags()
-  for i in $prebuiltTags
+  dctags
+  for i in ${prebuiltTags}
+  docker tag "$i":latest "$i":$gitSha
   docker push "$i":$gitSha && results="$results\n$i: Success" || results="$results\n$i: Failed"
   docker push "$i":latest && results="$results\n$i: Success" || results="$results\n$i: Failed"
 
