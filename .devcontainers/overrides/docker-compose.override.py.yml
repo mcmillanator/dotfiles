@@ -1,17 +1,5 @@
 x-template: &service-template
   restart: always
-  deploy:
-    mode: replicated
-    replicas: 1
-    update_config:
-      parallelism: 1
-      delay: 10s
-      failure_action: rollback
-    rollback_config:
-      parallelism: 1
-      delay: 30s
-      failure_action: pause
-      monitor: 60s
   volumes:
     - ${HOME}/Documents:${HOME}/Documents:z
     - ${HOME}/dotfiles:${HOME}/dotfiles:z
