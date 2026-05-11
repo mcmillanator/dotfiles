@@ -20,3 +20,5 @@ export TERM=xterm-256color
 export TMUX_PLUGIN_MANAGER_PATH=~/.tmux/plugins/tpm
 export TMUX_SOCKET_DIR=/tmp/tmux-$(id -u)/
 
+# Mcfly enabel fuzzy search
+export MCFLY_FUZZY=3
