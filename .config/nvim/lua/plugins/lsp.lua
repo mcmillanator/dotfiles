@@ -245,10 +245,11 @@ return {
         -- },
       }
       local port = os.getenv 'GDScript_Port' or 6005
-      require('lspconfig').gdscript.setup {
+      vim.lsp.config('gdscript', {
         cmd = vim.lsp.rpc.connect('127.0.0.1', tonumber(port)),
         capabilities = require('blink.cmp').get_lsp_capabilities(),
-      }
+      })
+      vim.lsp.enable('gdscript')
 
       -- Ensure the servers and tools above are installed
       --
@@ -277,7 +278,8 @@ return {
             -- by the server configuration above. Useful when disabling
             -- certain features of an LSP (for example, turning off formatting for ts_ls)
             server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
-            require('lspconfig')[server_name].setup(server)
+            vim.lsp.config(server_name, server)
+            vim.lsp.enable(server_name)
           end,
         },
       }
