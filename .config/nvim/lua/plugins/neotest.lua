@@ -10,6 +10,9 @@ return {
     'nvim-treesitter/nvim-treesitter',
     'nvim-neotest/neotest-python',
     'olimorris/neotest-rspec',
+    -- Declared (not assumed via debug.lua) since several neotest
+    -- bindings run with `strategy = 'dap'`.
+    'mfussenegger/nvim-dap',
   },
   config = function()
     local neotest = require 'neotest'
@@ -36,11 +39,11 @@ return {
     end, { desc = 'Neotest Run Nearest' })
 
     map('n', '<leader>n]', function()
-      neotest.jump.next { status = 'failed ' }
+      neotest.jump.next { status = 'failed' }
     end, { desc = 'Next failed test' })
 
     map('n', '<leader>n[', function()
-      neotest.jump.prev { status = 'failed ' }
+      neotest.jump.prev { status = 'failed' }
     end, { desc = 'Prev failed test' })
 
     map('n', '<leader>nl', function()
@@ -56,8 +59,8 @@ return {
     end, { desc = 'Neotest Stop' })
 
     map('n', '<leader>ns', function()
-      neotest.output_panel.toggle()
-    end, { desc = 'Neotest status' })
+      neotest.output.open { enter = true }
+    end, { desc = 'Neotest show output' })
 
     map('n', '<leader>nt', function()
       neotest.summary.toggle()
@@ -83,9 +86,7 @@ return {
         require 'neotest-plenary',
         require 'neotest-rspec' {
           rspec_cmd = function()
-            return vim.tbl_flatten {
-              'bin/rspec --fail-fast',
-            }
+            return { 'bin/rspec', '--fail-fast' }
           end,
         },
       },
