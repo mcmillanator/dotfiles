@@ -44,10 +44,10 @@ return {
         },
       },
     },
-    -- Ensure messages and notifications use the mini or notify view
+    -- Ensure messages and notifications use the notify view
     messages = {
       enabled = true,
-      view = 'notify', -- Use mini view for messages
+      view = 'notify', -- Messages to notify
       view_error = 'notify', -- Errors to notify
       view_warn = 'notify', -- Warnings to notify
     },
