@@ -4,9 +4,7 @@
 return {
   'nvim-treesitter/nvim-treesitter-textobjects',
   event = 'VeryLazy',
-  enabled = true,
-  lazy = true,
-  after = 'nvim-treesitter',
+  dependencies = { 'nvim-treesitter/nvim-treesitter' },
   config = function()
     require('nvim-treesitter.configs').setup {
       textobjects = {
@@ -15,8 +13,8 @@ return {
           border = 'none',
           floating_preview_opts = {},
           peek_definition_code = {
-            ['<leader>df'] = '@function.outer',
-            ['<leader>dF'] = '@class.outer',
+            ['<leader>gp'] = '@function.outer',
+            ['<leader>gP'] = '@class.outer',
           },
         },
         select = {
