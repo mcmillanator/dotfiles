@@ -4,8 +4,8 @@ return {
   event = 'VimEnter',
   dependencies = { 'nvim-lua/plenary.nvim' },
   opts = { signs = true },
-  config = function()
-    require('todo-comments').setup()
+  config = function(_, opts)
+    require('todo-comments').setup(opts)
     vim.keymap.set('n', ']t', function()
       require('todo-comments').jump_next()
     end, { desc = 'Next todo comment' })
@@ -21,11 +21,11 @@ return {
     end, { desc = 'Next error/warning todo comment' })
     vim.keymap.set('n', '[e', function()
       require('todo-comments').jump_prev { keywords = { 'ERROR', 'WARNING' } }
-    end, { desc = 'Next error/warning todo comment' })
+    end, { desc = 'Previous error/warning todo comment' })
     -- telescope
     vim.keymap.set('n', '<leader>stn', '<cmd>TodoTelescope keywords=NOTE<cr>', { desc = 'Search NOTE' })
     vim.keymap.set('n', '<leader>stt', '<cmd>TodoTelescope keywords=TODO<cr>', { desc = 'Search TODO' })
-    vim.keymap.set('n', '<leader>stt', '<cmd>TodoTelescope keywords=TODO<cr>', { desc = 'Search FIX' })
+    vim.keymap.set('n', '<leader>stf', '<cmd>TodoTelescope keywords=FIX<cr>', { desc = 'Search FIX' })
     vim.keymap.set('n', '<leader>sta', '<cmd>TodoTelescope<cr>', { desc = 'Search all todos' })
   end,
 }
