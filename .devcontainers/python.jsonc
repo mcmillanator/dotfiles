@@ -1,17 +1,17 @@
 {
-  "name": "Python Devcontainer",
-  "image": "python:3.14",
+  "name": "${localWorkspaceFolder}",
+  "image": "mcmillanator/prebuilt-python:latest",
   "service": "app",
   "overrideCommand": true,
   "workspaceMount": "source=${localWorkspaceFolder},target=${localWorkspaceFolder},type=bind,consistency=cached",
   "workspaceFolder": "${localWorkspaceFolder}",
   "remoteUser": "${localEnv:USER}",
-  "containerUser": "${localEnv:USER}",
+  "containerUser": "root",
   "updateRemoteUserUID": true,
   "mounts": [
     {
-      "source": "${localEnv:HOME}/Documents/Projects/dotfiles",
-      "target": "${localEnv:HOME}/Documents/Projects/dotfiles",
+      "source": "${localEnv:HOME}/dotfiles",
+      "target": "${localEnv:HOME}//dotfiles",
       "type": "bind",
       "consistency": "cached"
     },
@@ -54,33 +54,22 @@
     }
   ],
   "features": {
-    "ghcr.io/devcontainers/features/common-utils:2": {
-      "installZsh": true,
-      "configureZshAsDefaultShell": true,
-      "installOhMyZsh": true,
-      "installOhMyZshConfig": false,
-      "username": "${localEnv:USER}",
-      "userUid": "1000",
-      "userGid": "1000"
+    "ghcr.io/mcmillanator/devcontainers-features/create-remote-user:latest": {
+      "version": "latest",
+      "REMOTE_GID": "1000",
+      "REMOTE_GROUP": "stan",
+      "REMOTE_HOME": "/home/stan",
+      "REMOTE_SHELL": "/usr/bin/zsh",
+      "REMOTE_UID": "1000"
     },
-    "ghcr.io/devcontainers/features/git:1": {},
-    "ghcr.io/ChristopherMacGown/devcontainer-features/direnv:1": {},
-    "ghcr.io/ChristopherMacGown/devcontainer-features/mcfly:1": {},
-    "ghcr.io/GeorgOfenbeck/features/lazygit-linuxbinary:1": {},
-    "ghcr.io/devcontainers-extra/features/fzf:1": {},
-    "ghcr.io/devcontainers-extra/features/mackup:1": {},
-    "ghcr.io/devcontainers-extra/features/markdownlint-cli2:1": {},
-    "ghcr.io/devcontainers-extra/features/ripgrep:1": {},
-    "ghcr.io/devcontainers/features/node:1": {},
-    "ghcr.io/duduribeiro/devcontainer-features/neovim:1": {},
-    "ghcr.io/duduribeiro/devcontainer-features/tmux:1": {
-      "version": "3.7b"
-    },
-    "ghcr.io/devcontainers-extra/features/fd:1": {},
-    "ghcr.io/devcontainers/features/python:1": {
-      "version": "3.14",
-      "toolsToInstall": "uv,ast-grep-cli",
-      "installTools": true
-    }
+    // "ghcr.io/devcontainers/features/common-utils:2": {
+    //   "installZsh": true,
+    //   "configureZshAsDefaultShell": true,
+    //   "installOhMyZsh": true,
+    //   "installOhMyZshConfig": false,
+    //   "username": "${localEnv:USER}",
+    //   "userUid": "1000",
+    //   "userGid": "1000"
+    // }
   }
 }
