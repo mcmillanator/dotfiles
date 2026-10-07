@@ -40,7 +40,14 @@ return {
             group = 'Number',
             key_format = ' %s', -- remove default surrounding `[]`
             action = function()
-              require('telescope.builtin').live_grep { cwd = '~/Documents/Projects/dotfiles' }
+              -- Telescope does not tilde-expand `cwd`; expand it ourselves
+              -- and fall back to the nvim config dir when the default
+              -- checkout path doesn't exist on this machine.
+              local dir = vim.fn.expand '~/Documents/Projects/dotfiles'
+              if vim.fn.isdirectory(dir) == 0 then
+                dir = vim.fn.stdpath 'config'
+              end
+              require('telescope.builtin').live_grep { cwd = dir }
             end,
             key = 'd',
           },
@@ -82,5 +89,10 @@ return {
       },
     }
   end,
-  dependencies = { { 'nvim-tree/nvim-web-devicons' } },
+  dependencies = {
+    { 'nvim-tree/nvim-web-devicons' },
+    -- Declared so dashboard buttons can't fire before these providers load.
+    { 'nvim-telescope/telescope.nvim' },
+    { 'folke/persistence.nvim' },
+  },
 }
