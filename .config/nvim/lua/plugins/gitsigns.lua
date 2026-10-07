@@ -18,7 +18,7 @@ return {
         local map = vim.keymap.set
         -- Gitsigns keymaps
         map('n', '<leader>ga', '<cmd>Gitsigns stage_hunk<cr>', { desc = 'git add' })
-        map('n', '<leader>gd', '<cmd>Gitsigns diffthis<cr>', { desc = 'git dff' })
+        map('n', '<leader>gd', '<cmd>Gitsigns diffthis<cr>', { desc = 'git diff' })
 
         map('n', '<leader>grh', function()
           require('gitsigns').reset_hunk()
