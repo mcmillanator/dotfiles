@@ -61,11 +61,13 @@ return { -- Autocompletion
         function(cmp)
           cmp.scroll_documentation_down()
         end,
+        'fallback',
       },
       ['<C-u>'] = {
         function(cmp)
           cmp.scroll_documentation_up()
         end,
+        'fallback',
       },
 
       -- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
