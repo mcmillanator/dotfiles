@@ -1,6 +1,6 @@
 return { -- Useful plugin to show you pending keybinds.
   'folke/which-key.nvim',
-  event = 'VimEnter', -- Sets the loading event to 'VimEnter'
+  event = 'VeryLazy',
   opts = {
     spec = {
       -- Add labels to existing keycombos
@@ -11,6 +11,7 @@ return { -- Useful plugin to show you pending keybinds.
       { '<leader>g', group = 'Git', mode = { 'n', 'v' }, desc = 'Git' },
       { '<leader>gh', group = 'Git Hunk', mode = { 'n', 'v' }, desc = 'Git Hunk' },
       { '<leader>gs', group = 'Gitsigns' },
+      { '<leader>n', group = 'Neotest' },
       { '<leader>s', group = 'Search' },
       { '<leader>t', group = 'Toggle' },
       {
