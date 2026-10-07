@@ -33,7 +33,7 @@ return {
       notify = {
         position = {
           row = 1, -- Near the top
-          col = '0%', -- Left side of the screen
+          col = 0, -- Left side of the screen
         },
         size = {
           width = 'auto',
