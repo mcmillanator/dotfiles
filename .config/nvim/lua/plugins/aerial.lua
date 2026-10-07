@@ -3,9 +3,11 @@
 
 return {
   'stevearc/aerial.nvim',
-  version = 'v2.7.0',
-  lazy = false,
-  opts = {},
+  version = '*',
+  cmd = { 'AerialToggle', 'AerialOpen', 'AerialNavToggle', 'AerialInfo' },
+  keys = {
+    { '<leader>at', '<cmd>AerialToggle!<CR>', desc = 'Aerial toggle' },
+  },
   -- Optional dependencies
   dependencies = {
     'nvim-treesitter/nvim-treesitter',
@@ -16,8 +18,8 @@ return {
       -- optionally use on_attach to set keymaps when aerial has attached to a buffer
       on_attach = function(bufnr)
         -- Jump forwards/backwards with '{' and '}'
-        vim.keymap.set('n', '<leader>a[', '<cmd>AerialPrev<CR>', { buffer = bufnr })
-        vim.keymap.set('n', '<leader>a]', '<cmd>AerialNext<CR>', { buffer = bufnr })
+        vim.keymap.set('n', '<leader>a[', '<cmd>AerialPrev<CR>', { buffer = bufnr, desc = 'Aerial previous symbol' })
+        vim.keymap.set('n', '<leader>a]', '<cmd>AerialNext<CR>', { buffer = bufnr, desc = 'Aerial next symbol' })
       end,
       filter_kind = false,
       manage_folds = true,
@@ -26,6 +28,5 @@ return {
       show_guides = true,
       autojump = true,
     }
-    vim.keymap.set('n', '<leader>at', '<cmd>AerialToggle!<CR>')
   end,
 }
