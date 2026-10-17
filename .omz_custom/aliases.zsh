@@ -42,8 +42,8 @@ vpndelroutes()
 alias dockerdown='sudo systemctl stop docker'
 alias dockerup='sudo systemctl start docker'
 alias dockerrestart='sudo systemctl restart docker'
-alias dockernetworknames="docker network ls --format '{{.Name}}'"
-alias dockersubnet="docker network inspect $1 --format '{{(index .IPAM.Config 0).Subnet}}'"
+alias dockernetworknames="podman network ls --format '{{.Name}}'"
+alias dockersubnet="podman network inspect $1 --format '{{(index .IPAM.Config 0).Subnet}}'"
 
 # ruby
 alias be='bundle exec $@'
@@ -52,6 +52,20 @@ alias be='bundle exec $@'
 alias python='python3'
 
 # devcontainers
+
+# Route the devcontainer CLI through podman instead of the default docker engine.
+# `exec` must stay the first argument so the CLI keeps its pass-through argument
+# parsing; the other subcommands accept the flag up front.
+devcontainer()
+{
+  if [[ "$1" == "exec" ]]; then
+    shift
+    command devcontainer exec --docker-path podman "$@"
+  else
+    command devcontainer --docker-path podman "$@"
+  fi
+}
+
 dcbash()
 {
   FILE=$(check_for_file ".devcontainer/devcontainer.json")
@@ -124,12 +138,8 @@ dcsetup()
 check_for_file()
 {
   FILE="$1"
-  if [[ -f "$FILE" ]]; then
-    FILE=$FILE
-  elif [[ -f "${FILE}c" ]]; then
+  if [[ -f "${FILE}c" ]]; then
       FILE="${FILE}c"
-  else
-    return 1
   fi
   echo "$FILE"
 }
@@ -156,9 +166,9 @@ dcprebuildpush()
 
   dctags
   for i in ${prebuiltTags}
-  docker tag "$i":latest "$i":$gitSha
-  docker push "$i":$gitSha && results="$results\n$i: Success" || results="$results\n$i: Failed"
-  docker push "$i":latest && results="$results\n$i: Success" || results="$results\n$i: Failed"
+  podman tag "$i":latest "$i":$gitSha
+  podman push "$i":$gitSha && results="$results\n$i: Success" || results="$results\n$i: Failed"
+  podman push "$i":latest && results="$results\n$i: Success" || results="$results\n$i: Failed"
 
   echo $results
 }
@@ -166,7 +176,7 @@ dcprebuildpush()
 dctags()
 {
   for i in $prebuiltTags
-  docker tag "$i":latest "$i":$gitSha
+  podman tag "$i":latest "$i":$gitSha
 }
 
 dcprebuild()
@@ -186,14 +196,14 @@ dcprebuild()
 
 dcrebuild()
 {
-  for i in $(docker ps -a | grep -i $(name_from_pwd) | awk '{print $1}')
-  docker stop $i ; docker rm $i ; dcbuild $1 && dcup $1 && dczsh $1
+  for i in $(podman ps -a | grep -i $(name_from_pwd) | awk '{print $1}')
+  podman stop $i ; podman rm $i ; dcbuild $1 && dcup $1 && dczsh $1
 }
 
 dcdown()
 {
-  for i in $(docker ps -a | grep -i $(name_from_pwd) | awk '{print $1}')
-  docker stop $i ; docker rm $i
+  for i in $(podman ps -a | grep -i $(name_from_pwd) | awk '{print $1}')
+  podman stop $i ; podman rm $i
 }
 
 name_from_pwd()
@@ -209,3 +219,49 @@ dockersubnets()
       echo $i $(dockersubnet $i)
     fi
 }
+
+
+dctakeover()
+{
+  if [ -z "$1" ]; then
+    echo "Error: Please provide a running container name or ID."
+    echo "Usage: dctakeover <container_name_or_id> [config_name]"
+    return 1
+  fi
+
+  CONTAINER_ID="$1"
+  FILE=$(check_for_file ".devcontainer/devcontainer.json")
+
+  if [ -n "$2" ]; then
+    CONFIG_FILE="$HOME/.devcontainers/$2.jsonc"
+  else
+    CONFIG_FILE="$FILE"
+  fi
+
+  # Create a clean temporary file for the merged JSON configuration
+  TMP_OVERRIDE=$(mktemp --suffix=.json)
+
+  # Check if the source file exists and is readable, otherwise fall back to a blank JSON object
+  if [ -f "$CONFIG_FILE" ]; then
+    # Using jq to strip comments (if jsonc) and merge the containerId property cleanly
+    jq --arg cid "$CONTAINER_ID" '. + {containerId: $cid}' "$CONFIG_FILE" > "$TMP_OVERRIDE" 2>/dev/null
+
+    # Fallback if jq fails due to complex JSONC syntax (comments)
+    if [ $? -ne 0 ]; then
+      echo "{\"containerId\": \"$CONTAINER_ID\"}" > "$TMP_OVERRIDE"
+    fi
+  else
+    echo "{\"containerId\": \"$CONTAINER_ID\"}" > "$TMP_OVERRIDE"
+  fi
+
+  devcontainer up \
+    --user-data-folder="${HOME}/.local/share/devcontainer-user-data" \
+    --dotfiles-repository="https://github.com" \
+    --dotfiles-install-command="install.sh" \
+    --workspace-folder . \
+    --override-config "$TMP_OVERRIDE"
+
+  # Clean up the temporary file safely
+  rm -f "$TMP_OVERRIDE"
+}
+
