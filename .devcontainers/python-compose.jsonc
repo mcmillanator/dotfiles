@@ -12,6 +12,17 @@
   "remoteUser": "stan",
   "containerUser": "root",
   "updateRemoteUserUID": true,
+  "remoteEnv": {
+    "PATH": "/opt/devtools/bin:${containerEnv:PATH}"
+  },
+  "mounts": [
+    {
+      "source": "${localEnv:HOME}/.local/share/devtools",
+      "target": "/opt/devtools",
+      "type": "bind",
+      "readOnly": true
+    }
+  ],
   "features": {
     "ghcr.io/mcmillanator/devcontainers-features/create-remote-user:latest": {
       "version": "latest",
@@ -20,6 +31,11 @@
       "REMOTE_HOME": "/home/stan",
       "REMOTE_SHELL": "/usr/bin/zsh",
       "REMOTE_UID": "1000"
+    },
+    "ghcr.io/devcontainers/features/python:1": {
+      "version": "3.14",
+      "toolsToInstall": "uv,ast-grep-cli",
+      "installTools": true
     }
   }
 }

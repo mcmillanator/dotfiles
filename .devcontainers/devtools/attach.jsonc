@@ -1,0 +1,15 @@
+// Copy these two blocks into a project's .devcontainer/devcontainer.json.
+// Works with ANY base image — do not replace/override the project's base.
+{
+  "mounts": [
+    {
+      "source": "${localEnv:HOME}/.local/share/devtools",
+      "target": "/opt/devtools",
+      "type": "bind",
+      "readOnly": true
+    }
+  ],
+  "remoteEnv": {
+    "PATH": "/opt/devtools/bin:${containerEnv:PATH}"
+  }
+}
