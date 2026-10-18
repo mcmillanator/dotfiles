@@ -85,7 +85,11 @@ kickstart-based (`config/nvim/`), lazy.nvim, one spec per plugin in
 
 - Commit prefixes `fix:` / `feat:` / `chore:` / `refactor:` / `style:` /
   `nit:` — git aliases in `.gitconfig`.
-- **JSON/JSONC are spaces-only, never tabs**: `.editorconfig` + an init.lua
-  FileType autocmd, and json/jsonc are excluded from conform's save-time LSP
-  fallback (it used to re-serialize buffers with tabs).
+- **Spaces by default in every filetype** (vim ships `expandtab` off): the
+  policy lives in `config/nvim/init.lua` (`tab_filetypes` allowlists the
+  exceptions — `make`, `go` — that genuinely need hard tabs; per-buffer opt-in
+  is `:setlocal noexpandtab`). `.editorconfig` mirrors it for other tools, and
+  vim-sleuth auto-detection is off (`g:sleuth_automatic = 0`) so it can't flip
+  buffers back. json/jsonc are additionally excluded from conform's save-time
+  LSP fallback (it used to re-serialize buffers with tabs).
 - Lua style is `.stylua.toml` (2-space, single quotes, no call parens).

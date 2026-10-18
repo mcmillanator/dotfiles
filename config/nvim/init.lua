@@ -220,22 +220,38 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
--- JSON/JSONC are spaces-only, never tabs (see .editorconfig for other tools).
+-- Indentation policy: spaces by default for every filetype (vim ships
+-- 'expandtab' off). Filetypes that REQUIRE literal tabs are allowlisted below
+-- (make recipes break without them; gofmt uses tabs) and get 8-column tab
+-- rendering. To opt a single buffer into tabs: `:setlocal noexpandtab`.
+-- vim-sleuth's auto-detection is off because it flips buffers back to
+-- noexpandtab whenever a file contains tabs, defeating this policy; run
+-- `:Sleuth` manually per buffer when wanted. .editorconfig mirrors this rule.
+vim.opt.expandtab = true
+vim.opt.shiftwidth = 2
+vim.opt.tabstop = 2
+vim.g.sleuth_automatic = 0
+
+local tab_filetypes = {
+  make = true,
+  go = true,
+  -- add filetypes here to opt them into hard tabs, e.g. help = true
+}
+
 vim.api.nvim_create_autocmd('FileType', {
-  desc = 'Expand tabs and use 2-space indents in json/jsonc',
-  pattern = { 'json', 'jsonc' },
+  desc = 'Enforce space indentation except in tab-required filetypes',
+  pattern = '*',
   callback = function(args)
-    local function enforce()
-      if not vim.api.nvim_buf_is_valid(args.buf) then return end
+    if not vim.api.nvim_buf_is_valid(args.buf) then return end
+    if tab_filetypes[args.match] then
+      vim.bo[args.buf].expandtab = false
+      vim.bo[args.buf].shiftwidth = 8
+      vim.bo[args.buf].tabstop = 8
+    else
       vim.bo[args.buf].expandtab = true
       vim.bo[args.buf].shiftwidth = 2
       vim.bo[args.buf].tabstop = 2
     end
-    enforce()
-    -- vim-sleuth's FileType handler is registered later (lazy) and wins the
-    -- race, setting noexpandtab when it detects tab-indented content;
-    -- re-assert on the next event-loop tick, after all FileType handlers ran.
-    vim.schedule(enforce)
   end,
 })
 
