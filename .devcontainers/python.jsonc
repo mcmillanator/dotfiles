@@ -31,11 +31,10 @@
       "consistency": "cached"
     },
     {
-      "source": "dev_home",
+      "source": "${localEnv:HOME}/.devcontainer-home",
       "target": "/home/${localEnv:USER}",
-      "type": "volume",
-      "consistency": "cached",
-      "external": "true"
+      "type": "bind",
+      "consistency": "cached"
     },
     {
       "source": "${localEnv:HOME}/.oh-my-zsh/",
