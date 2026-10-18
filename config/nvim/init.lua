@@ -161,6 +161,12 @@ vim.opt.scrolloff = 4
 -- See `:help 'confirm'`
 vim.opt.confirm = true
 
+-- Open folds by default: 'foldlevel' is 0 out of the box, so every treesitter
+-- fold (set up per-window by plugins/treesitter.lua) starts collapsed.
+-- foldlevelstart re-opens them each time a buffer is entered; zM/zR still work.
+vim.opt.foldlevel = 99
+vim.opt.foldlevelstart = 99
+
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
