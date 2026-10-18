@@ -120,6 +120,10 @@ log "neovim $NVIM"
 curl -fsSL "https://github.com/neovim/neovim/releases/download/v$NVIM/nvim-linux-$NVIM_A.tar.gz" -o "$TMP/nvim.tgz"
 mkdir -p "$TMP/nvim"
 tar -xzf "$TMP/nvim.tgz" -C "$TMP/nvim" --strip-components=1 --no-same-owner
+# Purge nvim-owned paths first: a merge-copy would leave files that the new
+# version deleted (checkhealth flags "old files in $VIMRUNTIME"). rm is safe
+# even while nvim runs -- the live process keeps its unlinked inode.
+rm -rf "$DEVTOOLS_DIR/share/nvim" "$DEVTOOLS_DIR/lib/nvim" "$BIN/nvim"
 cp -a --remove-destination "$TMP/nvim/." "$DEVTOOLS_DIR/"
 
 # node's official tarball is a relocatable tree (bin/ + lib/node_modules/ ...);
@@ -129,6 +133,8 @@ log "node $NODE"
 curl -fsSL "https://nodejs.org/dist/v$NODE/node-v$NODE-linux-$NODE_A.tar.gz" -o "$TMP/node.tgz"
 mkdir -p "$TMP/node"
 tar -xzf "$TMP/node.tgz" -C "$TMP/node" --strip-components=1 --no-same-owner
+# purge node-owned paths before the merge-copy (same stale-file rationale as nvim)
+rm -rf "$DEVTOOLS_DIR/lib/node_modules" "$BIN/node" "$BIN/npm" "$BIN/npx" "$BIN/corepack"
 cp -a --remove-destination "$TMP/node/." "$DEVTOOLS_DIR/"
 
 log "opencode $OPENCODE"
