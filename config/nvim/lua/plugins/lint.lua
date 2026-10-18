@@ -6,7 +6,9 @@ return {
     config = function()
       local lint = require 'lint'
       lint.linters_by_ft = {
-        markdown = { 'markdownlint' },
+        -- markdownlint-cli2 (the binary installed via devcontainers); it
+        -- auto-discovers .markdownlint-cli2.jsonc walking up to the git root
+        markdown = { 'markdownlint-cli2' },
       }
 
       -- To allow other plugins to add linters to require('lint').linters_by_ft,

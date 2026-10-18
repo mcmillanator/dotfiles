@@ -1,0 +1,9 @@
+{
+  // MD013 (line-length): don't measure table rows -- pipe tables are long
+  // by nature and wrapping them hurts readability. Prose lines still apply.
+  "config": {
+    "MD013": {
+      "tables": false
+    }
+  }
+}
