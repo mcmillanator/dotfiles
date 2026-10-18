@@ -220,6 +220,17 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+-- JSON/JSONC are spaces-only, never tabs (see .editorconfig for other tools).
+vim.api.nvim_create_autocmd('FileType', {
+  desc = 'Expand tabs and use 2-space indents in json/jsonc',
+  pattern = { 'json', 'jsonc' },
+  callback = function(args)
+    vim.bo[args.buf].expandtab = true
+    vim.bo[args.buf].shiftwidth = 2
+    vim.bo[args.buf].tabstop = 2
+  end,
+})
+
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
