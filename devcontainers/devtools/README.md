@@ -55,6 +55,7 @@ add that too if the project doesn't already have it.
 | --- | --- |
 | neovim | relocatable tree (`bin/`, `lib/`, `share/`) |
 | opencode | |
+| tree-sitter | CLI required by the new nvim-treesitter `main` rewrite to compile parsers |
 | node, npm, npx | official LTS tarball, relocatable; powers nvim plugins/LSP hosts |
 | lazygit, delta | git |
 | fzf, fd, ripgrep, zoxide | search/nav |

@@ -17,8 +17,9 @@
 set -euo pipefail
 
 # ---- pinned versions -------------------------------------------------------
-NVIM=0.11.3
+NVIM=0.12.6
 OPENCODE=1.19.3
+TREE_SITTER_CLI=0.27.1 # required by the nvim-treesitter `main` rewrite to compile parsers
 NODE=24.22.0 # official LTS tarball; one version everywhere. nvm (shared home) still wins in shells that load it.
 LAZYGIT=0.66.2
 MCFLY=0.9.4
@@ -71,7 +72,7 @@ case "$machine" in
 esac
 
 stamp="$DEVTOOLS_DIR/.versions"
-want="nvim=$NVIM opencode=$OPENCODE node=$NODE lazygit=$LAZYGIT mcfly=$MCFLY fzf=$FZF fd=$FD rg=$RIPGREP zoxide=$ZOXIDE direnv=$DIRENV delta=$DELTA terraform=$TERRAFORM terraform-ls=$TERRAFORM_LS tflint=$TFLINT terragrunt=$TERRAGRUNT aws=$AWSCLI arch=$machine"
+want="nvim=$NVIM opencode=$OPENCODE node=$NODE tree-sitter-cli=$TREE_SITTER_CLI lazygit=$LAZYGIT mcfly=$MCFLY fzf=$FZF fd=$FD rg=$RIPGREP zoxide=$ZOXIDE direnv=$DIRENV delta=$DELTA terraform=$TERRAFORM terraform-ls=$TERRAFORM_LS tflint=$TFLINT terragrunt=$TERRAGRUNT aws=$AWSCLI arch=$machine"
 if [ "$FORCE" = 0 ] && [ -f "$stamp" ] && [ "$(cat "$stamp")" = "$want" ]; then
   echo "devtools already up to date at $DEVTOOLS_DIR"
   exit 0
@@ -132,6 +133,11 @@ cp -a --remove-destination "$TMP/node/." "$DEVTOOLS_DIR/"
 
 log "opencode $OPENCODE"
 fetch_single opencode "https://github.com/sst/opencode/releases/download/v$OPENCODE/opencode-linux-$OC_A.tar.gz"
+
+# the zip contains the single `tree-sitter` binary; fetch_single unzips and
+# finds it by name
+log "tree-sitter-cli $TREE_SITTER_CLI"
+fetch_single tree-sitter "https://github.com/tree-sitter/tree-sitter/releases/download/v$TREE_SITTER_CLI/tree-sitter-cli-linux-$OC_A.zip"
 
 log "lazygit $LAZYGIT"
 fetch_single lazygit "https://github.com/jesseduffield/lazygit/releases/download/v$LAZYGIT/lazygit_${LAZYGIT}_linux_${LG_A}.tar.gz"
