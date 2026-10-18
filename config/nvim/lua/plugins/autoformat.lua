@@ -18,7 +18,12 @@ return { -- Autoformat
       -- Disable "format_on_save lsp_fallback" for languages that don't
       -- have a well standardized coding style. You can add additional
       -- languages here or re-enable it for the disabled ones.
-      local disable_filetypes = { c = true, cpp = true }
+      -- c/cpp lack a well standardized coding style. json/jsonc are excluded
+      -- too: the lsp fallback derives indent style from buffer options, and a
+      -- tab-indented file opens as noexpandtab (vim-sleuth), so saving would
+      -- re-serialize the whole buffer back to tabs. Space-only indent for
+      -- json/jsonc is enforced by .editorconfig + the init.lua FileType autocmd.
+      local disable_filetypes = { c = true, cpp = true, json = true, jsonc = true }
       if disable_filetypes[vim.bo[bufnr].filetype] then
         return nil
       else

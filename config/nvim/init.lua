@@ -225,9 +225,17 @@ vim.api.nvim_create_autocmd('FileType', {
   desc = 'Expand tabs and use 2-space indents in json/jsonc',
   pattern = { 'json', 'jsonc' },
   callback = function(args)
-    vim.bo[args.buf].expandtab = true
-    vim.bo[args.buf].shiftwidth = 2
-    vim.bo[args.buf].tabstop = 2
+    local function enforce()
+      if not vim.api.nvim_buf_is_valid(args.buf) then return end
+      vim.bo[args.buf].expandtab = true
+      vim.bo[args.buf].shiftwidth = 2
+      vim.bo[args.buf].tabstop = 2
+    end
+    enforce()
+    -- vim-sleuth's FileType handler is registered later (lazy) and wins the
+    -- race, setting noexpandtab when it detects tab-indented content;
+    -- re-assert on the next event-loop tick, after all FileType handlers ran.
+    vim.schedule(enforce)
   end,
 })
 
