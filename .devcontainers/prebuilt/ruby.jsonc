@@ -1,7 +1,0 @@
-{
-  "name": "Ruby",
-  "image": "mcmillanator/prebuilt-base:latest",
-  "features": {
-    "ghcr.io/devcontainers/features/node:1": {},
-  },
-}

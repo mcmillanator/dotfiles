@@ -1,7 +1,0 @@
-{
-  "name": "PHP",
-  "image": "mcmillanator/prebuilt-base",
-  "features": {
-    "ghcr.io/devcontainers/features/php:1": {}
-  }
-}

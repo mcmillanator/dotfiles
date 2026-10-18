@@ -1,6 +1,6 @@
 {
   "name": "${localWorkspaceFolder}",
-  "image": "mcmillanator/prebuilt-python:latest",
+  "image": "mcmillanator/prebuilt-base:latest",
   "service": "app",
   "overrideCommand": true,
   "workspaceMount": "source=${localWorkspaceFolder},target=${localWorkspaceFolder},type=bind,consistency=cached",

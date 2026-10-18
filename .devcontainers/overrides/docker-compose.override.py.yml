@@ -18,7 +18,7 @@ services:
     image: mcmillanator/python
     build:
       args:
-        IMAGE: mcmillanator/prebuilt-python
+        IMAGE: mcmillanator/prebuilt-base
 
 volumes:
   dev_home:
